@@ -653,6 +653,8 @@
           htop = "btop";
           installed = "nix-store --query --references /run/current-system/sw";
           ls = "ls --all --color=always -l";
+          nrd = "sudo nixos-rebuild dry-activate";
+          nrs = "sudo nixos-rebuild switch";
           ping = "prettyping";
           speedtest = "speedtest --secure --share";
           top = "btop";
