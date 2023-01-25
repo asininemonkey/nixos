@@ -397,22 +397,15 @@
           asl = "aws --profile friday-staging sso login";
           tf = "terraform fmt --recursive";
 
-          tafp = "AWS_PROFILE=friday-production make terraform-apply-friday-production";
-          tafs = "AWS_PROFILE=friday-staging make terraform-apply-friday-staging";
-          tafu = "AWS_PROFILE=friday-uat make terraform-apply-friday-uat";
-          tpfp = "AWS_PROFILE=friday-production make terraform-plan-friday-production";
-          tpfs = "AWS_PROFILE=friday-staging make terraform-plan-friday-staging";
-          tpfu = "AWS_PROFILE=friday-uat make terraform-plan-friday-uat";
-          tsfp = "AWS_PROFILE=friday-production make terraform-state-friday-production";
-          tsfs = "AWS_PROFILE=friday-staging make terraform-state-friday-staging";
-          tsfu = "AWS_PROFILE=friday-uat make terraform-state-friday-uat";
-
-          tas = "AWS_PROFILE=staging make terraform-apply-staging";
-          tau = "AWS_PROFILE=uat make terraform-apply-uat";
-          tps = "AWS_PROFILE=staging make terraform-plan-staging";
-          tpu = "AWS_PROFILE=uat make terraform-plan-uat";
-          tss = "AWS_PROFILE=staging make terraform-state-staging";
-          tsu = "AWS_PROFILE=uat make terraform-state-uat";
+          tafp = "SERVICE=friday ENVIRONMENT=\${SERVICE}-production ./scripts/tfs apply";
+          tafs = "SERVICE=friday ENVIRONMENT=\${SERVICE}-staging ./scripts/tfs apply";
+          tafu = "SERVICE=friday ENVIRONMENT=\${SERVICE}-uat ./scripts/tfs apply";
+          tpfp = "SERVICE=friday ENVIRONMENT=\${SERVICE}-production ./scripts/tfs plan";
+          tpfs = "SERVICE=friday ENVIRONMENT=\${SERVICE}-staging ./scripts/tfs plan";
+          tpfu = "SERVICE=friday ENVIRONMENT=\${SERVICE}-uat ./scripts/tfs plan";
+          tsfp = "SERVICE=friday ENVIRONMENT=\${SERVICE}-production ./scripts/tfs state";
+          tsfs = "SERVICE=friday ENVIRONMENT=\${SERVICE}-staging ./scripts/tfs state";
+          tsfu = "SERVICE=friday ENVIRONMENT=\${SERVICE}-uat ./scripts/tfs state";
         };
       };
     };
