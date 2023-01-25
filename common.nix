@@ -66,6 +66,7 @@ in
       libreoffice-fresh
       macchina
       mullvad-vpn
+      ntfs3g
       nvme-cli
       packagekit
       papirus-icon-theme

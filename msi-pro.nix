@@ -54,7 +54,9 @@
       amazon-ecr-credential-helper
       awscli2
       globalprotect-openconnect
+      gnupg
       gnutls
+      python311
       slack
       zoom-us
     ]);
