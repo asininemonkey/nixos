@@ -59,6 +59,8 @@
       python311
       slack
       zoom-us
+    ]) ++ (with pkgs.unstable; [
+      asdf-vm
     ]);
   };
 
@@ -89,10 +91,7 @@
 
       "org/gnome/shell" = {
         favorite-apps = [
-          "1password.desktop"
-          "signal-desktop.desktop"
           "slack.desktop"
-          "codium.desktop"
           "Zoom.desktop"
         ];
       };

@@ -116,9 +116,13 @@
         ];
 
         favorite-apps = [
-          "firefox.desktop"
-          "org.gnome.Nautilus.desktop"
+          "1password.desktop"
           "Alacritty.desktop"
+          "org.gnome.Nautilus.desktop"
+          "firefox.desktop"
+          "obsidian.desktop"
+          "signal-desktop.desktop"
+          "codium.desktop"
         ];
       };
 
@@ -203,6 +207,21 @@
 
       ".config/gtk-3.0/bookmarks".text = ''
         file:///home/jcardoso/.var/app Flatpak Data
+      '';
+
+      ".config/obsidian/obsidian.json".text = ''
+        {
+          "vaults": {
+            "cda1bce76c7db627": {
+              "path": "/home/jcardoso/Documents/Source/Private/obsidian/Private",
+              "ts": 1672531200000
+            },
+            "b46cab08ad4f3833": {
+              "path": "/home/jcardoso/Documents/Source/Private/obsidian/Work",
+              "ts": 1672531200000
+            }
+          }
+        }
       '';
 
       ".config/macchina/macchina.toml".text = ''

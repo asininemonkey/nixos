@@ -96,7 +96,7 @@ in
       user-themes
       window-list
     ]) ++ (with pkgs.unstable; [
-      asdf-vm
+      obsidian
       quickemu
     ]);
   };

@@ -64,10 +64,7 @@
     dconf.settings = {
       "org/gnome/shell" = {
         favorite-apps = [
-          "1password.desktop"
           "org.gnome.Geary.desktop"
-          "signal-desktop.desktop"
-          "codium.desktop"
         ];
       };
     };
