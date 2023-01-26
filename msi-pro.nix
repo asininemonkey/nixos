@@ -56,6 +56,7 @@
       globalprotect-openconnect
       gnupg
       gnutls
+      nodejs-16_x
       python311
       slack
       zoom-us
