@@ -400,6 +400,9 @@
           tafp = "SERVICE=friday ENVIRONMENT=\${SERVICE}-production ./scripts/tfs apply";
           tafs = "SERVICE=friday ENVIRONMENT=\${SERVICE}-staging ./scripts/tfs apply";
           tafu = "SERVICE=friday ENVIRONMENT=\${SERVICE}-uat ./scripts/tfs apply";
+          tifp = "SERVICE=friday ENVIRONMENT=\${SERVICE}-production ./scripts/tfs init";
+          tifs = "SERVICE=friday ENVIRONMENT=\${SERVICE}-staging ./scripts/tfs init";
+          tifu = "SERVICE=friday ENVIRONMENT=\${SERVICE}-uat ./scripts/tfs init";
           tpfp = "SERVICE=friday ENVIRONMENT=\${SERVICE}-production ./scripts/tfs plan";
           tpfs = "SERVICE=friday ENVIRONMENT=\${SERVICE}-staging ./scripts/tfs plan";
           tpfu = "SERVICE=friday ENVIRONMENT=\${SERVICE}-uat ./scripts/tfs plan";
