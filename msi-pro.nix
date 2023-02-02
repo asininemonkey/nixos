@@ -406,6 +406,7 @@
 
         shellAliases = {
           asl = "aws --profile friday-staging sso login";
+          awslocal = "aws --endpoint-url 'http://127.0.0.1:4566'";
           tf = "terraform fmt --recursive";
 
           tafp = "SERVICE=friday ENVIRONMENT=\${SERVICE}-production ./scripts/tfs apply";
