@@ -444,6 +444,10 @@
       "a7.dailypay.com" = {
         openconnect-args = "--servercert=pin-sha256:dUqBLtWTRcX2IUm3HTTiKA68AjmibowaJscs6T8mmrg="; # gnutls-cli --insecure a7.dailypay.com | grep --after-context 1 'Public Key PIN'
       };
+
+      "b2.dailypay.com" = {
+        openconnect-args = "--servercert=pin-sha256:WjUEQtmO4srsjkaVkdQ5kWG0Nt62W4ntUj2i4lUpY3o="; # gnutls-cli --insecure b2.dailypay.com | grep --after-context 1 'Public Key PIN'
+      };
     };
   };
 
