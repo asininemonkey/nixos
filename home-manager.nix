@@ -501,6 +501,10 @@
         userName = "Jose Cardoso";
       };
 
+      go = { # https://rycee.gitlab.io/home-manager/options.html#opt-programs.go.enable
+        enable = true;
+      };
+
       mpv = { # https://rycee.gitlab.io/home-manager/options.html#opt-programs.mpv.enable
         config = {
           gpu-context = "wayland";
