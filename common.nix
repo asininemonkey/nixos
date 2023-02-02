@@ -68,6 +68,7 @@ in
       mullvad-vpn
       ntfs3g
       nvme-cli
+      p7zip
       packagekit
       papirus-icon-theme
       prettyping
