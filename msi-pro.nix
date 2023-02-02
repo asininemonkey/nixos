@@ -56,6 +56,7 @@
       globalprotect-openconnect
       gnupg
       gnutls
+      localstack
       nodejs-16_x
       python311
       slack
@@ -100,6 +101,12 @@
 
     home.file = {
       ".aws/config".text = ''
+        [profile default]
+        output = json
+        region = us-east-2
+        s3 =
+            signature_version = s3v4
+
         [profile friday-production]
         output = json
         region = us-east-2
@@ -131,7 +138,11 @@
         sso_start_url = https://dailypay.awsapps.com/start
       '';
 
-      ".aws/credentials".text = "";
+      ".aws/credentials".text = ''
+      [default]
+      aws_access_key_id=test
+      aws_secret_access_key=test
+      '';
 
       ".config/monitors.xml".source = config.lib.file.mkOutOfStoreSymlink "/etc/monitors.xml";
 
