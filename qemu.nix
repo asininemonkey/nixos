@@ -24,4 +24,9 @@
   };
 
   networking.hostName = "qemu";
+
+  services = {
+    qemuGuest.enable = true;
+    spice-vdagentd = true;
+  };
 }
