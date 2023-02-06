@@ -65,14 +65,14 @@ in
       ldns
       libreoffice-fresh
       macchina
-      mullvad-vpn
+      mullvad-vpn # x86_64 Only!
       ntfs3g
       nvme-cli
       p7zip
       packagekit
       papirus-icon-theme
       prettyping
-      signal-desktop
+      signal-desktop # x86_64 Only!
       speedtest-cli
       tmux
       tootle
@@ -98,7 +98,7 @@ in
       window-list
     ]) ++ (with pkgs.unstable; [
       obsidian
-      quickemu
+      quickemu # x86_64 Only!
     ]);
   };
 
