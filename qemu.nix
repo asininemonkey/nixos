@@ -27,7 +27,7 @@
 
   services = {
     qemuGuest.enable = true;
-    spice-vdagentd = true;
-    spice-webdavd = true;
+    spice-vdagentd.enable = true;
+    spice-webdavd.enable = true;
   };
 }
