@@ -342,6 +342,31 @@
             "version": "2.0.117.10"
         }
       '';
+
+      "Documents/Virtual Machines/quickemu/nixos-22.11-minimal.clean" = {
+        executable = true;
+
+        text = ''
+          #!/usr/bin/env bash
+          rm --force nixos-22.11-minimal/*.fd
+          rm --force nixos-22.11-minimal/*.qcow2
+          rm --force nixos-22.11-minimal/nixos-22.11-minimal.*
+        '';
+      };
+
+      "Documents/Virtual Machines/quickemu/nixos-22.11-minimal.conf" = {
+        executable = true;
+
+        text = ''
+          #!/run/current-system/sw/bin/quickemu --vm
+          cpu_cores="4"
+          disk_img="nixos-22.11-minimal/disk.qcow2"
+          disk_size="32G"
+          guest_os="linux"
+          iso="nixos-22.11-minimal/latest-nixos-minimal-x86_64-linux.iso"
+          preallocation="metadata"
+        '';
+      };
     };
 
     programs = {
