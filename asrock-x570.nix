@@ -185,7 +185,10 @@
     };
   };
 
-  networking.hostName = "asrock-x570";
+  networking = {
+    extraHosts = "192.168.144.200 intel-nuc";
+    hostName = "asrock-x570";
+  };
 
   systemd.tmpfiles.rules = [
     "L+ /run/gdm/.config/monitors.xml - - - - /etc/monitors.xml"
