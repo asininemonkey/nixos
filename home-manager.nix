@@ -94,8 +94,13 @@
         center-new-windows = true;
       };
 
+      "org/gnome/nautilus/preferences" = {
+        show-delete-permanently = true;
+      };
+
       "org/gnome/nautilus/window-state" = {
-        sidebar-width = 275;
+        initial-size = mkTuple [ 1800 900 ];
+        sidebar-width = 300;
       };
 
       "org/gnome/shell" = {
@@ -207,6 +212,11 @@
 
       ".config/gtk-3.0/bookmarks".text = ''
         file:///home/jcardoso/.var/app Flatpak Data
+        smb://intel-nuc/roms roms (intel-nuc)
+        smb://intel-nuc/temporary temporary (intel-nuc)
+        smb://admin@pi-server/admin admin (pi-server)
+        smb://admin@pi-server/roms-full roms-full (pi-server)
+        smb://pi-server/temporary temporary (pi-server)
       '';
 
       ".config/obsidian/obsidian.json".text = ''
@@ -365,6 +375,34 @@
           guest_os="linux"
           iso="nixos-22.11-minimal/latest-nixos-minimal-x86_64-linux.iso"
           preallocation="metadata"
+        '';
+      };
+
+      "Documents/Virtual Machines/quickemu/windows-11.clean" = {
+        executable = true;
+
+        text = ''
+          #!/usr/bin/env bash
+          rm --force windows-11/*.fd
+          rm --force windows-11/*.qcow2
+          rm --force windows-11/windows-11.*
+        '';
+      };
+
+      "Documents/Virtual Machines/quickemu/windows-11.conf" = {
+        executable = true;
+
+        text = ''
+          #!/run/current-system/sw/bin/quickemu --vm
+          cpu_cores="4"
+          disk_img="windows-11/disk.qcow2"
+          disk_size="32G"
+          fixed_iso="windows-11/virtio-win.iso"
+          guest_os="windows"
+          iso="windows-11/windows-11.iso"
+          preallocation="metadata"
+          secureboot="on"
+          tpm="on"
         '';
       };
     };
