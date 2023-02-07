@@ -407,6 +407,10 @@
       };
     };
 
+    home.sessionPath = [
+      "\${GOBIN}"
+    ];
+
     programs = {
       alacritty = { # https://rycee.gitlab.io/home-manager/options.html#opt-programs.alacritty.enable
         enable = true;
