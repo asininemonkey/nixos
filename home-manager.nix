@@ -566,6 +566,7 @@
 
       go = { # https://rycee.gitlab.io/home-manager/options.html#opt-programs.go.enable
         enable = true;
+        goPath = "Documents/Source/Go";
       };
 
       mpv = { # https://rycee.gitlab.io/home-manager/options.html#opt-programs.mpv.enable
