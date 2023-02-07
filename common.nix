@@ -97,10 +97,8 @@ in
       user-themes
       window-list
     ]) ++ (with pkgs.unstable; [
-      cdrkit # Dependency: quickemu
       obsidian
       quickemu # x86_64 Only!
-      socat # Dependency: quickemu
     ]);
   };
 
