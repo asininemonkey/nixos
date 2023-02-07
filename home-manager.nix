@@ -358,8 +358,10 @@
 
         text = ''
           #!/usr/bin/env bash
+          rm --force nixos-22.11-minimal/.lock
           rm --force nixos-22.11-minimal/*.fd
           rm --force nixos-22.11-minimal/*.qcow2
+          rm --force nixos-22.11-minimal/*.sock*
           rm --force nixos-22.11-minimal/nixos-22.11-minimal.*
         '';
       };
@@ -383,8 +385,11 @@
 
         text = ''
           #!/usr/bin/env bash
+          rm --force windows-11/.lock
           rm --force windows-11/*.fd
           rm --force windows-11/*.qcow2
+          rm --force windows-11/*.sock*
+          rm --force windows-11/tpm2*.*
           rm --force windows-11/windows-11.*
         '';
       };
@@ -399,9 +404,9 @@
           disk_size="32G"
           fixed_iso="windows-11/virtio-win.iso"
           guest_os="windows"
-          iso="windows-11/windows-11.iso"
+          iso="windows-11/latest-windows-11.iso"
           preallocation="metadata"
-          secureboot="on"
+          # secureboot="on"
           tpm="on"
         '';
       };
