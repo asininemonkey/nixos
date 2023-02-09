@@ -219,6 +219,30 @@
         smb://pi-server/temporary temporary (pi-server)
       '';
 
+      ".config/obsidian/b46cab08ad4f3833.json".text = ''
+        {
+            "devTools": false,
+            "height": 900,
+            "isMaximized": false,
+            "width": 1600,
+            "x": 2712,
+            "y": 210,
+            "zoom": 1.25
+        }
+      '';
+
+      ".config/obsidian/cda1bce76c7db627.json".text = ''
+        {
+            "devTools": false,
+            "height": 900,
+            "isMaximized": false,
+            "width": 1600,
+            "x": 2712,
+            "y": 210,
+            "zoom": 1.25
+        }
+      '';
+
       ".config/obsidian/obsidian.json".text = ''
         {
           "vaults": {
