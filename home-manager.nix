@@ -225,8 +225,6 @@
             "height": 900,
             "isMaximized": false,
             "width": 1600,
-            "x": 2712,
-            "y": 210,
             "zoom": 1.25
         }
       '';
@@ -237,8 +235,6 @@
             "height": 900,
             "isMaximized": false,
             "width": 1600,
-            "x": 2712,
-            "y": 210,
             "zoom": 1.25
         }
       '';
