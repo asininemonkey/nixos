@@ -97,6 +97,7 @@ in
       user-themes
       window-list
     ]) ++ (with pkgs.unstable; [
+      gimp-with-plugins
       obsidian
       quickemu # x86_64 Only!
     ]);
