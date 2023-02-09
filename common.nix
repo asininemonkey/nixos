@@ -56,6 +56,7 @@ in
       dconf2nix
       docker-compose
       ft2-clone
+      gimp
       gnome-firmware
       gnumake
       hunspell
@@ -97,7 +98,6 @@ in
       user-themes
       window-list
     ]) ++ (with pkgs.unstable; [
-      gimp-with-plugins
       obsidian
       quickemu # x86_64 Only!
     ]);
