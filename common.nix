@@ -72,6 +72,7 @@ in
       p7zip
       packagekit
       papirus-icon-theme
+      pciutils
       prettyping
       signal-desktop # x86_64 Only!
       speedtest-cli
@@ -79,6 +80,7 @@ in
       tootle
       tree
       unzip
+      usbutils
       wget
     ]) ++ (with pkgs.gnome; [
       dconf-editor
