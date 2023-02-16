@@ -53,7 +53,6 @@
     systemPackages = (with pkgs; [
       amazon-ecr-credential-helper
       awscli2
-      codeql
       globalprotect-openconnect
       gnupg
       gnutls
