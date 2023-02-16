@@ -178,6 +178,7 @@
                 "terminal.integrated.fontFamily": "Iosevka",
                 "terminal.integrated.fontSize": 18,
                 "terminal.integrated.fontWeight": "normal",
+                "update.mode": "none",
                 "window.zoomLevel": 1
             }
         }
