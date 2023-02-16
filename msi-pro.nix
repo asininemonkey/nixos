@@ -246,6 +246,7 @@
             mkdir -p "''${CLONE_ROOT}/''${CLONE_DIRECTORY}"
 
             git -C "''${CLONE_ROOT}/''${CLONE_DIRECTORY}" clone "''${CLONE_SOURCE}/core-infrastructure.git"
+            git -C "''${CLONE_ROOT}/''${CLONE_DIRECTORY}" clone "''${CLONE_SOURCE}/d2c.git"
             git -C "''${CLONE_ROOT}/''${CLONE_DIRECTORY}" clone "''${CLONE_SOURCE}/friday-batch.git"
             git -C "''${CLONE_ROOT}/''${CLONE_DIRECTORY}" clone "''${CLONE_SOURCE}/friday-ecs.git"
             git -C "''${CLONE_ROOT}/''${CLONE_DIRECTORY}" clone "''${CLONE_SOURCE}/friday-harness.git"
@@ -287,6 +288,9 @@
             "folders": [
                 {
                     "path": "./core-infrastructure"
+                },
+                {
+                    "path": "./d2c"
                 },
                 {
                     "path": "./fridaycardapp"
@@ -431,8 +435,9 @@
     hostName = "msi-pro";
 
     networkmanager.unmanaged = [
-      "mac:1c:e1:92:b2:ad:32"
-      "mac:1c:e1:92:b2:f8:53"
+      "mac:00:e0:4c:68:52:73" # USB Ethernet - Adapter
+      "mac:1c:e1:92:b2:ad:32" # USB Ethernet - Monitor
+      "mac:1c:e1:92:b2:f8:53" # USB  thernet - Monitor
     ];
   };
 
