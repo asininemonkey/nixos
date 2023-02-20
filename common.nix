@@ -49,7 +49,11 @@ in
       zsh
     ]);
 
-    systemPackages = (with pkgs; [
+    systemPackages = (if pkgs.stdenv.hostPlatform.system == "x86_64-linux" then with pkgs.unstable; [
+      mullvad-vpn
+      quickemu
+      signal-desktop
+    ] else []) ++ (with pkgs.unstable; [
       ascii-image-converter
       btop
       celluloid
@@ -66,15 +70,14 @@ in
       ldns
       libreoffice-fresh
       macchina
-      mullvad-vpn # x86_64 Only!
       ntfs3g
       nvme-cli
+      obsidian
       p7zip
       packagekit
       papirus-icon-theme
       pciutils
       prettyping
-      signal-desktop # x86_64 Only!
       speedtest-cli
       tmux
       tootle
@@ -99,9 +102,6 @@ in
       tiling-assistant
       user-themes
       window-list
-    ]) ++ (with pkgs.unstable; [
-      obsidian
-      quickemu # x86_64 Only!
     ]);
   };
 
