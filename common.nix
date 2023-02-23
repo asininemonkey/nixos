@@ -61,6 +61,7 @@ in
       docker-compose
       ft2-clone
       gimp
+      glow
       gnome-firmware
       gnumake
       hunspell
