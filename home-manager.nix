@@ -341,6 +341,88 @@
         ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKYDHpVs4nKaLG+tnLUGH+4Ivnq9ELPW0S3W/uJhxNd/
       '';
 
+      "Documents/Bottles/Cyberduck.yaml".text = ''
+        Arch: win64
+        CompatData: \'\'
+        Custom_Path: false
+        DLL_Overrides: {}
+        DXVK: dxvk-2.1-1-0811813
+        Environment: Custom
+        Environment_Variables: {}
+        External_Programs: {}
+        Installed_Dependencies:
+        - dotnet40
+        - dotnet45
+        - dotnet46
+        - dotnet461
+        - dotnet462
+        - dotnet472
+        Language: sys
+        LatencyFleX: latencyflex-v0.1.1
+        NVAPI: dxvk-nvapi-v0.6.1-1-0c54f06
+        Name: Cyberduck
+        Parameters:
+            custom_dpi: 96
+            decorated: true
+            discrete_gpu: false
+            dxvk: false
+            dxvk_nvapi: false
+            fixme_logs: false
+            fsr: false
+            fsr_quality_mode: none
+            fsr_sharpening_strength: 2
+            fullscreen_capture: false
+            gamemode: false
+            gamescope: false
+            gamescope_borderless: false
+            gamescope_fps: 0
+            gamescope_fps_no_focus: 0
+            gamescope_fullscreen: true
+            gamescope_game_height: 0
+            gamescope_game_width: 0
+            gamescope_scaling: false
+            gamescope_window_height: 0
+            gamescope_window_width: 0
+            latencyflex: false
+            mangohud: false
+            mouse_warp: true
+            obsvkc: false
+            pulseaudio_latency: false
+            renderer: gl
+            sandbox: false
+            sync: wine
+            take_focus: false
+            use_be_runtime: true
+            use_eac_runtime: true
+            use_runtime: false
+            use_steam_runtime: false
+            versioning_automatic: false
+            versioning_compression: false
+            versioning_exclusion_patterns: false
+            virtual_desktop: false
+            virtual_desktop_res: 1280x720
+            vkbasalt: false
+            vkd3d: false
+            vmtouch: false
+            vmtouch_cache_cwd: false
+        Path: Cyberduck
+        Runner: soda-7.0-9
+        RunnerPath: \'\'
+        Sandbox:
+            share_net: false
+            share_sound: false
+        State: 0
+        Uninstallers: {}
+        VKD3D: vkd3d-proton-2.8-1-08909d9
+        Versioning: false
+        Versioning_Exclusion_Patterns: []
+        Windows: win10
+        WorkingDir: \'\'
+        data: {}
+        run_in_terminal: false
+        session_arguments: \'\'
+      '';
+
       "Documents/Backups/Enhancer for YouTube.json".text = ''
         {
             "settings": {
