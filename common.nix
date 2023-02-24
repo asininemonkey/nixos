@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 let
   nixos-unstable = builtins.fetchTarball "https://github.com/nixos/nixpkgs/archive/nixos-unstable.tar.gz";
@@ -28,6 +28,8 @@ in
   documentation.nixos.enable = false;
 
   environment = {
+    defaultPackages = lib.mkForce [];
+ 
     gnome.excludePackages = with pkgs.gnome; [
       cheese
       epiphany
@@ -150,6 +152,10 @@ in
     networkmanager.enable = true;
   };
 
+  nix.allowedUsers = [
+    "@wheel"
+  ];
+
   nixpkgs.config = {
     allowUnfree = true;
 
@@ -172,6 +178,7 @@ in
 
   security = {
     rtkit.enable = true;
+    sudo.execWheelOnly = true;
   };
 
   services = {
