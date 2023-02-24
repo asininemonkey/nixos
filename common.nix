@@ -138,7 +138,15 @@ in
   i18n.defaultLocale = "en_GB.UTF-8";
 
   networking = {
-    firewall.checkReversePath = "loose";
+    firewall = {
+      checkReversePath = "loose";
+      enable = true;
+      
+      trustedInterfaces = [
+        "tailscale0"
+      ];
+    };
+ 
     networkmanager.enable = true;
   };
 
