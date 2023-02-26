@@ -2,10 +2,10 @@
 
 {
   environment = {
-    etc.vmware-tools.source = "${pkgs.open-vm-tools}/etc/vmware-tools/*";
+    etc.vmware-tools.source = "${pkgs.unstable.open-vm-tools}/etc/vmware-tools/*";
 
-    systemPackages = [
-      pkgs.open-vm-tools
+    systemPackages = with pkgs.unstable; [
+      open-vm-tools
     ];
   };
 
@@ -17,11 +17,13 @@
     };
   };
 
+  networking.hostName = "vmware";
+
   security.wrappers.vmware-user-suid-wrapper = {
     group = "root";
     owner = "root";
     setuid = true;
-    source = "${pkgs.open-vm-tools}/bin/vmware-user-suid-wrapper";
+    source = "${pkgs.unstable.open-vm-tools}/bin/vmware-user-suid-wrapper";
   };
 
   services.udev.packages = [
@@ -39,7 +41,7 @@
         "multi-user.target"
       ];
 
-      what = "${pkgs.open-vm-tools}/bin/vmware-vmblock-fuse";
+      what = "${pkgs.unstable.open-vm-tools}/bin/vmware-vmblock-fuse";
       where = "/run/vmblock-fuse";
     }
   ];
@@ -50,7 +52,7 @@
     ];
 
     description = "VMware Tools Daemon";
-    serviceConfig.ExecStart = "${pkgs.open-vm-tools}/bin/vmtoolsd";
+    serviceConfig.ExecStart = "${pkgs.unstable.open-vm-tools}/bin/vmtoolsd";
     unitConfig.ConditionVirtualization = "vmware";
 
     wantedBy = [
