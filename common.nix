@@ -152,7 +152,7 @@ in
     networkmanager.enable = true;
   };
 
-  nix.allowedUsers = [
+  nix.settings.allowed-users = [
     "@wheel"
   ];
 
