@@ -73,6 +73,7 @@ in
       ldns
       libreoffice-fresh
       macchina
+      nano
       ntfs3g
       nvme-cli
       obsidian

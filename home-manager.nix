@@ -584,7 +584,7 @@
           window = {
             dimensions = {
               columns = 160;
-              lines = 40;
+              lines = 32;
             };
 
             opacity = 0.9;
