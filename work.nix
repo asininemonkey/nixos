@@ -46,9 +46,29 @@
       ".aws/config".text = ''
         [profile default]
         output = json
-        region = us-east-2
+        region = eu-west-1
         s3 =
             signature_version = s3v4
+
+        [profile d2c-production]
+        output = json
+        region = us-east-1
+        s3 =
+            signature_version = s3v4
+        sso_account_id = 660136129197
+        sso_region = us-east-1
+        sso_role_name = d2cProdOperator
+        sso_start_url = https://dailypay.awsapps.com/start
+
+        [profile d2c-staging]
+        output = json
+        region = us-east-1
+        s3 =
+            signature_version = s3v4
+        sso_account_id = 991135542829
+        sso_region = us-east-1
+        sso_role_name = d2cStagingOperator
+        sso_start_url = https://dailypay.awsapps.com/start
 
         [profile friday-production]
         output = json
@@ -88,7 +108,7 @@
       '';
 
       ".config/Yubico/u2f_keys".text = ''
-        jcardoso:kLm87XWNdgYbbmORyQMCX9CAwG5GRCjXidRoqcmxmdtCbv0kqEcUYy6PnLpK2zDX2FGusn7ak/OogXbrjipwsw==,c4Znnm3Exo2azeZv7J41ATAYe/35+XYqdH7dn4HHQPLTiyP//tNsCnJKofL/QIAqExeWIa7LjUlqZRanrQf+mg==,es256,+presence
+        jcardoso:UkVU4BE72p/PnmlpmgPzJVNC9BVixOBQIErtpq07bwo5MKkGaZ4UDtEUGfumIuJh2VYymUSKpT1zSWnV3MiPKQ==,0JfpcJtrdPcugtrIOhq3V2OT0WwVoQ7PNMtnFS35AN0ysB5QWCsKDlLCMU7v9qfSZ8gfpb9+PMHG3IB4itpdoA==,es256,+presence
       '';
 
       ".docker/config.json".text = ''
