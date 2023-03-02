@@ -42,7 +42,7 @@ chmod 0000 /mnt/etc/crypto_keyfile.bin
 
 git -C /mnt/etc clone https://github.com/asininemonkey/nixos.git
 
-sed --in-place 's/xxx/vmware/' /mnt/etc/nixos/configuration.nix
+sed --in-place 's/xxx/vmware-work/' /mnt/etc/nixos/configuration.nix
 sed --in-place "s/xxx/$(blkid --match-tag UUID --output value ${DEVICE}p2)/" /mnt/etc/nixos/crypt.nix
 
 nixos-generate-config --show-hardware-config --root /mnt > /mnt/etc/nixos/hardware-configuration.nix
