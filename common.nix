@@ -64,6 +64,7 @@ in
       ft2-clone
       gimp
       glow
+      glxinfo
       gnome-firmware
       gnumake
       hunspell

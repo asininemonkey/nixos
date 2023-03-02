@@ -17,12 +17,6 @@
     };
   };
 
-  imports = [
-    ./work.nix
-  ];
-
-  networking.hostName = "vmware-nixos-work";
-
   security.wrappers.vmware-user-suid-wrapper = {
     group = "root";
     owner = "root";

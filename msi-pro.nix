@@ -94,7 +94,6 @@
     hostName = "msi-pro";
 
     networkmanager.unmanaged = [
-      "mac:00:e0:4c:68:52:73" # USB Ethernet - Adapter
       "mac:1c:e1:92:b2:ad:32" # USB Ethernet - Monitor
       "mac:1c:e1:92:b2:f8:53" # USB Ethernet - Monitor
     ];
