@@ -53,7 +53,7 @@ done
 nix-env --attr --install 'nixos.git'
 
 case "${DEVICE}" in
-    asrock-x570|msi-pro|vmware)
+    asrock-x570|msi-pro)
         nix-env --attr --install 'nixos.nvme-cli'
 
         sudo nvme format --force --ses 1 "${STORAGE}"
@@ -82,29 +82,29 @@ sleep 3
 
 sudo mount /dev/disk/by-label/nixos /mnt
 
-rm --force --recursive /mnt/lost+found
+sudo rm --force --recursive /mnt/lost+found
 
-mkdir --parents /mnt/boot/efi
+sudo mkdir --parents /mnt/boot/efi
 
 sudo mount /dev/disk/by-label/boot /mnt/boot/efi
 
-mkdir /mnt/etc
+sudo mkdir /mnt/etc
 
-cp /tmp/crypto_keyfile.bin /mnt/etc/
+sudo cp /tmp/crypto_keyfile.bin /mnt/etc/
 
-chmod 0000 /mnt/etc/crypto_keyfile.bin
+sudo chmod 0000 /mnt/etc/crypto_keyfile.bin
 
-git -C /mnt/etc clone https://github.com/asininemonkey/nixos.git
+sudo git -C /mnt/etc clone https://github.com/asininemonkey/nixos.git
 
-sed --in-place "s/xxxdevicexxx/${DEVICE}/" /mnt/etc/nixos/configuration.nix
-sed --in-place "s/xxxprofilexxx/${PROFILE}/" /mnt/etc/nixos/configuration.nix
+sudo sed --in-place "s/xxxdevicexxx/${DEVICE}/" /mnt/etc/nixos/configuration.nix
+sudo sed --in-place "s/xxxprofilexxx/${PROFILE}/" /mnt/etc/nixos/configuration.nix
 
-sed --in-place "s/xxxuuidxxx/$(blkid --match-tag UUID --output value ${STORAGE}${PARTITION}2)/" /mnt/etc/nixos/crypt.nix
+sudo sed --in-place "s/xxxuuidxxx/$(blkid --match-tag UUID --output value ${STORAGE}${PARTITION}2)/" /mnt/etc/nixos/crypt.nix
 
-nixos-generate-config --show-hardware-config --root /mnt > /mnt/etc/nixos/hardware-configuration.nix
+nixos-generate-config --show-hardware-config --root /mnt | sudo tee /mnt/etc/nixos/hardware-configuration.nix > /dev/null
 
-nixos-install --no-root-password
+sudo nixos-install --no-root-password
 
-umount /mnt/boot/efi /mnt
+sudo umount /mnt/boot/efi /mnt
 
-cryptsetup close /dev/mapper/crypt-nixos
+sudo cryptsetup close /dev/mapper/crypt-nixos
