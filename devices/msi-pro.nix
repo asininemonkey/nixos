@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, ... }:
 
 {
   environment = {
@@ -49,23 +49,9 @@
         </monitors>
       '';
     };
-
-    systemPackages = (with pkgs; [
-      slack
-      zoom-us
-    ]);
   };
 
   home-manager.users.jcardoso = { config, ... }: {
-    dconf.settings = {
-      "org/gnome/shell" = {
-        favorite-apps = [
-          "slack.desktop"
-          "Zoom.desktop"
-        ];
-      };
-    };
-
     home.file = {
       ".config/monitors.xml".source = config.lib.file.mkOutOfStoreSymlink "/etc/monitors.xml";
 
@@ -87,11 +73,11 @@
   };
 
   imports = [
-    ./work.nix
+    ./xxx.nix
   ];
 
   networking = {
-    hostName = "msi-pro";
+    hostName = "msi-pro-xxx";
 
     networkmanager.unmanaged = [
       "mac:1c:e1:92:b2:ad:32" # USB Ethernet - Monitor

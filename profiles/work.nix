@@ -11,6 +11,8 @@
       localstack
       nodejs-16_x # Manage with asdf!
       python311 # Manage with asdf!
+      # slack
+      # zoom-us
     ]) ++ (with pkgs.unstable; [
       asdf-vm
     ]);
@@ -39,6 +41,13 @@
         sleep-inactive-ac-type = "nothing";
         sleep-inactive-battery-timeout = 0;
         sleep-inactive-battery-type = "nothing";
+      };
+
+      "org/gnome/shell" = {
+        favorite-apps = [
+          "slack.desktop"
+          "Zoom.desktop"
+        ];
       };
     };
 

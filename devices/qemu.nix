@@ -23,7 +23,11 @@
     };
   };
 
-  networking.hostName = "qemu";
+  imports = [
+    ./xxx.nix
+  ];
+
+  networking.hostName = "qemu-xxx";
 
   services = {
     qemuGuest.enable = true;

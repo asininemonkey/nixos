@@ -16,8 +16,11 @@ in
     ./crypt.nix
     ./hardware-configuration.nix
     ./home-manager.nix
-    ./xxx.nix
+    ./devices/xxxdevicexxx.nix
+    ./profiles/xxxprofilexxx.nix
   ];
+
+  networking.hostName = "xxxdevicexxx-xxxprofilexxx";
 
   system.stateVersion = "${state-version}";
 }
