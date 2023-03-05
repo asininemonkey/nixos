@@ -99,7 +99,7 @@ sudo git -C /mnt/etc clone https://github.com/asininemonkey/nixos.git
 sudo sed --in-place "s/xxxdevicexxx/${DEVICE}/" /mnt/etc/nixos/configuration.nix
 sudo sed --in-place "s/xxxprofilexxx/${PROFILE}/" /mnt/etc/nixos/configuration.nix
 
-sudo sed --in-place "s/xxxuuidxxx/$(blkid --match-tag UUID --output value ${STORAGE}${PARTITION}2)/" /mnt/etc/nixos/crypt.nix
+#sudo sed --in-place "s/xxxuuidxxx/$(blkid --match-tag UUID --output value ${STORAGE}${PARTITION}2)/" /mnt/etc/nixos/crypt.nix
 
 nixos-generate-config --show-hardware-config --root /mnt | sudo tee /mnt/etc/nixos/hardware-configuration.nix > /dev/null
 

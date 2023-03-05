@@ -5,7 +5,7 @@
     initrd = {
       luks.devices."crypt-nixos" = { # Must match 'cryptsetup open <device> <name>'!
         allowDiscards = true;
-        device = "/dev/disk/by-uuid/xxxuuidxxx";
+        #device = "/dev/disk/by-uuid/xxxuuidxxx";
         keyFile = "/etc/crypto_keyfile.bin";
       };
 
