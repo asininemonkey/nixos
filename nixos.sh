@@ -56,37 +56,37 @@ case "${DEVICE}" in
     asrock-x570|msi-pro|vmware)
         nix-env --attr --install 'nixos.nvme-cli'
 
-        nvme format --force --ses 1 "${STORAGE}"
+        sudo nvme format --force --ses 1 "${STORAGE}"
         ;;
 esac
 
-parted --script "${STORAGE}" -- mklabel gpt
-parted --script "${STORAGE}" -- mkpart esp fat32 8MB 1032MB
-parted --script "${STORAGE}" -- mkpart primary 1040MB 100%
-parted --script "${STORAGE}" -- set 1 esp on
+sudo parted --script "${STORAGE}" -- mklabel gpt
+sudo parted --script "${STORAGE}" -- mkpart esp fat32 8MB 1032MB
+sudo parted --script "${STORAGE}" -- mkpart primary 1040MB 100%
+sudo parted --script "${STORAGE}" -- set 1 esp on
 
 sleep 3
 
 dd bs=1024 count=4 if=/dev/urandom of=/tmp/crypto_keyfile.bin
 
-echo password | cryptsetup luksFormat --batch-mode --cipher aes-xts-plain64 --hash sha512 --key-size 512 --type luks1 "${STORAGE}${PARTITION}2"
-echo password | cryptsetup luksAddKey --batch-mode "${STORAGE}${PARTITION}2" /tmp/crypto_keyfile.bin
+echo password | sudo cryptsetup luksFormat --batch-mode --cipher aes-xts-plain64 --hash sha512 --key-size 512 --type luks1 "${STORAGE}${PARTITION}2"
+echo password | sudo cryptsetup luksAddKey --batch-mode "${STORAGE}${PARTITION}2" /tmp/crypto_keyfile.bin
 
-cryptsetup open --batch-mode --key-file /tmp/crypto_keyfile.bin --type luks1 "${STORAGE}${PARTITION}2" crypt-nixos
+sudo cryptsetup open --batch-mode --key-file /tmp/crypto_keyfile.bin --type luks1 "${STORAGE}${PARTITION}2" crypt-nixos
 
-mkfs.fat -n boot -F 32 "${STORAGE}${PARTITION}1"
+sudo mkfs.fat -n boot -F 32 "${STORAGE}${PARTITION}1"
 
-mkfs.ext4 -L nixos /dev/mapper/crypt-nixos
+sudo mkfs.ext4 -L nixos /dev/mapper/crypt-nixos
 
 sleep 3
 
-mount /dev/disk/by-label/nixos /mnt
+sudo mount /dev/disk/by-label/nixos /mnt
 
 rm --force --recursive /mnt/lost+found
 
 mkdir --parents /mnt/boot/efi
 
-mount /dev/disk/by-label/boot /mnt/boot/efi
+sudo mount /dev/disk/by-label/boot /mnt/boot/efi
 
 mkdir /mnt/etc
 
