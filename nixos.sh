@@ -6,7 +6,7 @@ while [[ -z "${DEVICE}" ]]
 do
     read -n 1 -p $'\nAvailable Devices:\n\n(a) ASRock X570 PC\n(m) MSI Pro PC\n(q) QEMU VM\n(v) VMware VM\n\nWhich Device? '
 
-    case ${REPLY} in
+    case "${REPLY}" in
         a)
             DEVICE='asrock-x570'
             PARTITION='-part'
@@ -37,7 +37,7 @@ while [[ -z "${PROFILE}" ]]
 do
     read -n 1 -p $'\nAvailable Profiles:\n\n(p) Private\n(w) Work\n\nWhich Profile? '
 
-    case ${REPLY} in
+    case "${REPLY}" in
         p)
             PROFILE='private'
             ;;
@@ -50,7 +50,15 @@ do
     esac
 done
 
-nix-env --attr --install nixos.git
+nix-env --attr --install 'nixos.git'
+
+case "${DEVICE}" in
+    asrock-x570|msi-pro|vmware)
+        nix-env --attr --install 'nixos.nvme-cli'
+
+        nvme format --force --ses 1 "${STORAGE}"
+        ;;
+esac
 
 parted --script "${STORAGE}" -- mklabel gpt
 parted --script "${STORAGE}" -- mkpart esp fat32 8MB 1032MB
