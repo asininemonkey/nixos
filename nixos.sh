@@ -6,7 +6,7 @@ clear
 
 while [[ -z "${DEVICE}" ]]
 do
-    read -n 1 -p $'Available Devices:\n\n(a) ASRock X570 PC\n(m) MSI Pro PC\n(q) QEMU VM\n(v) VMware VM\n\nWhich Device?' -s
+    read -n 1 -p $'Available Devices:\n\n(a) ASRock X570 PC\n(m) MSI Pro PC\n(q) QEMU VM\n(v) VMware VM\n\nWhich Device? ' -s
 
     case "${REPLY}" in
         a)
@@ -39,7 +39,7 @@ clear
 
 while [[ -z "${PROFILE}" ]]
 do
-    read -n 1 -p $'Available Profiles:\n\n(p) Private\n(w) Work\n\nWhich Profile?' -s
+    read -n 1 -p $'Available Profiles:\n\n(p) Private\n(w) Work\n\nWhich Profile? ' -s
 
     case "${REPLY}" in
         p)
@@ -75,14 +75,14 @@ sleep 3
 
 dd bs=1024 count=4 if='/dev/urandom' of='/tmp/crypto_keyfile.bin'
 
-echo password | sudo cryptsetup luksFormat --batch-mode --cipher aes-xts-plain64 --hash sha512 --key-size 512 --type luks1 "${STORAGE}${PARTITION}2"
+echo password | sudo cryptsetup luksFormat --batch-mode --cipher 'aes-xts-plain64' --hash 'sha512' --key-size 512 --type 'luks1' "${STORAGE}${PARTITION}2"
 echo password | sudo cryptsetup luksAddKey --batch-mode "${STORAGE}${PARTITION}2" '/tmp/crypto_keyfile.bin'
 
-sudo cryptsetup open --batch-mode --key-file '/tmp/crypto_keyfile.bin' --type luks1 "${STORAGE}${PARTITION}2" crypt-nixos
+sudo cryptsetup open --batch-mode --key-file '/tmp/crypto_keyfile.bin' --type 'luks1' "${STORAGE}${PARTITION}2" 'crypt-nixos'
 
-sudo mkfs.fat -n boot -F 32 "${STORAGE}${PARTITION}1"
+sudo mkfs.fat -n 'boot' -F 32 "${STORAGE}${PARTITION}1"
 
-sudo mkfs.ext4 -L nixos '/dev/mapper/crypt-nixos'
+sudo mkfs.ext4 -L 'nixos' '/dev/mapper/crypt-nixos'
 
 sleep 3
 
@@ -107,7 +107,7 @@ sudo sed --in-place 's/https:\/\/github.com\//git@github.com:/' '/mnt/etc/nixos/
 sudo sed --in-place "s/xxxdevicexxx/${DEVICE}/" '/mnt/etc/nixos/configuration.nix'
 sudo sed --in-place "s/xxxprofilexxx/${PROFILE}/" '/mnt/etc/nixos/configuration.nix'
 
-nixos-generate-config --show-hardware-config --root '/mnt' | sudo tee '/mnt/etc/nixos/hardware-configuration.nix' > /dev/null
+nixos-generate-config --show-hardware-config --root '/mnt' | sudo tee '/mnt/etc/nixos/hardware-configuration.nix' > '/dev/null'
 
 sudo nixos-install --no-root-password
 
