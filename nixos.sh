@@ -73,42 +73,44 @@ sudo parted --script "${STORAGE}" -- set 1 esp on
 
 sleep 3
 
-dd bs=1024 count=4 if=/dev/urandom of=/tmp/crypto_keyfile.bin
+dd bs=1024 count=4 if='/dev/urandom' of='/tmp/crypto_keyfile.bin'
 
 echo password | sudo cryptsetup luksFormat --batch-mode --cipher aes-xts-plain64 --hash sha512 --key-size 512 --type luks1 "${STORAGE}${PARTITION}2"
-echo password | sudo cryptsetup luksAddKey --batch-mode "${STORAGE}${PARTITION}2" /tmp/crypto_keyfile.bin
+echo password | sudo cryptsetup luksAddKey --batch-mode "${STORAGE}${PARTITION}2" '/tmp/crypto_keyfile.bin'
 
-sudo cryptsetup open --batch-mode --key-file /tmp/crypto_keyfile.bin --type luks1 "${STORAGE}${PARTITION}2" crypt-nixos
+sudo cryptsetup open --batch-mode --key-file '/tmp/crypto_keyfile.bin' --type luks1 "${STORAGE}${PARTITION}2" crypt-nixos
 
 sudo mkfs.fat -n boot -F 32 "${STORAGE}${PARTITION}1"
 
-sudo mkfs.ext4 -L nixos /dev/mapper/crypt-nixos
+sudo mkfs.ext4 -L nixos '/dev/mapper/crypt-nixos'
 
 sleep 3
 
-sudo mount /dev/disk/by-label/nixos /mnt
+sudo mount '/dev/disk/by-label/nixos' '/mnt'
 
-sudo rm --force --recursive /mnt/lost+found
+sudo rm --force --recursive '/mnt/lost+found'
 
-sudo mkdir --parents /mnt/boot/efi
+sudo mkdir --parents '/mnt/boot/efi'
 
-sudo mount /dev/disk/by-label/boot /mnt/boot/efi
+sudo mount '/dev/disk/by-label/boot' '/mnt/boot/efi'
 
-sudo mkdir /mnt/etc
+sudo mkdir '/mnt/etc'
 
-sudo cp /tmp/crypto_keyfile.bin /mnt/etc/
+sudo cp '/tmp/crypto_keyfile.bin' '/mnt/etc/'
 
-sudo chmod 0000 /mnt/etc/crypto_keyfile.bin
+sudo chmod 0000 '/mnt/etc/crypto_keyfile.bin'
 
-sudo git -C /mnt/etc clone https://github.com/asininemonkey/nixos.git
+sudo git -C '/mnt/etc' clone 'https://github.com/asininemonkey/nixos.git'
 
-sudo sed --in-place "s/xxxdevicexxx/${DEVICE}/" /mnt/etc/nixos/configuration.nix
-sudo sed --in-place "s/xxxprofilexxx/${PROFILE}/" /mnt/etc/nixos/configuration.nix
+sudo sed --in-place 's/https:\/\/github.com\//git@github.com:/' '/mnt/etc/nixos/.git/config'
 
-nixos-generate-config --show-hardware-config --root /mnt | sudo tee /mnt/etc/nixos/hardware-configuration.nix > /dev/null
+sudo sed --in-place "s/xxxdevicexxx/${DEVICE}/" '/mnt/etc/nixos/configuration.nix'
+sudo sed --in-place "s/xxxprofilexxx/${PROFILE}/" '/mnt/etc/nixos/configuration.nix'
+
+nixos-generate-config --show-hardware-config --root '/mnt' | sudo tee '/mnt/etc/nixos/hardware-configuration.nix' > /dev/null
 
 sudo nixos-install --no-root-password
 
-sudo umount /mnt/boot/efi /mnt
+sudo umount '/mnt/boot/efi' '/mnt'
 
-sudo cryptsetup close /dev/mapper/crypt-nixos
+sudo cryptsetup close '/dev/mapper/crypt-nixos'
