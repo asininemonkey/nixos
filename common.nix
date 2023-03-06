@@ -89,6 +89,7 @@ in
       tree
       unzip
       usbutils
+      vulkan-tools
       wget
     ]) ++ (with pkgs.gnome; [
       dconf-editor
