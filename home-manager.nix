@@ -670,6 +670,7 @@
       };
 
       git = { # https://rycee.gitlab.io/home-manager/options.html#opt-programs.git.enable
+        diff-so-fancy.enable = true;
         enable = true;
         userEmail = "65740649+asininemonkey@users.noreply.github.com";
         userName = "Jose Cardoso";
