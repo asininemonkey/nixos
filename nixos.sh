@@ -2,9 +2,11 @@
 
 setfont ter-v32n
 
+clear
+
 while [[ -z "${DEVICE}" ]]
 do
-    read -n 1 -p $'\nAvailable Devices:\n\n(a) ASRock X570 PC\n(m) MSI Pro PC\n(q) QEMU VM\n(v) VMware VM\n\nWhich Device? '
+    read -n 1 -p $'Available Devices:\n\n(a) ASRock X570 PC\n(m) MSI Pro PC\n(q) QEMU VM\n(v) VMware VM\n\nWhich Device?' -s
 
     case "${REPLY}" in
         a)
@@ -33,9 +35,11 @@ do
     esac
 done
 
+clear
+
 while [[ -z "${PROFILE}" ]]
 do
-    read -n 1 -p $'\nAvailable Profiles:\n\n(p) Private\n(w) Work\n\nWhich Profile? '
+    read -n 1 -p $'Available Profiles:\n\n(p) Private\n(w) Work\n\nWhich Profile?' -s
 
     case "${REPLY}" in
         p)
@@ -49,6 +53,8 @@ do
             ;;
     esac
 done
+
+clear
 
 nix-env --attr --install 'nixos.git'
 
