@@ -877,6 +877,13 @@
           speedtest = "speedtest --secure --share";
           top = "btop";
           tree = "tree -aghpuCD";
+          mvc = "mullvad connect --wait";
+          mvd = "mullvad disconnect --wait";
+          mvl = "mullvad relay list";
+          mvlch = "mullvad relay set location ch zrh";
+          mvlgb = "mullvad relay set location gb lon";
+          mvlie = "mullvad relay set location ie dub";
+          mvs = "mullvad status --location";
         };
       };
     };
