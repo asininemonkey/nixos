@@ -327,6 +327,21 @@
         visible = true
       '';
 
+      ".config/qBittorrent/qBittorrent.conf".text = ''
+        [BitTorrent]
+        Session\AnonymousModeEnabled=true
+        Session\Encryption=1
+        Session\MaxActiveDownloads=1
+        Session\MaxActiveUploads=1
+        Session\QueueingSystemEnabled=true
+
+        [LegalNotice]
+        Accepted=true
+
+        [Preferences]
+        General\CloseToTrayNotified=true
+      '';
+
       ".kube/config".text = "";
 
       ".local/share/applications/btop.desktop".source = config.lib.file.mkOutOfStoreSymlink "/dev/null";

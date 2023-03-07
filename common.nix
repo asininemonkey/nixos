@@ -74,6 +74,7 @@ in
       ldns
       libreoffice-fresh
       macchina
+      mullvad
       nano
       ntfs3g
       nvme-cli
@@ -83,6 +84,7 @@ in
       papirus-icon-theme
       pciutils
       prettyping
+      qbittorrent
       speedtest-cli
       tmux
       tootle
