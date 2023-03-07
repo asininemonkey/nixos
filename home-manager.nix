@@ -883,7 +883,7 @@
           mvlch = "mullvad relay set location ch zrh";
           mvlgb = "mullvad relay set location gb lon";
           mvlie = "mullvad relay set location ie dub";
-          mvs = "mullvad status --location";
+          mvs = "mullvad status --location -v";
         };
       };
     };
