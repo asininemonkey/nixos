@@ -2,7 +2,7 @@
 
 {
   home-manager.users.jcardoso = { config, lib, ... }: with lib.hm.gvariant; {
-    dconf.settings = { # https://rycee.gitlab.io/home-manager/options.html#opt-dconf.settings
+    dconf.settings = { # https://nix-community.github.io/home-manager/options.html#opt-dconf.settings
       "ca/desrt/dconf-editor" = {
         show-warning = false;
       };
@@ -206,7 +206,7 @@
       };
     };
 
-    home.file = { # https://rycee.gitlab.io/home-manager/options.html#opt-home.file
+    home.file = { # https://nix-community.github.io/home-manager/options.html#opt-home.file
       ".asdf/asdf.sh".source = "${pkgs.unstable.asdf-vm}/share/asdf-vm/asdf.sh";
       ".asdf/lib".source = "${pkgs.unstable.asdf-vm}/share/asdf-vm/lib";
 
@@ -214,9 +214,6 @@
         file:///home/jcardoso/.var/app Flatpak Data
         smb://intel-nuc/roms roms (intel-nuc)
         smb://intel-nuc/temporary temporary (intel-nuc)
-        smb://admin@pi-server/admin admin (pi-server)
-        smb://admin@pi-server/roms-full roms-full (pi-server)
-        smb://pi-server/temporary temporary (pi-server)
       '';
 
       ".config/obsidian/b46cab08ad4f3833.json".text = ''
@@ -519,7 +516,7 @@
     ];
 
     programs = {
-      alacritty = { # https://rycee.gitlab.io/home-manager/options.html#opt-programs.alacritty.enable
+      alacritty = { # https://nix-community.github.io/home-manager/options.html#opt-programs.alacritty.enable
         enable = true;
 
         settings = {
@@ -597,7 +594,7 @@
         };
       };
 
-      firefox = { # https://rycee.gitlab.io/home-manager/options.html#opt-programs.firefox.enable
+      firefox = { # https://nix-community.github.io/home-manager/options.html#opt-programs.firefox.enable
         enable = true;
 
         profiles = {
@@ -669,7 +666,7 @@
         };
       };
 
-      git = { # https://rycee.gitlab.io/home-manager/options.html#opt-programs.git.enable
+      git = { # https://nix-community.github.io/home-manager/options.html#opt-programs.git.enable
         diff-so-fancy.enable = true;
         enable = true;
 
@@ -681,13 +678,13 @@
         userName = "Jose Cardoso";
       };
 
-      go = { # https://rycee.gitlab.io/home-manager/options.html#opt-programs.go.enable
+      go = { # https://nix-community.github.io/home-manager/options.html#opt-programs.go.enable
         enable = true;
         goBin = "Documents/Source/Go/bin";
         goPath = "Documents/Source/Go";
       };
 
-      mpv = { # https://rycee.gitlab.io/home-manager/options.html#opt-programs.mpv.enable
+      mpv = { # https://nix-community.github.io/home-manager/options.html#opt-programs.mpv.enable
         config = {
           gpu-context = "wayland";
           hwdec = "vaapi";
@@ -696,7 +693,7 @@
         enable = true;
       };
 
-      ssh = { # https://rycee.gitlab.io/home-manager/options.html#opt-programs.ssh.enable
+      ssh = { # https://nix-community.github.io/home-manager/options.html#opt-programs.ssh.enable
         enable = true;
 
         extraConfig = ''
@@ -742,7 +739,7 @@
         serverAliveInterval = 60;
       };
 
-      starship = { # https://rycee.gitlab.io/home-manager/options.html#opt-programs.starship.enable
+      starship = { # https://nix-community.github.io/home-manager/options.html#opt-programs.starship.enable
         enable = true;
 
         settings = {
@@ -780,24 +777,23 @@
         };
       };
 
-      vscode = { # https://rycee.gitlab.io/home-manager/options.html#opt-programs.vscode.enable
+      vscode = { # https://nix-community.github.io/home-manager/options.html#opt-programs.vscode.enable
         enable = true;
 
-        extensions = (with pkgs.vscode-extensions; [
+        extensions = with pkgs.unstable.vscode-extensions; [
+          # ms-vscode-remote.remote-containers
+          # rangav.vscode-thunder-client
+          # richie5um2.vscode-sort-json
           bungcip.better-toml
           eamodio.gitlens
           esbenp.prettier-vscode
           hashicorp.terraform
+          irongeek.vscode-env
           jnoortheen.nix-ide
           ms-azuretools.vscode-docker
           ms-kubernetes-tools.vscode-kubernetes-tools
-          # ms-vscode-remote.remote-containers
-          # rangav.vscode-thunder-client
           redhat.vscode-yaml
-          # richie5um2.vscode-sort-json
-        ]) ++ (with pkgs.unstable.vscode-extensions; [
-          irongeek.vscode-env
-        ]);
+        ];
 
         package = pkgs.unstable.vscodium;
 
@@ -827,7 +823,7 @@
         };
       };
 
-      zsh = { # https://rycee.gitlab.io/home-manager/options.html#opt-programs.zsh.enable
+      zsh = { # https://nix-community.github.io/home-manager/options.html#opt-programs.zsh.enable
         enable = true;
         enableVteIntegration = true;
 
