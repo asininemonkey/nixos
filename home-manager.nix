@@ -854,7 +854,7 @@
           dsp = "docker system prune --all --force --volumes";
           grpo = "git remote prune origin";
           htop = "btop";
-          installed = "nix-store --query --references /run/current-system/sw";
+          installed = "nix-store --query --references /run/current-system/sw | sed \"s/^\\/nix\\/store\\/[[:alnum:]]\\{32\\}-//\" | \sort";
           ls = "ls --all --color=always -l";
           nrd = "sudo nixos-rebuild dry-activate";
           nrs = "sudo nixos-rebuild switch";
