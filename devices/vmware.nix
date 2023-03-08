@@ -15,6 +15,11 @@
         file:///mnt/hgfs VMware Shared Folders
       '';
     };
+
+    programs.firefox.profiles.jcardoso.settings = {
+      "browser.preferences.defaultPerformanceSettings.enabled" = false;
+      "layers.acceleration.disabled" = true;
+    };
   };
 
   security.wrappers.vmware-user-suid-wrapper = {
