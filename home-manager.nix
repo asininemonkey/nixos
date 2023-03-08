@@ -871,12 +871,6 @@
           htop = "btop";
           installed = "nix-store --query --references /run/current-system/sw | sed \"s/^\\/nix\\/store\\/[[:alnum:]]\\{32\\}-//\" | \sort";
           ls = "ls --all --color=always -l";
-          nrd = "sudo nixos-rebuild dry-activate";
-          nrs = "sudo nixos-rebuild switch";
-          ping = "prettyping";
-          speedtest = "speedtest --secure --share";
-          top = "btop";
-          tree = "tree -aghpuCD";
           mvc = "mullvad connect --wait";
           mvd = "mullvad disconnect --wait";
           mvl = "mullvad relay list";
@@ -884,6 +878,12 @@
           mvlgb = "mullvad relay set location gb lon";
           mvlie = "mullvad relay set location ie dub";
           mvs = "mullvad status --location -v";
+          nrd = "sudo nixos-rebuild dry-activate";
+          nrs = "sudo nixos-rebuild switch";
+          ping = "prettyping";
+          speedtest = "speedtest --secure --share";
+          top = "btop";
+          tree = "tree -aghpuCD";
         };
       };
     };

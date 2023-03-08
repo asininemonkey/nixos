@@ -310,22 +310,31 @@
         '';
 
         shellAliases = {
-          asl = "aws --profile friday-staging sso login";
+          asl = "aws --profile 'friday-staging' sso login";
           awslocal = "aws --endpoint-url 'http://127.0.0.1:4566'";
           tf = "terraform fmt --recursive";
 
-          tafp = "SERVICE=friday ENVIRONMENT=\${SERVICE}-production ./scripts/tfs apply";
-          tafs = "SERVICE=friday ENVIRONMENT=\${SERVICE}-staging ./scripts/tfs apply";
-          tafu = "SERVICE=friday ENVIRONMENT=\${SERVICE}-uat ./scripts/tfs apply";
-          tifp = "SERVICE=friday ENVIRONMENT=\${SERVICE}-production ./scripts/tfs init";
-          tifs = "SERVICE=friday ENVIRONMENT=\${SERVICE}-staging ./scripts/tfs init";
-          tifu = "SERVICE=friday ENVIRONMENT=\${SERVICE}-uat ./scripts/tfs init";
-          tpfp = "SERVICE=friday ENVIRONMENT=\${SERVICE}-production ./scripts/tfs plan";
-          tpfs = "SERVICE=friday ENVIRONMENT=\${SERVICE}-staging ./scripts/tfs plan";
-          tpfu = "SERVICE=friday ENVIRONMENT=\${SERVICE}-uat ./scripts/tfs plan";
-          tsfp = "SERVICE=friday ENVIRONMENT=\${SERVICE}-production ./scripts/tfs state";
-          tsfs = "SERVICE=friday ENVIRONMENT=\${SERVICE}-staging ./scripts/tfs state";
-          tsfu = "SERVICE=friday ENVIRONMENT=\${SERVICE}-uat ./scripts/tfs state";
+          tadp = "AWS_PROFILE='d2c-production' terraform -chdir='terraform/environments/production' apply";
+          tads = "AWS_PROFILE='d2c-staging' terraform -chdir='terraform/environments/staging' apply";
+          tidp = "AWS_PROFILE='d2c-production' terraform -chdir='terraform/environments/production' init";
+          tids = "AWS_PROFILE='d2c-staging' terraform -chdir='terraform/environments/staging' init";
+          tpdp = "AWS_PROFILE='d2c-production' terraform -chdir='terraform/environments/production' plan";
+          tpds = "AWS_PROFILE='d2c-staging' terraform -chdir='terraform/environments/staging' plan";
+          tsdp = "AWS_PROFILE='d2c-production' terraform -chdir='terraform/environments/production' state";
+          tsds = "AWS_PROFILE='d2c-staging' terraform -chdir='terraform/environments/staging' state";
+
+          tafp = "SERVICE='friday' ENVIRONMENT=\${SERVICE}-production ./scripts/tfs apply";
+          tafs = "SERVICE='friday' ENVIRONMENT=\${SERVICE}-staging ./scripts/tfs apply";
+          tafu = "SERVICE='friday' ENVIRONMENT=\${SERVICE}-uat ./scripts/tfs apply";
+          tifp = "SERVICE='friday' ENVIRONMENT=\${SERVICE}-production ./scripts/tfs init";
+          tifs = "SERVICE='friday' ENVIRONMENT=\${SERVICE}-staging ./scripts/tfs init";
+          tifu = "SERVICE='friday' ENVIRONMENT=\${SERVICE}-uat ./scripts/tfs init";
+          tpfp = "SERVICE='friday' ENVIRONMENT=\${SERVICE}-production ./scripts/tfs plan";
+          tpfs = "SERVICE='friday' ENVIRONMENT=\${SERVICE}-staging ./scripts/tfs plan";
+          tpfu = "SERVICE='friday' ENVIRONMENT=\${SERVICE}-uat ./scripts/tfs plan";
+          tsfp = "SERVICE='friday' ENVIRONMENT=\${SERVICE}-production ./scripts/tfs state";
+          tsfs = "SERVICE='friday' ENVIRONMENT=\${SERVICE}-staging ./scripts/tfs state";
+          tsfu = "SERVICE='friday' ENVIRONMENT=\${SERVICE}-uat ./scripts/tfs state";
         };
       };
     };
