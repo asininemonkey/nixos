@@ -23,12 +23,6 @@
     };
   };
 
-  imports = [
-    ./xxx.nix
-  ];
-
-  networking.hostName = "qemu-xxx";
-
   services = {
     qemuGuest.enable = true;
     spice-vdagentd.enable = true;

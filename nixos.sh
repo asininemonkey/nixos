@@ -6,7 +6,7 @@ clear
 
 while [[ -z "${DEVICE}" ]]
 do
-    read -n 1 -p $'Available Devices:\n\n(a) ASRock X570 PC\n(m) MSI Pro PC\n(q) QEMU VM\n(v) VMware VM\n\nWhich Device? ' -s
+    read -n 1 -p $'Available Devices:\n\n(a) ASRock X570 PC\n(m) MSI Pro PC\n(p) Parallels VM\n(q) QEMU VM\n(v) VMware VM\n\nWhich Device? ' -s
 
     case "${REPLY}" in
         a)
@@ -18,6 +18,11 @@ do
             DEVICE='msi-pro'
             PARTITION='-part'
             STORAGE='/dev/disk/by-id/nvme-eui.e8238fa6bf530001001b444a49b31b6a'
+            ;;
+        p)
+            DEVICE='parallels'
+            PARTITION=''
+            STORAGE='/dev/sda'
             ;;
         q)
             DEVICE='qemu'
@@ -101,8 +106,6 @@ sudo cp '/tmp/crypto_keyfile.bin' '/mnt/etc/'
 sudo chmod 0000 '/mnt/etc/crypto_keyfile.bin'
 
 sudo git -C '/mnt/etc' clone 'https://github.com/asininemonkey/nixos.git'
-
-sudo sed --in-place 's/https:\/\/github.com\//git@github.com:/' '/mnt/etc/nixos/.git/config'
 
 sudo sed --in-place "s/xxxdevicexxx/${DEVICE}/" '/mnt/etc/nixos/configuration.nix'
 sudo sed --in-place "s/xxxprofilexxx/${PROFILE}/" '/mnt/etc/nixos/configuration.nix'
