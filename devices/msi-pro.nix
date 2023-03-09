@@ -75,7 +75,7 @@
   networking.networkmanager.unmanaged = [
     "mac:1c:e1:92:b2:ad:32" # USB Ethernet - Monitor
     "mac:1c:e1:92:b2:f8:53" # USB Ethernet - Monitor
-  };
+  ];
 
   systemd.tmpfiles.rules = [
     "L+ /run/gdm/.config/monitors.xml - - - - /etc/monitors.xml"
