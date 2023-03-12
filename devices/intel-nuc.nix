@@ -163,6 +163,23 @@ in
       backend = "docker";
 
       containers = {
+        gostatic = {
+          extraOptions = [
+            "--label=traefik.enable=true"
+            "--label=traefik.http.middlewares.gostatic.stripprefix.prefixes=/files"
+            "--label=traefik.http.routers.gostatic.entrypoints=web"
+            "--label=traefik.http.routers.gostatic.middlewares=gostatic"
+            "--label=traefik.http.routers.gostatic.rule=PathPrefix(`/files`)"
+            "--label=traefik.http.services.gostatic.loadbalancer.server.port=8043"
+          ];
+
+          image = "pierrezemb/gostatic";
+
+          volumes = [
+            "/data/temporary:/srv/http/temporary:ro"
+          ];
+        };
+
         portainer = {
           extraOptions = [
             "--label=traefik.enable=true"
