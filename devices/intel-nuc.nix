@@ -164,6 +164,10 @@ in
 
       containers = {
         gostatic = {
+          dependsOn = [
+            "traefik"
+          ];
+
           extraOptions = [
             "--label=traefik.enable=true"
             "--label=traefik.http.middlewares.gostatic.stripprefix.prefixes=/files"
@@ -181,6 +185,10 @@ in
         };
 
         portainer = {
+          dependsOn = [
+            "traefik"
+          ];
+
           extraOptions = [
             "--label=traefik.enable=true"
             "--label=traefik.http.middlewares.portainer.stripprefix.prefixes=/portainer"
@@ -228,6 +236,10 @@ in
         };
 
         whoami = {
+          dependsOn = [
+            "traefik"
+          ];
+
           extraOptions = [
             "--label=traefik.enable=true"
             "--label=traefik.http.middlewares.whoami.stripprefix.prefixes=/whoami"
