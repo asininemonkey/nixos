@@ -269,7 +269,7 @@ in
           image = "portainer/portainer-ee";
 
           volumes = [
-            "portainer:/data:rw"
+            "/data/docker/miscellaneous/portainer:/data:rw"
             "/var/run/docker.sock:/var/run/docker.sock:ro"
           ];
         };
