@@ -163,6 +163,36 @@ in
       backend = "docker";
 
       containers = {
+        filebrowser = {
+          dependsOn = [
+            "traefik"
+          ];
+
+          environment = {
+            FB_ADDRESS = "0.0.0.0";
+            FB_BASEURL = "/files";
+            FB_NOAUTH = "true";
+          };
+
+          extraOptions = [
+            "--label=traefik.enable=true"
+            "--label=traefik.http.middlewares.filebrowser.stripprefix.prefixes=/files"
+            "--label=traefik.http.routers.filebrowser.entrypoints=web"
+            "--label=traefik.http.routers.filebrowser.middlewares=filebrowser"
+            "--label=traefik.http.routers.filebrowser.rule=PathPrefix(`/files`)"
+            "--label=traefik.http.services.filebrowser.loadbalancer.server.port=80"
+          ];
+
+          image = "filebrowser/filebrowser";
+
+          volumes = [
+            "/data/media/movies:/srv/movies:ro"
+            "/data/media/television:/srv/television:ro"
+            "/data/roms:/srv/roms:ro"
+            "/data/temporary:/srv/temporary:ro"
+          ];
+        };
+
         gostatic = {
           dependsOn = [
             "traefik"
