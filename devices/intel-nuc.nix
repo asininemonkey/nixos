@@ -226,10 +226,6 @@ in
         };
 
         plex = {
-          dependsOn = [
-            "initialise"
-          ];
-
           environment = {
             ADVERTISE_IP = "http://192.168.144.220:32400/";
             ALLOWED_NETWORKS = "100.64.0.0/10,172.16.0.0/12,192.168.144.0/24";
@@ -279,10 +275,6 @@ in
         };
 
         radarr = {
-          dependsOn = [
-            "initialise"
-          ];
-
           environment = {
             PGID = "5000";
             PUID = "5000";
@@ -307,10 +299,6 @@ in
         };
 
         sabnzbd = {
-          dependsOn = [
-            "initialise"
-          ];
-
           environment = {
             PGID = "5000";
             PUID = "5000";
