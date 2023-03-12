@@ -225,6 +225,31 @@ in
           ];
         };
 
+        jellyfin = {
+          extraOptions = [
+            "--cap-add=SYS_RAWIO"
+            "--device=/dev/dri:/dev/dri"
+          ];
+
+          image = "jellyfin/jellyfin";
+
+          ports = [
+            "0.0.0.0:1900:1900/tcp"
+            "0.0.0.0:7359:7359/udp"
+            "0.0.0.0:8096:8096/tcp"
+            "0.0.0.0:8920:8920/tcp"
+          ];
+
+          user = "5000:5000";
+
+          volumes = [
+            "/data/docker/media/jellyfin/cache:/cache:rw"
+            "/data/docker/media/jellyfin/config:/config:rw"
+            "/data/media/movies:/media/movies:ro"
+            "/data/media/television:/media/television:ro"
+          ];
+        };
+
         plex = {
           environment = {
             ADVERTISE_IP = "http://192.168.144.220:32400/";
