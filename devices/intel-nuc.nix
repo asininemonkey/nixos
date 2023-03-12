@@ -170,10 +170,10 @@ in
 
           extraOptions = [
             "--label=traefik.enable=true"
-            "--label=traefik.http.middlewares.gostatic.stripprefix.prefixes=/files"
+            "--label=traefik.http.middlewares.gostatic.stripprefix.prefixes=/"
             "--label=traefik.http.routers.gostatic.entrypoints=web"
             "--label=traefik.http.routers.gostatic.middlewares=gostatic"
-            "--label=traefik.http.routers.gostatic.rule=PathPrefix(`/files`)"
+            "--label=traefik.http.routers.gostatic.rule=PathPrefix(`/`)"
             "--label=traefik.http.services.gostatic.loadbalancer.server.port=8043"
           ];
 
@@ -227,7 +227,7 @@ in
           image = "traefik";
 
           ports = [
-            "127.0.0.1:80:80/tcp"
+            "0.0.0.0:80:80/tcp"
           ];
 
           volumes = [
