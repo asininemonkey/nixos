@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, lib, pkgs, ... }:
 
 let
   home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/release-${state-version}.tar.gz";
@@ -6,15 +6,191 @@ let
 in
 
 {
+  boot = {
+    kernelPackages = pkgs.linuxPackages_latest;
+
+    loader.grub = {
+      configurationLimit = 10;
+      device = "nodev";
+      efiInstallAsRemovable = true;
+      efiSupport = true;
+    };
+  };
+
+  console.keyMap = "uk";
+
+  environment = {
+    defaultPackages = lib.mkForce [];
+
+    shells = (with pkgs; [
+      zsh
+    ]);
+
+    systemPackages = with pkgs; [
+      btop
+      nano
+      p7zip
+      tmux
+      tree
+      unzip
+      wget
+    ];
+  };
+
+  hardware = {
+    opengl.enable = true;
+  };
+
   home-manager.users.jcardoso = {
     home.stateVersion = "${state-version}";
   };
+
+  i18n.defaultLocale = "en_GB.UTF-8";
 
   imports = [
     ./hardware-configuration.nix
   ];
 
-  networking.hostName = "intel-nuc";
+  networking = {
+    firewall = {
+      checkReversePath = "loose";
+      enable = true;
+      
+      trustedInterfaces = [
+        "tailscale0"
+      ];
+    };
+ 
+    hostName = "intel-nuc";
+  };
+
+  nix.settings.allowed-users = [
+    "@wheel"
+  ];
+
+  security.sudo.execWheelOnly = true;
+
+  services = {
+    openssh = {
+      ciphers = [
+        "aes256-gcm@openssh.com"
+        "aes256-ctr"
+      ];
+
+      kbdInteractiveAuthentication = false;
+
+      kexAlgorithms = [
+        "curve25519-sha256@libssh.org"
+        "curve25519-sha256"
+      ];
+
+      macs = [
+        "hmac-sha2-512-etm@openssh.com"
+        "hmac-sha2-512"
+      ];
+
+      passwordAuthentication = false;
+      permitRootLogin = "no";
+    };
+
+    sshd.enable = true;
+
+    tailscale.enable = true;
+  };
 
   system.stateVersion = "${state-version}";
+
+  time.timeZone = "Europe/London";
+
+  users.users.jcardoso = {
+    description = "Jose Cardoso";
+
+    extraGroups = [
+      "docker"
+      "wheel"
+    ];
+
+    initialPassword = "password";
+
+    isNormalUser = true;
+
+    openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKYDHpVs4nKaLG+tnLUGH+4Ivnq9ELPW0S3W/uJhxNd/"
+    ];
+
+    shell = pkgs.zsh;
+  };
+
+  virtualisation = {
+    docker = {
+      autoPrune.dates = "daily";
+      autoPrune.enable = true;
+    };
+
+    oci-containers = {
+      backend = "docker";
+
+      containers = {
+        portainer = {
+          extraOptions = [
+            "--label=traefik.enable=true"
+            "--label=traefik.http.middlewares.portainer.stripprefix.prefixes=/portainer"
+            "--label=traefik.http.routers.portainer.entrypoints=web"
+            "--label=traefik.http.routers.portainer.middlewares=portainer"
+            "--label=traefik.http.routers.portainer.rule=PathPrefix(`/portainer`)"
+            "--label=traefik.http.services.portainer.loadbalancer.server.port=9000"
+          ];
+
+          image = "portainer/portainer-ee";
+
+          volumes = [
+            "portainer:/data:rw"
+            "/var/run/docker.sock:/var/run/docker.sock:ro"
+          ];
+        };
+
+        traefik = {
+          environment = {
+            TRAEFIK_API = "true";
+            TRAEFIK_ENTRYPOINTS_WEB = "true";
+            TRAEFIK_ENTRYPOINTS_WEB_ADDRESS = ":80";
+            TRAEFIK_PROVIDERS_DOCKER = "true";
+            TRAEFIK_PROVIDERS_DOCKER_EXPOSEDBYDEFAULT = "false";
+          };
+
+          extraOptions = [
+            "--label=traefik.enable=true"
+            "--label=traefik.http.middlewares.traefik.stripprefix.prefixes=/traefik"
+            "--label=traefik.http.routers.traefik.entrypoints=web"
+            "--label=traefik.http.routers.traefik.middlewares=traefik"
+            "--label=traefik.http.routers.traefik.rule=PathPrefix(`/api`) || PathPrefix(`/traefik`)"
+            "--label=traefik.http.routers.traefik.service=api@internal"
+          ];
+
+          image = "traefik";
+
+          ports = [
+            "127.0.0.1:80:80/tcp"
+          ];
+
+          volumes = [
+            "/var/run/docker.sock:/var/run/docker.sock:ro"
+          ];
+        };
+
+        whoami = {
+          extraOptions = [
+            "--label=traefik.enable=true"
+            "--label=traefik.http.middlewares.whoami.stripprefix.prefixes=/whoami"
+            "--label=traefik.http.routers.whoami.entrypoints=web"
+            "--label=traefik.http.routers.whoami.middlewares=whoami"
+            "--label=traefik.http.routers.whoami.rule=PathPrefix(`/whoami`)"
+            "--label=traefik.http.services.whoami.loadbalancer.server.port=80"
+          ];
+
+          image = "traefik/whoami";
+        };
+      };
+    };
+  };
 }
