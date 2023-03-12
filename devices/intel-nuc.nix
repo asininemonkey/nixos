@@ -214,6 +214,48 @@ in
           ];
         };
 
+        initialise = {
+          entrypoint = "/bin/sh -c 'chown -v 5000:5000 /media/movies /media/television /media/unsorted && chmod -v 0755 /media/movies /media/television /media/unsorted'";
+          image = "alpine";
+
+          volumes = [
+            "/data/media/movies:/media/movies:rw"
+            "/data/media/television:/media/television:rw"
+            "/data/media/unsorted:/media/unsorted:rw"
+          ];
+        };
+
+        plex = {
+          dependsOn = [
+            "initialise"
+          ];
+
+          environment = {
+            ADVERTISE_IP = "http://192.168.144.220:32400/";
+            ALLOWED_NETWORKS = "100.64.0.0/10,172.16.0.0/12,192.168.144.0/24";
+            PLEX_GID = "5000";
+            PLEX_UID = "5000";
+            TZ = "Europe/London";
+          };
+
+          extraOptions = [
+            "--cap-add=SYS_RAWIO"
+            "--device=/dev/dri:/dev/dri"
+          ];
+
+          image = "plexinc/pms-docker";
+
+          ports = [
+            "0.0.0.0:32400:32400/tcp"
+          ];
+
+          volumes = [
+            "/data/docker/media/plex:/config:rw"
+            "/data/media/movies:/media/movies:ro"
+            "/data/media/television:/media/television:ro"
+          ];
+        };
+
         portainer = {
           dependsOn = [
             "traefik"
@@ -233,6 +275,73 @@ in
           volumes = [
             "portainer:/data:rw"
             "/var/run/docker.sock:/var/run/docker.sock:ro"
+          ];
+        };
+
+        radarr = {
+          dependsOn = [
+            "initialise"
+          ];
+
+          environment = {
+            PGID = "5000";
+            PUID = "5000";
+            TZ = "Europe/London";
+          };
+
+          image = "linuxserver/radarr";
+
+          ports = [
+            "0.0.0.0:7878:7878/tcp"
+          ];
+
+          volumes = [
+            "/data/docker/media/radarr:/config:rw"
+            "/data/media/movies:/media/movies:rw"
+            "/data/media/unsorted:/media/unsorted:rw"
+          ];
+        };
+
+        sabnzbd = {
+          dependsOn = [
+            "initialise"
+          ];
+
+          environment = {
+            PGID = "5000";
+            PUID = "5000";
+            TZ = "Europe/London";
+          };
+
+          image = "linuxserver/sabnzbd";
+
+          ports = [
+            "0.0.0.0:8080:8080/tcp"
+          ];
+
+          volumes = [
+            "/data/docker/media/sabnzbd:/config:rw"
+            "/data/media/unsorted:/media/unsorted:rw"
+          ];
+        };
+
+        sonarr = {
+          environment = {
+            PGID = "5000";
+            PUID = "5000";
+            TZ = "Europe/London";
+          };
+
+          image = "linuxserver/sonarr";
+
+          ports = [
+            "0.0.0.0:8989:8989/tcp"
+          ];
+
+          volumes = [
+            "/data/docker/media/sonarr:/config:rw"
+            "/data/media/television:/media/television:rw"
+            "/data/media/unsorted:/media/unsorted:rw"
           ];
         };
 
