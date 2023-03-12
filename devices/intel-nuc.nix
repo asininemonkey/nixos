@@ -48,6 +48,7 @@ in
   i18n.defaultLocale = "en_GB.UTF-8";
 
   imports = [
+    (import "${home-manager}/nixos")
     ./hardware-configuration.nix
   ];
 
