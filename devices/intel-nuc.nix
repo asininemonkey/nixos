@@ -289,6 +289,10 @@ in
             TZ = "Europe/London";
           };
 
+          extraOptions = [
+            "--link=sabnzbd:sabnzbd"
+          ];
+
           image = "linuxserver/radarr";
 
           ports = [
@@ -331,6 +335,10 @@ in
             PUID = "5000";
             TZ = "Europe/London";
           };
+
+          extraOptions = [
+            "--link=sabnzbd:sabnzbd"
+          ];
 
           image = "linuxserver/sonarr";
 
