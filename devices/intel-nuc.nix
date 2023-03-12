@@ -30,6 +30,7 @@ in
       btop
       nano
       p7zip
+      prettyping
       tmux
       tree
       unzip
@@ -42,7 +43,35 @@ in
   };
 
   home-manager.users.jcardoso = {
-    home.stateVersion = "${state-version}";
+    home = {
+      file = {
+        ".ssh/authorized_keys".text = ''
+          ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKYDHpVs4nKaLG+tnLUGH+4Ivnq9ELPW0S3W/uJhxNd/
+        '';
+      };
+
+      stateVersion = "${state-version}";
+    };
+
+    programs = {
+      zsh = {
+        enable = true;
+
+        shellAliases = {
+          clean = "sudo nix-collect-garbage --delete-old";
+          dig = "drill";
+          dsp = "docker system prune --all --force --volumes";
+          htop = "btop";
+          installed = "nix-store --query --references /run/current-system/sw | sed \"s/^\\/nix\\/store\\/[[:alnum:]]\\{32\\}-//\" | \sort";
+          ls = "ls --all --color=always -l";
+          nrd = "sudo nixos-rebuild dry-activate";
+          nrs = "sudo nixos-rebuild switch";
+          ping = "prettyping";
+          top = "btop";
+          tree = "tree -aghpuCD";
+        };
+      };
+    };
   };
 
   i18n.defaultLocale = "en_GB.UTF-8";
