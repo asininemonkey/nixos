@@ -95,11 +95,9 @@ sudo mount '/dev/disk/by-label/nixos' '/mnt'
 
 sudo rm --force --recursive '/mnt/lost+found'
 
-sudo mkdir --parents '/mnt/boot/efi'
+sudo mkdir --parents '/mnt/boot/efi' '/mnt/etc'
 
 sudo mount '/dev/disk/by-label/boot' '/mnt/boot/efi'
-
-sudo mkdir '/mnt/etc'
 
 sudo cp '/tmp/crypto_keyfile.bin' '/mnt/etc/'
 
