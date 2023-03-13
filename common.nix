@@ -262,24 +262,32 @@ in
 
   time.timeZone = "Europe/London";
 
-  users.users.jcardoso = {
-    description = "Jose Cardoso";
+  users = {
+    groups = {
+      jcardoso = {
+        gid = 1000;
+      };
+    };
 
-    extraGroups = [
-      "docker"
-      "networkmanager"
-      "wheel"
-    ];
+    users.jcardoso = {
+      description = "Jose Cardoso";
 
-    initialPassword = "password";
+      extraGroups = [
+        "docker"
+        "networkmanager"
+        "wheel"
+      ];
 
-    isNormalUser = true;
+      group = "jcardoso";
+      initialPassword = "password";
+      isNormalUser = true;
 
-    openssh.authorizedKeys.keys = [
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKYDHpVs4nKaLG+tnLUGH+4Ivnq9ELPW0S3W/uJhxNd/"
-    ];
+      openssh.authorizedKeys.keys = [
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKYDHpVs4nKaLG+tnLUGH+4Ivnq9ELPW0S3W/uJhxNd/"
+      ];
 
-    shell = pkgs.zsh;
+      shell = pkgs.zsh;
+    };
   };
 
   virtualisation = {
