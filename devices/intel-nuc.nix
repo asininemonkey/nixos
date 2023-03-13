@@ -38,18 +38,17 @@ in
     ];
   };
 
-  hardware = {
-    opengl.enable = true;
-  };
+  # hardware.opengl.enable = true;
 
   home-manager.users.jcardoso = { config, ... }: {
     home = {
       file = {
+        ".bash_history".source = config.lib.file.mkOutOfStoreSymlink "/dev/null";
+        ".zsh_history".source = config.lib.file.mkOutOfStoreSymlink "/dev/null";
+
         ".ssh/authorized_keys".text = ''
           ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKYDHpVs4nKaLG+tnLUGH+4Ivnq9ELPW0S3W/uJhxNd/
         '';
-
-        ".zsh_history".source = config.lib.file.mkOutOfStoreSymlink "/dev/null";
       };
 
       stateVersion = "${state-version}";
