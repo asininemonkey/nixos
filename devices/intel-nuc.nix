@@ -44,6 +44,7 @@ in
     home = {
       file = {
         ".bash_history".source = config.lib.file.mkOutOfStoreSymlink "/dev/null";
+        ".lesshst".source = config.lib.file.mkOutOfStoreSymlink "/dev/null";
         ".zsh_history".source = config.lib.file.mkOutOfStoreSymlink "/dev/null";
 
         ".ssh/authorized_keys".text = ''
