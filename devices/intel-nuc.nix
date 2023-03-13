@@ -35,10 +35,9 @@ in
       tree
       unzip
       wget
+      yt-dlp
     ];
   };
-
-  # hardware.opengl.enable = true;
 
   home-manager.users.jcardoso = { config, ... }: {
     home = {
