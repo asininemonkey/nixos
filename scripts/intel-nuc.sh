@@ -2,6 +2,8 @@
 
 STORAGE='/dev/disk/by-id/nvme-eui.e8238fa6bf530001001b444a4658cbbe'
 
+# nix-env --attr --install 'nixos.nvme-cli'
+
 # sudo nvme format --force --ses 1 "${STORAGE}"
 
 sudo parted --script "${STORAGE}" -- mklabel gpt
@@ -25,7 +27,7 @@ sudo mkdir --parents '/mnt/boot' '/mnt/data' '/mnt/etc/nixos'
 
 sudo mount '/dev/disk/by-label/boot' '/mnt/boot'
 
-sudo mount '/dev/disk/by-id/wwn-0x5002538840044dc7-part1' '/mnt/data'
+sudo mount '/dev/disk/by-id/wwn-0x500a0751e692d7bf-part1' '/mnt/data'
 
 curl --location --silent 'https://raw.githubusercontent.com/asininemonkey/nixos/main/devices/intel-nuc.nix' | sudo tee '/mnt/etc/nixos/configuration.nix' > '/dev/null'
 
