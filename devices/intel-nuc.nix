@@ -193,8 +193,7 @@ in
           image = "filebrowser/filebrowser";
 
           volumes = [
-            "/data/media/movies:/srv/movies:ro"
-            "/data/media/television:/srv/television:ro"
+            "/data/media:/srv/media:ro"
             "/data/roms:/srv/roms:ro"
             "/data/temporary:/srv/temporary:ro"
           ];
@@ -217,6 +216,8 @@ in
           image = "pierrezemb/gostatic";
 
           volumes = [
+            "/data/media:/srv/http/media:ro"
+            "/data/roms:/srv/http/roms:ro"
             "/data/temporary:/srv/http/temporary:ro"
           ];
         };
