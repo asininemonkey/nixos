@@ -116,6 +116,7 @@ in
       papirus-icon-theme
       parted
       pciutils
+      pwgen
       qpdf
       remmina
       speedtest-cli
