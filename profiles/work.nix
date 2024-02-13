@@ -112,6 +112,16 @@ in
           sso_role_name = fridayProdAdmin
           sso_start_url = https://${company}.awsapps.com/start
 
+          [profile friday-sandbox]
+          output = json
+          region = us-east-2
+          s3 =
+              signature_version = s3v4
+          sso_account_id = 983954424130
+          sso_region = us-east-1
+          sso_role_name = fridaySandboxOperator
+          sso_start_url = https://${company}.awsapps.com/start
+
           [profile friday-staging]
           output = json
           region = us-east-2
@@ -367,6 +377,8 @@ in
           tafs = "SERVICE=friday ENVIRONMENT=friday-staging ./scripts/tfs apply";
           tafu = "SERVICE=friday ENVIRONMENT=friday-uat ./scripts/tfs apply";
 
+          tajs = "AWS_PROFILE=friday-sandbox op run -- terraform -chdir=terraform/environments/sandbox apply";
+
           tassp = "AWS_PROFILE=self-service-production op run -- terraform -chdir=terraform/environments/production apply";
           tasss = "AWS_PROFILE=self-service-staging op run -- terraform -chdir=terraform/environments/staging apply";
           tassu = "AWS_PROFILE=self-service-uat op run -- terraform -chdir=terraform/environments/uat apply";
@@ -374,6 +386,8 @@ in
           tifp = "SERVICE=friday ENVIRONMENT=friday-production ./scripts/tfs init";
           tifs = "SERVICE=friday ENVIRONMENT=friday-staging ./scripts/tfs init";
           tifu = "SERVICE=friday ENVIRONMENT=friday-uat ./scripts/tfs init";
+
+          tijs = "AWS_PROFILE=friday-sandbox op run -- terraform -chdir=terraform/environments/sandbox init";
 
           tissp = "AWS_PROFILE=self-service-production op run -- terraform -chdir=terraform/environments/production init";
           tisss = "AWS_PROFILE=self-service-staging op run -- terraform -chdir=terraform/environments/staging init";
@@ -383,6 +397,8 @@ in
           tpfs = "SERVICE=friday ENVIRONMENT=friday-staging ./scripts/tfs plan";
           tpfu = "SERVICE=friday ENVIRONMENT=friday-uat ./scripts/tfs plan";
 
+          tpjs = "AWS_PROFILE=friday-sandbox op run -- terraform -chdir=terraform/environments/sandbox plan";
+
           tpssp = "AWS_PROFILE=self-service-production op run -- terraform -chdir=terraform/environments/production plan";
           tpsss = "AWS_PROFILE=self-service-staging op run -- terraform -chdir=terraform/environments/staging plan";
           tpssu = "AWS_PROFILE=self-service-uat op run -- terraform -chdir=terraform/environments/uat plan";
@@ -390,6 +406,8 @@ in
           tsfp = "SERVICE=friday ENVIRONMENT=friday-production ./scripts/tfs state";
           tsfs = "SERVICE=friday ENVIRONMENT=friday-staging ./scripts/tfs state";
           tsfu = "SERVICE=friday ENVIRONMENT=friday-uat ./scripts/tfs state";
+
+          tsjs = "AWS_PROFILE=friday-sandbox op run -- terraform -chdir=terraform/environments/sandbox state";
 
           tsssp = "AWS_PROFILE=self-service-production op run -- terraform -chdir=terraform/environments/production state";
           tssss = "AWS_PROFILE=self-service-staging op run -- terraform -chdir=terraform/environments/staging state";
