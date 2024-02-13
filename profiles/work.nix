@@ -114,7 +114,6 @@ in
 
           [profile friday-sandbox]
           output = json
-          region = us-east-2
           s3 =
               signature_version = s3v4
           sso_account_id = 983954424130
