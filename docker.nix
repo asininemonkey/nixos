@@ -20,6 +20,9 @@
           devices:
             - "/dev/dri:/dev/dri"
             - "/dev/kfd:/dev/kfd"
+          environment:
+            # HCC_AMDGPU_TARGETS: "gfx900" # Required for Ryzen 5700G
+            # HSA_OVERRIDE_GFX_VERSION: "9.0.0" # Required for Ryzen 5700G
           image: ollama/ollama:0.1.24-rocm
           networks:
             general:
