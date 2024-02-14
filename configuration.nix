@@ -11,7 +11,6 @@ in
 
   imports = [
     (import "${home-manager}/nixos")
-    (import "${nixos-unstable}/nixos/modules/services/misc/ollama.nix")
     ./common.nix
     ./crypt.nix
     ./device-configuration.nix

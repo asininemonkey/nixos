@@ -131,6 +131,7 @@ in
       wget
     ]) ++ (with pkgs.unstable; [
       geekbench
+      ollama
       trippy
     ]);
   };
@@ -259,7 +260,6 @@ in
     fwupd.enable = true;
     iperf3.enable = true;
     mullvad-vpn.enable = true;
-    ollama.enable = true;
 
     openssh = {
       openFirewall = false;

@@ -9,34 +9,40 @@
     kernelPackages = pkgs.linuxPackages_latest;
   };
 
-  environment.etc."monitors.xml" = {
-    mode = "0444";
+  environment = {
+    etc."monitors.xml" = {
+      mode = "0444";
 
-    text = ''
-      <monitors version="2">
-        <configuration>
-          <logicalmonitor>
-            <x>0</x>
-            <y>0</y>
-            <scale>1</scale>
-            <primary>yes</primary>
-            <monitor>
-              <monitorspec>
-                <connector>DP-3</connector>
-                <vendor>DEL</vendor>
-                <product>Dell AW3423DW</product>
-                <serial>#GjMYMxgwABcQ</serial>
-              </monitorspec>
-              <mode>
-                <width>3440</width>
-                <height>1440</height>
-                <rate>119.991</rate>
-              </mode>
-            </monitor>
-          </logicalmonitor>
-        </configuration>
-      </monitors>
-    '';
+      text = ''
+        <monitors version="2">
+          <configuration>
+            <logicalmonitor>
+              <x>0</x>
+              <y>0</y>
+              <scale>1</scale>
+              <primary>yes</primary>
+              <monitor>
+                <monitorspec>
+                  <connector>DP-3</connector>
+                  <vendor>DEL</vendor>
+                  <product>Dell AW3423DW</product>
+                  <serial>#GjMYMxgwABcQ</serial>
+                </monitorspec>
+                <mode>
+                  <width>3440</width>
+                  <height>1440</height>
+                  <rate>119.991</rate>
+                </mode>
+              </monitor>
+            </logicalmonitor>
+          </configuration>
+        </monitors>
+      '';
+    };
+
+    systemPackages = with pkgs; [
+      rocmPackages.clr
+    ];
   };
 
   hardware = {

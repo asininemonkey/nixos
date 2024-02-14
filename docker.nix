@@ -1,40 +1,60 @@
 { config, pkgs, ... }:
 
-let
-  tailnet-name = "fable-blues.ts.net";
-in
-
 {
-  environment = {
-    etc."traefik/traefik.yaml" = {
-      mode = "0444";
+  environment.etc."docker/compose.yaml" = {
+    mode = "0440";
 
-      text = ''
-        api: {}
-
-        certificatesResolvers:
-          tailscale:
-            tailscale: {}
-
-        entryPoints:
-          web-secure:
-            address: ":443"
-
-        log:
-          level: INFO
-
-        providers:
-          docker:
-            exposedByDefault: false
-          file:
-            directory: "/etc/traefik/traefik.d"
-      '';
-    };
-
-    etc."traefik/traefik.d/empty.yaml" = {
-      mode = "0444";
-      text = "";
-    };
+    text = ''
+      # https://docs.docker.com/compose/compose-file/compose-file-v3/
+      ---
+      networks:
+        general:
+          driver_opts:
+            com.docker.network.bridge.name: br-d4r-general
+          ipam:
+            config:
+              - subnet: 172.20.0.0/16
+      services:
+        ollama:
+          container_name: ollama
+          devices:
+            - "/dev/dri:/dev/dri"
+            - "/dev/kfd:/dev/kfd"
+          image: ollama/ollama:0.1.24-rocm
+          networks:
+            general:
+          ports:
+            - "127.0.0.1:11434:11434/tcp"
+          volumes:
+            - "ollama:/root/.ollama:rw"
+        portainer:
+          container_name: portainer
+          image: portainer/portainer-ee
+          networks:
+            general:
+          ports:
+            - "127.0.0.1:9000:9000/tcp"
+          restart: on-failure
+          volumes:
+            - "portainer:/data:rw"
+            - "/var/run/docker.sock:/var/run/docker.sock:ro"
+        watchtower:
+          container_name: watchtower
+          environment:
+            TZ: "Europe/London"
+            WATCHTOWER_CLEANUP: "true"
+            WATCHTOWER_POLL_INTERVAL: "3600"
+          image: containrrr/watchtower
+          networks:
+            general:
+          restart: on-failure
+          volumes:
+            - "/var/run/docker.sock:/var/run/docker.sock:ro"
+      version: '3.8'
+      volumes:
+        ollama:
+        portainer:
+    '';
   };
 
   system.activationScripts.docker-amd64 = if pkgs.stdenv.hostPlatform.system != "x86_64-linux" then ''
@@ -44,83 +64,26 @@ in
     fi
   '' else "";
 
-  virtualisation = {
-    docker = {
-      autoPrune.dates = "daily";
-      autoPrune.enable = true;
-    };
+  systemd.services.docker-compose = {
+    after = [
+      "docker.service"
+      "docker.socket"
+    ];
 
-    oci-containers = {
-      backend = "docker";
+    path = [
+      pkgs.docker-compose
+    ];
 
-      containers = {
-        portainer = {
-          image = "portainer/portainer-ee";
+    script = "docker-compose --file /etc/docker/compose.yaml up";
 
-          ports = [
-            "127.0.0.1:9000:9000/tcp"
-          ];
+    wantedBy = [
+      "multi-user.target"
+    ];
+  };
 
-          volumes = [
-            "portainer:/data:rw"
-            "/var/run/docker.sock:/var/run/docker.sock:ro"
-          ];
-        };
-
-        # traefik = {
-        #   extraOptions = [
-        #     "--label=traefik.enable=true"
-        #     "--label=traefik.http.routers.traefik.entrypoints=web-secure"
-        #     "--label=traefik.http.routers.traefik.rule=Host(`${config.networking.hostName}.${tailnet-name}`) && PathPrefix(`/api`) || PathPrefix(`/dashboard`)"
-        #     "--label=traefik.http.routers.traefik.tls.certresolver=tailscale"
-        #     "--label=traefik.http.routers.traefik.service=api@internal"
-        #   ];
-
-        #   image = "traefik:3.0";
-
-        #   ports = [
-        #     "0.0.0.0:443:443/tcp"
-        #   ];
-
-        #   volumes = [
-        #     "/etc/traefik:/etc/traefik:ro"
-        #     "/var/run/docker.sock:/var/run/docker.sock:ro"
-        #     "/var/run/tailscale/tailscaled.sock:/var/run/tailscale/tailscaled.sock:ro"
-        #   ];
-        # };
-
-        watchtower = {
-          environment = {
-            TZ = "Europe/London";
-            WATCHTOWER_CLEANUP = "true";
-            WATCHTOWER_POLL_INTERVAL = "3600";
-          };
-
-          image = "containrrr/watchtower";
-
-          volumes = [
-            "/var/run/docker.sock:/var/run/docker.sock:ro"
-          ];
-        };
-
-        # whoami = {
-        #   dependsOn = [
-        #     "traefik"
-        #   ];
-
-        #   extraOptions = [
-        #     "--label=traefik.enable=true"
-        #     "--label=traefik.http.middlewares.whoami.stripprefix.prefixes=/whoami"
-        #     "--label=traefik.http.routers.whoami.entrypoints=web-secure"
-        #     "--label=traefik.http.routers.whoami.middlewares=whoami"
-        #     "--label=traefik.http.routers.whoami.rule=Host(`${config.networking.hostName}.${tailnet-name}`) && PathPrefix(`/whoami`)"
-        #     "--label=traefik.http.routers.whoami.tls.certresolver=tailscale"
-        #     "--label=traefik.http.services.whoami.loadbalancer.server.port=80"
-        #   ];
-
-        #   image = "traefik/whoami";
-        # };
-      };
-    };
+  virtualisation.docker = {
+    autoPrune.dates = "daily";
+    autoPrune.enable = true;
+    enable = true;
   };
 }

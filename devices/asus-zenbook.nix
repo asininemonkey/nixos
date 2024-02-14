@@ -9,6 +9,19 @@
     kernelPackages = pkgs.linuxPackages_latest;
   };
 
+  environment = {
+    etc."monitors.xml" = {
+      mode = "0444";
+
+      text = ''
+      '';
+    };
+
+    systemPackages = with pkgs; [
+      rocmPackages.clr
+    ];
+  };
+
   hardware = {
     opengl.extraPackages = with pkgs; [
       rocmPackages.clr.icd
@@ -30,4 +43,8 @@
   };
 
   services.fstrim.enable = true;
+
+  # systemd.tmpfiles.rules = [
+  #   "L+ /run/gdm/.config/monitors.xml - - - - /etc/monitors.xml"
+  # ];
 }

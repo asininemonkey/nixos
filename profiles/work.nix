@@ -18,6 +18,7 @@ in
     gnutls
     kubectl
     kubernetes-helm
+    lens
   ]);
 
   hardware = {

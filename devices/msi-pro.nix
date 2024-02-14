@@ -9,52 +9,58 @@
     kernelPackages = pkgs.linuxPackages_latest;
   };
 
-  environment.etc."monitors.xml" = {
-    mode = "0444";
+  environment = {
+    etc."monitors.xml" = {
+      mode = "0444";
 
-    text = ''
-      <monitors version="2">
-        <configuration>
-          <logicalmonitor>
-            <x>0</x>
-            <y>0</y>
-            <scale>1</scale>
-            <monitor>
-              <monitorspec>
-                <connector>DP-4</connector>
-                <vendor>IVM</vendor>
-                <product>PL2792QN</product>
-                <serial>1179220401325</serial>
-              </monitorspec>
-              <mode>
-                <width>2560</width>
-                <height>1440</height>
-                <rate>74.924</rate>
-              </mode>
-            </monitor>
-          </logicalmonitor>
-          <logicalmonitor>
-            <x>2560</x>
-            <y>0</y>
-            <scale>1</scale>
-            <primary>yes</primary>
-            <monitor>
-              <monitorspec>
-                <connector>DP-3</connector>
-                <vendor>IVM</vendor>
-                <product>PL2792QN</product>
-                <serial>1179215305130</serial>
-              </monitorspec>
-              <mode>
-                <width>2560</width>
-                <height>1440</height>
-                <rate>74.924</rate>
-              </mode>
-            </monitor>
-          </logicalmonitor>
-        </configuration>
-      </monitors>
-    '';
+      text = ''
+        <monitors version="2">
+          <configuration>
+            <logicalmonitor>
+              <x>0</x>
+              <y>0</y>
+              <scale>1</scale>
+              <monitor>
+                <monitorspec>
+                  <connector>DP-4</connector>
+                  <vendor>IVM</vendor>
+                  <product>PL2792QN</product>
+                  <serial>1179220401325</serial>
+                </monitorspec>
+                <mode>
+                  <width>2560</width>
+                  <height>1440</height>
+                  <rate>74.924</rate>
+                </mode>
+              </monitor>
+            </logicalmonitor>
+            <logicalmonitor>
+              <x>2560</x>
+              <y>0</y>
+              <scale>1</scale>
+              <primary>yes</primary>
+              <monitor>
+                <monitorspec>
+                  <connector>DP-3</connector>
+                  <vendor>IVM</vendor>
+                  <product>PL2792QN</product>
+                  <serial>1179215305130</serial>
+                </monitorspec>
+                <mode>
+                  <width>2560</width>
+                  <height>1440</height>
+                  <rate>74.924</rate>
+                </mode>
+              </monitor>
+            </logicalmonitor>
+          </configuration>
+        </monitors>
+      '';
+    };
+
+    systemPackages = with pkgs; [
+      rocmPackages.clr
+    ];
   };
 
   hardware.opengl.extraPackages = with pkgs; [
