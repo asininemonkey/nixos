@@ -230,6 +230,7 @@ in
                       "irongeek.vscode-env",
                       "jetpack-io.devbox",
                       "jnoortheen.nix-ide",
+                      "mineiros.terramate",
                       "ms-azuretools.vscode-docker",
                       "ms-vscode-remote.remote-ssh",
                       "pascalreitermann93.vscode-yaml-sort",
@@ -297,7 +298,8 @@ in
                   "editor.renderWhitespace": "all",
                   "explorer.confirmDelete": false,
                   "files.associations": {
-                      "*.hcl": "terraform"
+                      "*.hcl": "terraform",
+                      "*.tm.hcl": "terramate"
                   },
                   "git.autofetch": true,
                   "git.confirmSync": false,
@@ -372,12 +374,14 @@ in
           asl = "aws --profile friday-staging sso login";
           awslocal = "aws --endpoint-url 'http://127.0.0.1:4566'";
           tf = "terraform fmt --recursive";
+          tmf = "terramate fmt";
+          tmg = "terramate generate";
 
           tafp = "SERVICE=friday ENVIRONMENT=friday-production ./scripts/tfs apply";
           tafs = "SERVICE=friday ENVIRONMENT=friday-staging ./scripts/tfs apply";
           tafu = "SERVICE=friday ENVIRONMENT=friday-uat ./scripts/tfs apply";
 
-          tajs = "AWS_PROFILE=friday-sandbox op run -- terraform -chdir=terraform/environments/sandbox apply";
+          tajs = "AWS_PROFILE=friday-sandbox terramate run --tags sandbox -- terraform apply";
 
           tassp = "AWS_PROFILE=self-service-production op run -- terraform -chdir=terraform/environments/production apply";
           tasss = "AWS_PROFILE=self-service-staging op run -- terraform -chdir=terraform/environments/staging apply";
@@ -387,7 +391,7 @@ in
           tifs = "SERVICE=friday ENVIRONMENT=friday-staging ./scripts/tfs init";
           tifu = "SERVICE=friday ENVIRONMENT=friday-uat ./scripts/tfs init";
 
-          tijs = "AWS_PROFILE=friday-sandbox op run -- terraform -chdir=terraform/environments/sandbox init";
+          tijs = "AWS_PROFILE=friday-sandbox terramate run --tags sandbox -- terraform init";
 
           tissp = "AWS_PROFILE=self-service-production op run -- terraform -chdir=terraform/environments/production init";
           tisss = "AWS_PROFILE=self-service-staging op run -- terraform -chdir=terraform/environments/staging init";
@@ -397,7 +401,7 @@ in
           tpfs = "SERVICE=friday ENVIRONMENT=friday-staging ./scripts/tfs plan";
           tpfu = "SERVICE=friday ENVIRONMENT=friday-uat ./scripts/tfs plan";
 
-          tpjs = "AWS_PROFILE=friday-sandbox op run -- terraform -chdir=terraform/environments/sandbox plan";
+          tpjs = "AWS_PROFILE=friday-sandbox terramate run --tags sandbox -- terraform plan";
 
           tpssp = "AWS_PROFILE=self-service-production op run -- terraform -chdir=terraform/environments/production plan";
           tpsss = "AWS_PROFILE=self-service-staging op run -- terraform -chdir=terraform/environments/staging plan";
@@ -407,7 +411,7 @@ in
           tsfs = "SERVICE=friday ENVIRONMENT=friday-staging ./scripts/tfs state";
           tsfu = "SERVICE=friday ENVIRONMENT=friday-uat ./scripts/tfs state";
 
-          tsjs = "AWS_PROFILE=friday-sandbox op run -- terraform -chdir=terraform/environments/sandbox state";
+          tsjs = "AWS_PROFILE=friday-sandbox terramate run --tags sandbox -- terraform state";
 
           tsssp = "AWS_PROFILE=self-service-production op run -- terraform -chdir=terraform/environments/production state";
           tssss = "AWS_PROFILE=self-service-staging op run -- terraform -chdir=terraform/environments/staging state";
