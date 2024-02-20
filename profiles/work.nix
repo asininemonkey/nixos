@@ -6,6 +6,7 @@ in
 
 {
   environment.systemPackages = (if pkgs.stdenv.hostPlatform.system == "x86_64-linux" then with pkgs; [
+    lens
     slack
     zoom-us
   ] else []) ++ (with pkgs; [
@@ -18,7 +19,6 @@ in
     gnutls
     kubectl
     kubernetes-helm
-    lens
   ]);
 
   hardware = {
