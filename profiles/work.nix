@@ -10,6 +10,7 @@ in
     slack
     zoom-us
   ] else []) ++ (with pkgs; [
+    awscli2
     devbox
     docker-buildx
     docker-compose
