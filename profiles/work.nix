@@ -2,6 +2,14 @@
 
 let
   company = "dailypay";
+
+  terramate = import ./packages/terramate/package.nix {
+    inherit lib;
+
+    buildGoModule = pkgs.buildGoModule;
+    fetchFromGitHub = pkgs.fetchFromGitHub;
+    git = pkgs.git;
+  };
 in
 
 {
@@ -20,6 +28,7 @@ in
     gnutls
     kubectl
     kubernetes-helm
+    terramate
   ]);
 
   hardware = {

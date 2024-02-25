@@ -1,9 +1,10 @@
 { config, lib, pkgs, ... }:
 
 let
-  arcticons-sans = import ./arcticons-sans.nix {
-    fetchzip = pkgs.fetchzip;
+  arcticons-sans = import ./packages/arcticons-sans/package.nix {
     inherit lib;
+
+    fetchzip = pkgs.fetchzip;
     stdenvNoCC = pkgs.stdenvNoCC;
   };
 in
