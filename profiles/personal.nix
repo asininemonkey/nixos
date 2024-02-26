@@ -78,6 +78,7 @@
                   "recommendations": [
                       "bungcip.better-toml",
                       "eamodio.gitlens",
+                      "editorconfig.editorconfig",
                       "esbenp.prettier-vscode",
                       "hashicorp.terraform",
                       "irongeek.vscode-env",
