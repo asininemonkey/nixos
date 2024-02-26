@@ -19,7 +19,6 @@ in
 
 {
   environment.systemPackages = (if pkgs.stdenv.hostPlatform.system == "x86_64-linux" then with pkgs; [
-    lens
     slack
     zoom-us
   ] else []) ++ (with pkgs; [
@@ -33,7 +32,7 @@ in
     gnutls
     kubectl
     kubernetes-helm
-    # terramate
+    terramate
   ]);
 
   hardware = {
@@ -360,6 +359,7 @@ in
         shellAliases = {
           asl = "aws --profile friday-staging sso login";
           awslocal = "aws --endpoint-url 'http://127.0.0.1:4566'";
+          k9s = "k9s --readonly";
           tf = "terraform fmt --recursive";
           tmf = "terramate fmt";
           tmg = "terramate generate";
