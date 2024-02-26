@@ -1,15 +1,20 @@
-{ config, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
   company = "dailypay";
 
-  terramate = import ./packages/terramate/package.nix {
-    inherit lib;
+  # terramate = import ../packages/terramate/package.nix {
+  #   inherit lib;
 
-    buildGoModule = pkgs.buildGoModule;
-    fetchFromGitHub = pkgs.fetchFromGitHub;
-    git = pkgs.git;
-  };
+  #   buildGoModule = pkgs.buildGoModule;
+  #   fetchFromGitHub = pkgs.fetchFromGitHub;
+  #   git = pkgs.git;
+  # };
 in
 
 {
@@ -28,7 +33,7 @@ in
     gnutls
     kubectl
     kubernetes-helm
-    terramate
+    # terramate
   ]);
 
   hardware = {

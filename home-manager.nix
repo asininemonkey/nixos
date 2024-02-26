@@ -1,4 +1,9 @@
-{ config, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
   # background-image = builtins.fetchurl "https://www.xxx/yyy.zzz";

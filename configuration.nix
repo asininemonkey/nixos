@@ -1,4 +1,9 @@
-{ config, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
   home-manager = fetchTarball "https://github.com/nix-community/home-manager/archive/release-23.11.tar.gz";
