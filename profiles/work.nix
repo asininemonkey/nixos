@@ -338,35 +338,6 @@ in
               }
           }
         '';
-
-        "Documents/Source/Work/friday/devbox.json".text = ''
-          {
-            "env": {
-              "AWS_PAGER": "",
-              "AWS_SDK_LOAD_CONFIG": "true",
-              "GITHUB_TOKEN": "op://Private/GitHub/token"
-            },
-            "packages": [
-              "amazon-ecr-credential-helper@0.7",
-              "awscli2@2.15",
-              "jq@1.7",
-              "nodejs@18",
-              "python@3.12",
-              "terraform@1.7.1",
-              "zulu@17"
-            ],
-            "shell": {
-              "init_hook": [
-                "echo 'Welcome to the Friday Devbox!'"
-              ],
-              "scripts": {
-                "fmt": [
-                  "terraform fmt -recursive"
-                ]
-              }
-            }
-          }
-        '';
       };
     };
 
