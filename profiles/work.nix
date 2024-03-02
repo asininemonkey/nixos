@@ -30,7 +30,6 @@ in
     # globalprotect-openconnect
     gnupg
     gnutls
-    kubernetes-helm
     terramate
   ]);
 

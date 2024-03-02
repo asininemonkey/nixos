@@ -392,8 +392,6 @@ in
 
       ".hidden".text = "Public";
 
-      ".kube/config".text = "";
-
       ".local/share/applications/btop.desktop".source = config.lib.file.mkOutOfStoreSymlink "/dev/null";
       ".local/share/applications/cups.desktop".source = config.lib.file.mkOutOfStoreSymlink "/dev/null";
       ".local/share/applications/mpv.desktop".source = config.lib.file.mkOutOfStoreSymlink "/dev/null";

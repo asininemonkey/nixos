@@ -110,6 +110,7 @@ in
       immich-cli
       jq
       kubectl
+      kubernetes-helm
       ldns
       libreoffice-fresh
       macchina
@@ -338,15 +339,29 @@ in
     };
   };
 
-  system.activationScripts.nvd = {
-    supportsDryActivation = true;
+  system.activationScripts = {
+    helm = {
+      supportsDryActivation = true;
 
-    text = ''
-      if [[ ''${NIXOS_ACTION} = 'switch' ]]
-      then
-        "${pkgs.nvd}/bin/nvd" --nix-bin-dir "${pkgs.nix}/bin" diff /run/current-system "$systemConfig"
-      fi
-    '';
+      text = ''
+        if [[ ''${NIXOS_ACTION} = 'switch' ]]
+        then
+          "${pkgs.kubernetes-helm}/bin/helm" repo add external-dns https://kubernetes-sigs.github.io/external-dns/
+          "${pkgs.kubernetes-helm}/bin/helm" repo add external-secrets https://charts.external-secrets.io/
+        fi
+      '';
+    };
+
+    nvd = {
+      supportsDryActivation = true;
+
+      text = ''
+        if [[ ''${NIXOS_ACTION} = 'switch' ]]
+        then
+          "${pkgs.nvd}/bin/nvd" --nix-bin-dir "${pkgs.nix}/bin" diff /run/current-system "$systemConfig"
+        fi
+      '';
+    };
   };
 
   time.timeZone = "Europe/London";
