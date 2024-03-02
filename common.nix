@@ -6,12 +6,12 @@
 }:
 
 let
-  arcticons-sans = import ./packages/arcticons-sans/package.nix {
-    inherit lib;
+  # arcticons-sans = import ./packages/arcticons-sans/package.nix {
+  #   inherit lib;
 
-    fetchzip = pkgs.fetchzip;
-    stdenvNoCC = pkgs.stdenvNoCC;
-  };
+  #   fetchzip = pkgs.fetchzip;
+  #   stdenvNoCC = pkgs.stdenvNoCC;
+  # };
 in
 
 {
@@ -109,6 +109,7 @@ in
       iftop
       immich-cli
       jq
+      kubectl
       ldns
       libreoffice-fresh
       macchina
@@ -137,6 +138,7 @@ in
       wget
     ]) ++ (with pkgs.unstable; [
       geekbench
+      k9s
       ollama
       trippy
     ]);
@@ -157,13 +159,14 @@ in
 
     fontDir.enable = true;
 
-    packages = with pkgs; [
-      arcticons-sans
+    packages = with pkgs; ([
       fantasque-sans-mono
       noto-fonts
       noto-fonts-cjk-sans
       noto-fonts-emoji
-    ];
+    ]) ++ (with pkgs.unstable; [
+      arcticons-sans
+    ]);
   };
 
   hardware = {
@@ -175,6 +178,11 @@ in
 
   networking = {
     firewall = {
+      allowedTCPPorts = [
+        6443 # k3s - api
+        10250 # k3s - metrics-server
+      ];
+
       checkReversePath = "loose";
       enable = true;
       
@@ -265,6 +273,12 @@ in
 
     fwupd.enable = true;
     iperf3.enable = true;
+
+    k3s = {
+      enable = true;
+      package = pkgs.unstable.k3s;
+    };
+
     mullvad-vpn.enable = true;
 
     openssh = {

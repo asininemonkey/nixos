@@ -966,6 +966,7 @@ in
           fuu = "flatpak uninstall --unused";
           htop = "btop";
           installed = "nix-store --query --references /run/current-system/sw | sed \"s/^\\/nix\\/store\\/[[:alnum:]]\\{32\\}-//\" | \sort";
+          k9s = "k9s --readonly";
           ls = "eza --git --git-repos --group --group-directories-first --icons --time-style long-iso";
           mvc = "mullvad connect --wait";
           mvd = "mullvad disconnect --wait";
