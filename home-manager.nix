@@ -899,7 +899,7 @@ in
 
       vscode = { # https://nix-community.github.io/home-manager/options.xhtml#opt-programs.vscode.enable
         enable = true;
-        package = pkgs.vscodium;
+        package = pkgs.unstable.vscodium;
 
         userSettings = {
           "diffEditor.ignoreTrimWhitespace" = false;

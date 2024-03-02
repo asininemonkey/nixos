@@ -178,15 +178,11 @@ in
 
   networking = {
     firewall = {
-      allowedTCPPorts = [
-        6443 # k3s - api
-        10250 # k3s - metrics-server
-      ];
-
       checkReversePath = "loose";
       enable = true;
       
       trustedInterfaces = [
+        "cni0"
         "docker0"
         "tailscale0"
       ];
