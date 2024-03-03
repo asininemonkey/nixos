@@ -8,7 +8,7 @@
 let
   domain-name = "josecardoso.net";
   home-manager = fetchTarball "https://github.com/nix-community/home-manager/archive/release-23.11.tar.gz";
-  immich-version = "v1.93.3";
+  immich-version = "v1.97.0";
   nixos-unstable = fetchTarball "https://github.com/nixos/nixpkgs/archive/nixos-unstable.tar.gz";
   state-version = "23.11";
   tailnet-name = "fable-blues.ts.net";
