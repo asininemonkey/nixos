@@ -8,12 +8,11 @@
 let
   company = "dailypay";
 
-  # terramate = import ../packages/terramate/package.nix {
+  # terramate-bin = import ./packages/terramate-bin/package.nix {
   #   inherit lib;
 
-  #   buildGoModule = pkgs.buildGoModule;
-  #   fetchFromGitHub = pkgs.fetchFromGitHub;
-  #   git = pkgs.git;
+  #   fetchurl = pkgs.fetchurl;
+  #   stdenv = pkgs.stdenv;
   # };
 in
 
@@ -27,10 +26,9 @@ in
     docker-buildx
     docker-compose
     gcc
-    # globalprotect-openconnect
     gnupg
     gnutls
-    terramate
+    terramate-bin
   ]);
 
   hardware = {
