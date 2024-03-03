@@ -628,7 +628,6 @@ in
       btop
       eza
       iftop
-      immich-cli
       intel-gpu-tools
       internetarchive
       ldns
@@ -641,6 +640,8 @@ in
       wakelan
       wget
       yt-dlp
+    ]) ++ (with pkgs.unstable; [
+      immich-cli
     ]);
   };
 
