@@ -44,24 +44,30 @@ in
             ipam:
               config:
                 - subnet: 172.20.0.0/16
+          immich:
+            driver_opts:
+              com.docker.network.bridge.name: br-d4r-immich
+            ipam:
+              config:
+                - subnet: 172.21.0.0/16
           media:
             driver_opts:
               com.docker.network.bridge.name: br-d4r-media
             ipam:
               config:
-                - subnet: 172.21.0.0/16
+                - subnet: 172.22.0.0/16
           trusted:
             driver_opts:
               com.docker.network.bridge.name: br-d4r-trusted
             ipam:
               config:
-                - subnet: 172.22.0.0/16
+                - subnet: 172.23.0.0/16
           vpn:
             driver_opts:
               com.docker.network.bridge.name: br-d4r-vpn
             ipam:
               config:
-                - subnet: 172.23.0.0/16
+                - subnet: 172.24.0.0/16
         services:
           caddy:
             command:
@@ -174,6 +180,88 @@ in
               - "/data/docker/homarr/data:/data:rw"
               - "/data/docker/homarr/icons:/app/public/icons:rw"
               - "/var/run/docker.sock:/var/run/docker.sock:ro"
+          immich-machine-learning:
+            container_name: immich-machine-learning
+            image: ghcr.io/immich-app/immich-machine-learning:${immich-version}
+            networks:
+              immich:
+                ipv4_address: 172.21.0.10
+            restart: on-failure
+            volumes:
+              - "/data/docker/immich/machine-learning:/cache:rw"
+          immich-microservices:
+            command:
+              - "start.sh"
+              - "microservices"
+            container_name: immich-microservices
+            depends_on:
+              - immich-postgres
+              - immich-redis
+            devices:
+              - "/dev/dri:/dev/dri"
+            environment:
+              DB_DATABASE_NAME: "immich"
+              DB_HOSTNAME: "172.21.0.30"
+              DB_PASSWORD: "immich"
+              DB_USERNAME: "immich"
+              IMMICH_MACHINE_LEARNING_URL: "http://172.21.0.10:3003"
+              REDIS_HOSTNAME: "172.21.0.40"
+            image: ghcr.io/immich-app/immich-server:${immich-version}
+            networks:
+              immich:
+                ipv4_address: 172.21.0.20
+            restart: on-failure
+            volumes:
+              - "/data/docker/immich/upload:/usr/src/app/upload:rw"
+              - "/etc/localtime:/etc/localtime:ro"
+          immich-postgres:
+            container_name: immich-postgres
+            environment:
+              POSTGRES_DB: "immich"
+              POSTGRES_PASSWORD: "immich"
+              POSTGRES_USER: "immich"
+            image: tensorchord/pgvecto-rs:pg14-v0.2.0
+            networks:
+              immich:
+                ipv4_address: 172.21.0.30
+            restart: on-failure
+            volumes:
+              - "/data/docker/immich/postgres:/var/lib/postgresql/data:rw"
+          immich-redis:
+            container_name: immich-redis
+            image: redis:7
+            networks:
+              immich:
+                ipv4_address: 172.21.0.40
+            restart: on-failure
+          immich-server:
+            command:
+              - "start.sh"
+              - "immich"
+            container_name: immich-server
+            depends_on:
+              - immich-postgres
+              - immich-redis
+              - traefik
+            environment:
+              DB_DATABASE_NAME: "immich"
+              DB_HOSTNAME: "172.21.0.30"
+              DB_PASSWORD: "immich"
+              DB_USERNAME: "immich"
+              REDIS_HOSTNAME: "172.21.0.40"
+            image: ghcr.io/immich-app/immich-server:${immich-version}
+            labels:
+              traefik.enable: "true"
+              traefik.http.routers.immich.entrypoints: "web-secure"
+              traefik.http.routers.immich.rule: "Host(`immich.${domain-name}`)"
+              traefik.http.services.immich.loadbalancer.server.port: "3001"
+            networks:
+              immich:
+                ipv4_address: 172.21.0.50
+            restart: on-failure
+            volumes:
+              - "/data/docker/immich/upload:/usr/src/app/upload:rw"
+              - "/etc/localtime:/etc/localtime:ro"
           kasm:
             container_name: kasm
             depends_on:
@@ -247,14 +335,14 @@ in
               - "/dev/dri:/dev/dri"
             environment:
               ADVERTISE_IP: "https://192.168.144.200:32400/"
-              ALLOWED_NETWORKS: "100.64.0.0/10,172.21.0.0/16,192.168.144.0/24"
+              ALLOWED_NETWORKS: "100.64.0.0/10,172.22.0.0/16,192.168.144.0/24"
               PLEX_GID: "5000"
               PLEX_UID: "5000"
               TZ: "Europe/London"
             image: plexinc/pms-docker
             networks:
               media:
-                ipv4_address: 172.21.0.10
+                ipv4_address: 172.22.0.10
             ports:
               - "0.0.0.0:1900:1900/udp"
               - "0.0.0.0:8324:8324/tcp"
@@ -284,20 +372,6 @@ in
             volumes:
               - "/data/docker/portainer:/data:rw"
               - "/var/run/docker.sock:/var/run/docker.sock:ro"
-          postgres:
-            container_name: postgres
-            environment:
-              POSTGRES_DB: "immich"
-              POSTGRES_PASSWORD: "immich"
-              POSTGRES_USER: "immich"
-            image: tensorchord/pgvecto-rs:pg14-v0.1.11
-            networks:
-              general:
-            ports:
-              - "0.0.0.0:5432:5432/tcp"
-            restart: on-failure
-            volumes:
-              - "/data/docker/postgres:/var/lib/postgresql/data:rw"
           prowlarr:
             container_name: prowlarr
             depends_on:
@@ -360,14 +434,6 @@ in
               - "/data/docker/radarr:/config:rw"
               - "/data/media/movies:/media/movies:rw"
               - "/data/media/unsorted:/media/unsorted:rw"
-          redis:
-            container_name: redis
-            image: redis:7
-            networks:
-              general:
-            ports:
-              - "0.0.0.0:6379:6379/tcp"
-            restart: on-failure
           sabnzbd:
             container_name: sabnzbd
             depends_on:
@@ -442,6 +508,7 @@ in
               traefik.http.routers.traefik.service: "api@internal"
             networks:
               general:
+              immich:
               media:
               trusted:
               vpn:
@@ -919,93 +986,9 @@ in
     };
   };
 
-  virtualisation = {
-    docker = {
-      autoPrune.dates = "daily";
-      autoPrune.enable = true;
-      enable = true;
-    };
-
-    # oci-containers = {
-    #   containers = {
-    #     immich-machine-learning = {
-    #       image = "ghcr.io/immich-app/immich-machine-learning:${immich-version}";
-
-    #       ports = [
-    #         "0.0.0.0:3003:3003/tcp"
-    #       ];
-
-    #       volumes = [
-    #         "/data/docker/immich/machine-learning:/cache:rw"
-    #       ];
-    #     };
-
-    #     immich-microservices = {
-    #       cmd = [
-    #         "start.sh"
-    #         "microservices"
-    #       ];
-
-    #       dependsOn = [
-    #         "postgres"
-    #         "redis"
-    #       ];
-
-    #       environment = {
-    #         DB_DATABASE_NAME = "immich";
-    #         DB_HOSTNAME = "172.17.0.1";
-    #         DB_PASSWORD = "immich";
-    #         DB_USERNAME = "immich";
-    #         IMMICH_MACHINE_LEARNING_URL = "http://172.17.0.1:3003";
-    #         REDIS_HOSTNAME = "172.17.0.1";
-    #       };
-
-    #       extraOptions = [
-    #         "--device=/dev/dri:/dev/dri"
-    #       ];
-
-    #       image = "ghcr.io/immich-app/immich-server:${immich-version}";
-
-    #       volumes = [
-    #         "/data/docker/immich/upload:/usr/src/app/upload:rw"
-    #         "/etc/localtime:/etc/localtime:ro"
-    #       ];
-    #     };
-
-    #     immich-server = {
-    #       cmd = [
-    #         "start.sh"
-    #         "immich"
-    #       ];
-
-    #       dependsOn = [
-    #         "postgres"
-    #         "redis"
-    #       ];
-
-    #       environment = {
-    #         DB_DATABASE_NAME = "immich";
-    #         DB_HOSTNAME = "172.17.0.1";
-    #         DB_PASSWORD = "immich";
-    #         DB_USERNAME = "immich";
-    #         REDIS_HOSTNAME = "172.17.0.1";
-    #       };
-
-    #       image = "ghcr.io/immich-app/immich-server:${immich-version}";
-
-    #       labels = {
-    #         "traefik.enable" = "true";
-    #         "traefik.http.routers.immich.entrypoints" = "web-secure";
-    #         "traefik.http.routers.immich.rule" = "Host(`immich.${domain-name}`)";
-    #         "traefik.http.services.immich.loadbalancer.server.port" = "3001";
-    #       };
-
-    #       volumes = [
-    #         "/data/docker/immich/upload:/usr/src/app/upload:rw"
-    #         "/etc/localtime:/etc/localtime:ro"
-    #       ];
-    #     };
-    #   };
-    # };
+  virtualisation.docker = {
+    autoPrune.dates = "daily";
+    autoPrune.enable = true;
+    enable = true;
   };
 }
