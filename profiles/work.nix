@@ -8,12 +8,12 @@
 let
   company = "dailypay";
 
-  # terramate-bin = import ./packages/terramate-bin/package.nix {
-  #   inherit lib;
+  terramate-bin = import ../packages/terramate-bin/package.nix {
+    inherit lib;
 
-  #   fetchurl = pkgs.fetchurl;
-  #   stdenv = pkgs.stdenv;
-  # };
+    fetchurl = pkgs.fetchurl;
+    stdenv = pkgs.stdenv;
+  };
 in
 
 {
