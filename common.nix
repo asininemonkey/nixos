@@ -12,6 +12,13 @@ let
   #   fetchzip = pkgs.fetchzip;
   #   stdenvNoCC = pkgs.stdenvNoCC;
   # };
+
+  terramate-bin = import ./packages/terramate-bin/package.nix {
+    inherit lib;
+
+    fetchurl = pkgs.fetchurl;
+    stdenv = pkgs.stdenv;
+  };
 in
 
 {
@@ -79,6 +86,7 @@ in
       celluloid
       clinfo
       dconf2nix
+      devbox
       distrobox
       dive
       docker-credential-helpers
@@ -138,9 +146,11 @@ in
       wezterm
       wget
     ]) ++ (with pkgs.unstable; [
+      awscli2
       geekbench
       k9s
       ollama
+      terramate-bin
       trippy
     ]);
   };

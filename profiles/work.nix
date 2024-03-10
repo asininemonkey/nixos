@@ -7,13 +7,6 @@
 
 let
   company = "dailypay";
-
-  terramate-bin = import ../packages/terramate-bin/package.nix {
-    inherit lib;
-
-    fetchurl = pkgs.fetchurl;
-    stdenv = pkgs.stdenv;
-  };
 in
 
 {
@@ -21,14 +14,11 @@ in
     slack
     zoom-us
   ] else []) ++ (with pkgs; [
-    awscli2
-    devbox
     docker-buildx
     docker-compose
     gcc
     gnupg
     gnutls
-    terramate-bin
   ]);
 
   hardware = {
@@ -356,9 +346,6 @@ in
         shellAliases = {
           asl = "aws --profile friday-staging sso login";
           awslocal = "aws --endpoint-url 'http://127.0.0.1:4566'";
-          tf = "terraform fmt --recursive";
-          tmf = "terramate fmt";
-          tmg = "terramate generate";
 
           tafp = "SERVICE=friday ENVIRONMENT=friday-production ./scripts/tfs apply";
           tafs = "SERVICE=friday ENVIRONMENT=friday-staging ./scripts/tfs apply";

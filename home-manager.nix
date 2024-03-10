@@ -961,11 +961,11 @@ in
           dig = "drill";
           dsc = "docker stop $(docker ps --quiet)";
           dsp = "docker system prune --all --force --volumes";
-          grpo = "git remote prune origin";
           failed = "systemctl list-units --state failed";
           fl = "flatpak list";
           fr = "sudo flatpak repair";
           fuu = "flatpak uninstall --unused";
+          grpo = "git remote prune origin";
           htop = "btop";
           installed = "nix-store --query --references /run/current-system/sw | sed \"s/^\\/nix\\/store\\/[[:alnum:]]\\{32\\}-//\" | \sort";
           k9s = "k9s --readonly";
@@ -982,6 +982,9 @@ in
           nso = "nix --extra-experimental-features nix-command store optimise";
           ping = "trip";
           speedtest = "speedtest --secure --share";
+          tf = "terraform fmt --recursive";
+          tmf = "terramate fmt";
+          tmg = "terramate generate";
           top = "btop";
           tracepath = "trip";
           tree = "tree -aghpuCD";
