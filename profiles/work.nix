@@ -243,6 +243,7 @@ in
                       "jnoortheen.nix-ide",
                       "mineiros.terramate",
                       "ms-azuretools.vscode-docker",
+                      "ms-kubernetes-tools.vscode-kubernetes-tools",
                       "ms-vscode-remote.remote-ssh",
                       "pascalreitermann93.vscode-yaml-sort",
                       "redhat.vscode-yaml",

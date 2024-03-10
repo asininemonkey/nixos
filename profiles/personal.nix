@@ -64,10 +64,12 @@
               mkdir -p "''${CLONE_ROOT}/''${CLONE_DIRECTORY}"
 
               git -C "''${CLONE_ROOT}/''${CLONE_DIRECTORY}" clone "''${CLONE_SOURCE}/cv.josecardoso.com.git"
+              git -C "''${CLONE_ROOT}/''${CLONE_DIRECTORY}" clone "''${CLONE_SOURCE}/josecardoso.cloud.git"
               git -C "''${CLONE_ROOT}/''${CLONE_DIRECTORY}" clone "''${CLONE_SOURCE}/josecardoso.com.git"
               git -C "''${CLONE_ROOT}/''${CLONE_DIRECTORY}" clone "''${CLONE_SOURCE}/miscellaneous.git"
               git -C "''${CLONE_ROOT}/''${CLONE_DIRECTORY}" clone "''${CLONE_SOURCE}/miscellaneous-private.git"
               git -C "''${CLONE_ROOT}/''${CLONE_DIRECTORY}" clone "''${CLONE_SOURCE}/nixos.git"
+              git -C "''${CLONE_ROOT}/''${CLONE_DIRECTORY}" clone "''${CLONE_SOURCE}/nixpkgs.git"
             done
           '';
         };
@@ -82,11 +84,13 @@
                       "esbenp.prettier-vscode",
                       "hashicorp.terraform",
                       "irongeek.vscode-env",
+                      "jetpack-io.devbox",
                       "jnoortheen.nix-ide",
+                      "mineiros.terramate",
                       "ms-azuretools.vscode-docker",
                       "ms-kubernetes-tools.vscode-kubernetes-tools",
                       "ms-vscode-remote.remote-containers",
-                      "rangav.vscode-thunder-client",
+                      "pascalreitermann93.vscode-yaml-sort",
                       "redhat.vscode-yaml",
                       "richie5um2.vscode-sort-json"
                   ]
@@ -94,6 +98,9 @@
               "folders": [
                   {
                       "path": "./cv.josecardoso.com"
+                  },
+                  {
+                      "path": "./josecardoso.cloud"
                   },
                   {
                       "path": "./josecardoso.com"
@@ -106,6 +113,9 @@
                   },
                   {
                       "path": "./nixos"
+                  },
+                  {
+                      "path": "./nixpkgs"
                   }
               ],
               "settings": {
