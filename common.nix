@@ -150,6 +150,7 @@ in
       geekbench
       k9s
       ollama
+      terraform
       terramate-bin
       trippy
     ]);
