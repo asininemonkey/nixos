@@ -200,9 +200,10 @@ in
             mkdir --parents "''${CLONE_ROOT}/self-service"
 
             git -C "''${CLONE_ROOT}" clone "''${CLONE_SOURCE}/${company}.git"
-            git -C "''${CLONE_ROOT}" clone "''${CLONE_SOURCE}/jcardoso.git"
-            git -C "''${CLONE_ROOT}" clone "''${CLONE_SOURCE}/terraform-modules.git"
-            git -C "''${CLONE_ROOT}" clone "''${CLONE_SOURCE}/terraform-shared-infrastructure.git"
+
+            git -C "''${CLONE_ROOT}" clone "''${CLONE_SOURCE}/jcardoso-app.git"
+            git -C "''${CLONE_ROOT}" clone "''${CLONE_SOURCE}/jcardoso-eks.git"
+            git -C "''${CLONE_ROOT}" clone "''${CLONE_SOURCE}/jcardoso-vpc.git"
 
             git -C "''${CLONE_ROOT}/friday" clone "''${CLONE_SOURCE}/friday-batch.git"
             git -C "''${CLONE_ROOT}/friday" clone "''${CLONE_SOURCE}/friday-ecs.git"
@@ -266,7 +267,13 @@ in
                       "path": "./friday/friday-runbooks"
                   },
                   {
-                      "path": "./jcardoso"
+                      "path": "./jcardoso-app"
+                  },
+                  {
+                      "path": "./jcardoso-eks"
+                  },
+                  {
+                      "path": "./jcardoso-vpc"
                   },
                   {
                       "path": "./friday/joey-card"
@@ -279,12 +286,6 @@ in
                   },
                   {
                       "path": "./self-service/self-service-web"
-                  },
-                  {
-                      "path": "./terraform-modules"
-                  },
-                  {
-                      "path": "./terraform-shared-infrastructure"
                   }
               ],
               "settings": {
