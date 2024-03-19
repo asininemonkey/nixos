@@ -131,7 +131,8 @@
                   "editor.renderWhitespace": "all",
                   "explorer.confirmDelete": false,
                   "files.associations": {
-                      "*.hcl": "terraform"
+                      "*.hcl": "terraform",
+                      "*.tm.hcl": "terramate"
                   },
                   "git.autofetch": true,
                   "git.confirmSync": false,
