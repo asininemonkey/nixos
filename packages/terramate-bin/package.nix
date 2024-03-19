@@ -5,7 +5,7 @@
 
 stdenv.mkDerivation rec {
   pname = "terramate-bin";
-  version = "0.5.0";
+  version = "0.5.5";
 
   src =
     let
@@ -19,11 +19,11 @@ stdenv.mkDerivation rec {
         x86_64-linux = "linux_x86_64";
       };
       sha256 = selectSystem {
-        aarch64-darwin = "sha256-KlI/X6V0pLlg50dhouwuHZynmh5VO3SYGDopfgyR1iU=";
-        aarch64-linux = "sha256-UFr46wwQV/ZSqh9jVciGt5k7SyHWycxmnRSjroorvMY=";
-        i686-linux = "sha256-ScP2TfSQcuFocVVl9aJakmqxqhVARG/bhEYTrZKDT3U=";
-        x86_64-darwin = "sha256-0zOOIHibwhC58bGgxnaWZ46sHHr0pHy7RObJTX4Qjgw=";
-        x86_64-linux = "sha256-lTFvxWAt9SlFRDbav+V41dU7j8ZAacAJuydwCJjSEzE=";
+        aarch64-darwin = "sha256-hSgXrZOiSxWZLOk+LfnLwBSg2uJYXGhsf+/iX51UNBo=";
+        aarch64-linux = "sha256-gp1+8nX/PtZIRNKwzSY2sZBfGEeMD6RiMIfZkY3mHIg=";
+        i686-linux = "sha256-315bOT3acQzc4Hb2QPuW7VrkIox9bh1O83lT7XKpdzw=";
+        x86_64-darwin = "sha256-aU3FnSO25JWn6L4WHYOKFGX+uoYCR89cKiqLD4iiQG8=";
+        x86_64-linux = "sha256-pgcbMC++Z+Rz1cKLHMXlVBi3bjD9Dtg+O68Dz4XoU8s=";
       };
     in
     fetchurl {
