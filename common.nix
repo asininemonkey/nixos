@@ -281,12 +281,6 @@ in
 
     fwupd.enable = true;
     iperf3.enable = true;
-
-    k3s = {
-      enable = true;
-      package = pkgs.unstable.k3s;
-    };
-
     mullvad-vpn.enable = true;
 
     openssh = {
