@@ -118,6 +118,7 @@ in
       immich-cli
       jq
       kubectl
+      kubelogin-oidc
       kubernetes-helm
       ldns
       libreoffice-fresh
