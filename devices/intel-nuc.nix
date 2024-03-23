@@ -291,25 +291,6 @@ in
               - "/data/media/television:/mnt/host/media/television:ro"
               - "/data/rips:/mnt/host/rips:ro"
               - "/data/temporary:/mnt/host/temporary:rw"
-          ocis:
-            container_name: ocis
-            depends_on:
-              - traefik
-            environment:
-              OCIS_URL: "https://owncloud.${domain-name}"
-              PROXY_TLS: "false"
-            image: owncloud/ocis
-            labels:
-              traefik.enable: "true"
-              traefik.http.routers.ocis.entrypoints: "web-secure"
-              traefik.http.routers.ocis.rule: "Host(`owncloud.${domain-name}`)"
-              traefik.http.services.ocis.loadbalancer.server.port: "9200"
-            networks:
-              trusted:
-            restart: on-failure
-            volumes:
-              - "/data/docker/ocis/config:/etc/ocis:rw"
-              - "/data/docker/ocis/data:/var/lib/ocis:rw"
           overseerr:
             container_name: overseerr
             depends_on:
@@ -497,6 +478,8 @@ in
               - "/data/docker/tautulli:/config:rw"
           traefik:
             container_name: traefik
+            env_file:
+              - /data/docker/traefik.env
             environment:
               AWS_POLLING_INTERVAL: "5"
               AWS_PROPAGATION_TIMEOUT: "600"
@@ -776,7 +759,6 @@ in
       enable = true;
       
       trustedInterfaces = [
-        "br-d4r-ocis"
         "br-d4r-trusted"
         "tailscale0"
       ];
