@@ -982,9 +982,6 @@ in
           nso = "nix --extra-experimental-features nix-command store optimise";
           ping = "trip";
           speedtest = "speedtest --secure --share";
-          tff = "terraform fmt --recursive";
-          tmf = "terramate fmt";
-          tmg = "terramate generate";
           top = "btop";
           tracepath = "trip";
           tree = "tree -aghpuCD";

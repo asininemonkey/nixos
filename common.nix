@@ -147,11 +147,9 @@ in
       wezterm
       wget
     ]) ++ (with pkgs.unstable; [
-      awscli2
       geekbench
       k9s
       ollama
-      terraform
       terramate-bin
       trippy
     ]);
