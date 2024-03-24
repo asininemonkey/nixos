@@ -935,6 +935,7 @@ in
         enableVteIntegration = true;
 
         envExtra = ''
+          export AWS_PAGER=""
           export EXA_ICON_SPACING="2"
           export PATH="''${PATH}''${PATH:+:}''${GOBIN}"
           export SSH_AUTH_SOCK="''${HOME}/.1password/agent.sock"

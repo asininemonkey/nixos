@@ -167,6 +167,9 @@
       };
 
       zsh.envExtra = ''
+        export AWS_ACCESS_KEY_ID="op://Personal/awhb35qeiidqikaej6ub2ftphm/username"
+        export AWS_REGION="eu-west-1"
+        export AWS_SECRET_ACCESS_KEY="op://Personal/awhb35qeiidqikaej6ub2ftphm/credential"
         export OP_ACCOUNT="JMEFUTV6DJDCBNLIUHRSTFIXOM"
       '';
     };
