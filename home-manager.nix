@@ -163,7 +163,6 @@ in
           "just-perfection-desktop@just-perfection"
           "lockkeys@vaina.lt"
           "monitor@astraext.github.io"
-          "noannoyance-fork@vrba.dev"
           "tiling-assistant@leleat-on-github"
           "user-theme@gnome-shell-extensions.gcampax.github.com"
           "window-list@gnome-shell-extensions.gcampax.github.com"
@@ -190,12 +189,7 @@ in
 
       "org/gnome/shell/extensions/just-perfection" = {
         accessibility-menu = false;
-      };
-
-      "org/gnome/shell/extensions/noannoyance-fork" = {
-        ignore-list-by-class = [
-          "Signal"
-        ];
+        window-demands-attention-focus = true;
       };
 
       "org/gnome/shell/extensions/tiling-assistant" = {

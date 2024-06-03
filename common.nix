@@ -97,7 +97,6 @@ in
       gnomeExtensions.extension-list
       gnomeExtensions.just-perfection
       gnomeExtensions.lock-keys
-      gnomeExtensions.noannoyance-fork
       gnomeExtensions.removable-drive-menu
       gnomeExtensions.tiling-assistant
       gnomeExtensions.user-themes
