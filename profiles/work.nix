@@ -172,6 +172,36 @@ in
           sso_region = us-east-1
           sso_role_name = selfsvcUatOperator
           sso_start_url = https://${company}.awsapps.com/start
+
+          [profile workloads-production]
+          output = json
+          region = us-east-1
+          s3 =
+              signature_version = s3v4
+          sso_account_id = 975049948807
+          sso_region = us-east-1
+          sso_role_name = wrkloadProdOperator
+          sso_start_url = https://${company}.awsapps.com/start
+
+          [profile workloads-staging]
+          output = json
+          region = us-east-1
+          s3 =
+              signature_version = s3v4
+          sso_account_id = 767397785371
+          sso_region = us-east-1
+          sso_role_name = wrkloadStagingOperator
+          sso_start_url = https://${company}.awsapps.com/start
+
+          [profile workloads-uat]
+          output = json
+          region = us-east-1
+          s3 =
+              signature_version = s3v4
+          sso_account_id = 533267336757
+          sso_region = us-east-1
+          sso_role_name = wrkloadUatOperator
+          sso_start_url = https://${company}.awsapps.com/start
         '';
 
         ".aws/credentials".text = ''
