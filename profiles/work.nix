@@ -206,6 +206,7 @@ in
             git -C "''${CLONE_ROOT}" clone "''${CLONE_SOURCE}/credit-building.git"
             git -C "''${CLONE_ROOT}" clone "''${CLONE_SOURCE}/${company}.git"
             git -C "''${CLONE_ROOT}" clone "''${CLONE_SOURCE}/gitops.git"
+            git -C "''${CLONE_ROOT}" clone "''${CLONE_SOURCE}/mesh-poc.git"
 
             git -C "''${CLONE_ROOT}" clone "''${CLONE_SOURCE}/jcardoso-app.git"
             git -C "''${CLONE_ROOT}" clone "''${CLONE_SOURCE}/jcardoso-eks.git"
@@ -293,6 +294,9 @@ in
                   },
                   {
                       "path": "./jcardoso-vpc"
+                  },
+                  {
+                      "path": "./mesh-poc"
                   },
                   {
                       "path": "./self-service/self-service-api"
