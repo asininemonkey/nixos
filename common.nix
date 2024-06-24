@@ -80,7 +80,6 @@ in
       distrobox
       dive
       docker-credential-helpers
-      epiphany
       exfat
       eza
       fastfetch
@@ -141,6 +140,7 @@ in
       tmux
       tree
       trippy
+      ungoogled-chromium
       unzip
       usbutils
       virt-viewer
@@ -360,6 +360,7 @@ in
       description = "Jose Cardoso";
 
       extraGroups = [
+        "dialout"
         "docker"
         "networkmanager"
         "wheel"
