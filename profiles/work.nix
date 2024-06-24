@@ -230,30 +230,21 @@ in
             CLONE_ROOT="''${HOME}/Documents/Source/Work"
             CLONE_SOURCE="git@github.com:${company}"
 
-            mkdir --parents "''${CLONE_ROOT}/friday"
-            mkdir --parents "''${CLONE_ROOT}/self-service"
-
             git -C "''${CLONE_ROOT}" clone "''${CLONE_SOURCE}/credit-building.git"
             git -C "''${CLONE_ROOT}" clone "''${CLONE_SOURCE}/${company}.git"
+            git -C "''${CLONE_ROOT}" clone "''${CLONE_SOURCE}/friday-batch.git"
+            git -C "''${CLONE_ROOT}" clone "''${CLONE_SOURCE}/friday-ecs.git"
+            git -C "''${CLONE_ROOT}" clone "''${CLONE_SOURCE}/friday-harness.git"
+            git -C "''${CLONE_ROOT}" clone "''${CLONE_SOURCE}/friday-infrastructure.git"
+            git -C "''${CLONE_ROOT}" clone "''${CLONE_SOURCE}/friday-performance.git"
+            git -C "''${CLONE_ROOT}" clone "''${CLONE_SOURCE}/friday-runbooks.git"
+            git -C "''${CLONE_ROOT}" clone "''${CLONE_SOURCE}/fridaycardapp.git"
             git -C "''${CLONE_ROOT}" clone "''${CLONE_SOURCE}/gitops.git"
+            git -C "''${CLONE_ROOT}" clone "''${CLONE_SOURCE}/joey-card.git"
+            git -C "''${CLONE_ROOT}" clone "''${CLONE_SOURCE}/joey-sdk.git"
             git -C "''${CLONE_ROOT}" clone "''${CLONE_SOURCE}/mesh-poc.git"
-
-            git -C "''${CLONE_ROOT}" clone "''${CLONE_SOURCE}/jcardoso-app.git"
-            git -C "''${CLONE_ROOT}" clone "''${CLONE_SOURCE}/jcardoso-eks.git"
-            git -C "''${CLONE_ROOT}" clone "''${CLONE_SOURCE}/jcardoso-vpc.git"
-
-            git -C "''${CLONE_ROOT}/friday" clone "''${CLONE_SOURCE}/friday-batch.git"
-            git -C "''${CLONE_ROOT}/friday" clone "''${CLONE_SOURCE}/friday-ecs.git"
-            git -C "''${CLONE_ROOT}/friday" clone "''${CLONE_SOURCE}/friday-harness.git"
-            git -C "''${CLONE_ROOT}/friday" clone "''${CLONE_SOURCE}/friday-infrastructure.git"
-            git -C "''${CLONE_ROOT}/friday" clone "''${CLONE_SOURCE}/friday-performance.git"
-            git -C "''${CLONE_ROOT}/friday" clone "''${CLONE_SOURCE}/friday-runbooks.git"
-            git -C "''${CLONE_ROOT}/friday" clone "''${CLONE_SOURCE}/fridaycardapp.git"
-            git -C "''${CLONE_ROOT}/friday" clone "''${CLONE_SOURCE}/joey-card.git"
-            git -C "''${CLONE_ROOT}/friday" clone "''${CLONE_SOURCE}/joey-sdk.git"
-
-            git -C "''${CLONE_ROOT}/self-service" clone "''${CLONE_SOURCE}/self-service-api.git"
-            git -C "''${CLONE_ROOT}/self-service" clone "''${CLONE_SOURCE}/self-service-web.git"
+            git -C "''${CLONE_ROOT}" clone "''${CLONE_SOURCE}/self-service-api.git"
+            git -C "''${CLONE_ROOT}" clone "''${CLONE_SOURCE}/self-service-web.git"
           '';
         };
 
@@ -287,52 +278,43 @@ in
                       "path": "./${company}"
                   },
                   {
-                      "path": "./friday/fridaycardapp"
+                      "path": "./friday-batch"
                   },
                   {
-                      "path": "./friday/friday-batch"
+                      "path": "./friday-ecs"
                   },
                   {
-                      "path": "./friday/friday-ecs"
+                      "path": "./friday-harness"
                   },
                   {
-                      "path": "./friday/friday-harness"
+                      "path": "./friday-infrastructure"
                   },
                   {
-                      "path": "./friday/friday-infrastructure"
+                      "path": "./friday-performance"
                   },
                   {
-                      "path": "./friday/friday-performance"
+                      "path": "./friday-runbooks"
                   },
                   {
-                      "path": "./friday/friday-runbooks"
-                  },
-                  {
-                      "path": "./friday/joey-card"
-                  },
-                  {
-                      "path": "./friday/joey-sdk"
+                      "path": "./fridaycardapp"
                   },
                   {
                       "path": "./gitops"
                   },
                   {
-                      "path": "./jcardoso-app"
+                      "path": "./joey-card"
                   },
                   {
-                      "path": "./jcardoso-eks"
-                  },
-                  {
-                      "path": "./jcardoso-vpc"
+                      "path": "./joey-sdk"
                   },
                   {
                       "path": "./mesh-poc"
                   },
                   {
-                      "path": "./self-service/self-service-api"
+                      "path": "./self-service-api"
                   },
                   {
-                      "path": "./self-service/self-service-web"
+                      "path": "./self-service-web"
                   }
               ],
               "settings": {
