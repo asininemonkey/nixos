@@ -143,6 +143,10 @@ in
       "org/gnome/mutter" = {
         center-new-windows = true;
         dynamic-workspaces = true;
+
+        experimental-features = [
+          "variable-refresh-rate"
+        ];
       };
 
       "org/gnome/nautilus/preferences" = {
@@ -822,7 +826,7 @@ in
           guest_os="windows"
           iso="windows-11/latest-windows-11.iso"
           preallocation="metadata"
-          # secureboot="on"
+          secureboot="on"
           tpm="on"
         '';
       };

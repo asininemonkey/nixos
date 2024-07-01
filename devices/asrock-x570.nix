@@ -41,6 +41,7 @@
                   <width>3440</width>
                   <height>1440</height>
                   <rate>119.991</rate>
+                  <ratemode>variable</ratemode>
                 </mode>
               </monitor>
             </logicalmonitor>
