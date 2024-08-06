@@ -468,8 +468,9 @@ in
                   "foreground": "black",
                   "powerline_symbol": "\ue0b0",
                   "properties": {
-                    "folder_icon": "\uf115",
+                    "folder_icon": "\uf115 ",
                     "folder_separator_icon": " \ue0b1 ",
+                    "home_icon": "\uf46d ",
                     "style": "agnoster"
                   },
                   "style": "powerline",
