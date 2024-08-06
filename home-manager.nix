@@ -441,14 +441,18 @@ in
                   "foreground": "white",
                   "powerline_symbol": "\ue0b0",
                   "style": "powerline",
-                  "template": " {{ if .Env.DEVBOX_SHELL_ENABLED }}Devbox Shell{{ end }} ",
+                  "template": " {{ if .Env.DEVBOX_SHELL_ENABLED }}\uf489  Devbox{{ end }} ",
                   "type": "text"
                 },
                 {
                   "background": "magenta",
                   "foreground": "black",
                   "powerline_symbol": "\ue0b0",
+                  "properties": {
+                    "time_format": "3:04:05 PM"
+                  },
                   "style": "powerline",
+                  "template": " \uf017  {{ .CurrentDate | date .Format }} ",
                   "type": "time"
                 },
                 {
@@ -456,7 +460,7 @@ in
                   "foreground": "black",
                   "powerline_symbol": "\ue0b0",
                   "style": "powerline",
-                  "template": " {{ .UserName }}@{{ .HostName }} ",
+                  "template": " {{ if .SSHSession }}\ueba9  {{ else }}\uea7a  {{ end }}{{ .UserName }}@{{ .HostName }} ",
                   "type": "session"
                 },
                 {
@@ -466,7 +470,7 @@ in
                   "properties": {
                     "folder_icon": "\uf115",
                     "folder_separator_icon": " \ue0b1 ",
-                    "style": "folder"
+                    "style": "agnoster"
                   },
                   "style": "powerline",
                   "template": " {{ .Path }} ",
@@ -475,9 +479,13 @@ in
                 {
                   "background": "green",
                   "foreground": "black",
+                  "properties": {
+                    "fetch_status": true,
+                    "fetch_upstream_icon": true
+                  },
                   "powerline_symbol": "\ue0b0",
                   "style": "powerline",
-                  "template": " {{ .HEAD }} ",
+                  "template": " {{ .UpstreamIcon }} {{ .HEAD }}{{ if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }} \uf0c7 {{ .StashCount }}{{ end }} ",
                   "type": "git"
                 },
                 {
@@ -743,6 +751,10 @@ in
         [ ! -d ''${ZINIT_HOME}/.git ] && git clone 'https://github.com/zdharma-continuum/zinit.git' "''${ZINIT_HOME}"
 
         source "''${ZINIT_HOME}/zinit.zsh"
+
+        ## Oh My Zsh Plugins
+        zinit snippet OMZP::git
+        zinit snippet OMZP::kubectl
 
         # Fastfetch
         fastfetch
