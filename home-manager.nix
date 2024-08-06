@@ -768,7 +768,7 @@ in
         alias 'ncu'='sudo nix-channel --update'
         alias 'nrd'='sudo nixos-rebuild dry-activate'
         alias 'nrs'='sudo nixos-rebuild switch'
-        alias 'nso'='nix --extra-experimental-features nix-command store optimise'
+        alias 'nso'='nix store optimise'
         alias 'nu'='sudo nix-channel --update && sudo nixos-rebuild switch'
         alias 'ping'='trip'
         alias 'sc'='scrcpy --keyboard uhid --max-fps 60 --max-size 1920 --no-audio --video-codec h265'

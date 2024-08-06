@@ -221,9 +221,16 @@ in
     nftables.enable = true;
   };
 
-  nix.settings.allowed-users = [
-    "@wheel"
-  ];
+  nix.settings = {
+    allowed-users = [
+      "@wheel"
+    ];
+
+    experimental-features = [
+      "flakes"
+      "nix-command"
+    ];
+  };
 
   nixpkgs.config = {
     allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
