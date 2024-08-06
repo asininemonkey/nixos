@@ -753,6 +753,9 @@ in
 
         source "''${ZINIT_HOME}/zinit.zsh"
 
+        ## Oh My Zsh Libraries 
+        zinit snippet OMZL::history.zsh
+
         ## Oh My Zsh Plugins
         zinit snippet OMZP::git
         zinit snippet OMZP::kubectl
