@@ -474,7 +474,7 @@ in
                     "style": "agnoster"
                   },
                   "style": "powerline",
-                  "template": " {{ .Path }} ",
+                  "template": " {{ path .Path .Location }} ",
                   "type": "path"
                 },
                 {
