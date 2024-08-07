@@ -74,13 +74,13 @@ in
           export OP_ACCOUNT="JMEFUTV6DJDCBNLIUHRSTFIXOM"
         '';
 
-        "Documents/Source/clone-repos.sh" = {
+        "Source/clone-repos.sh" = {
           executable = true;
 
           text = ''
             #!/usr/bin/env zsh
 
-            CLONE_ROOT="''${HOME}/Documents/Source"
+            CLONE_ROOT="''${HOME}/Source"
 
             for CLONE_DIRECTORY in Personal
             do
@@ -100,7 +100,7 @@ in
           '';
         };
 
-        "Documents/Source/Personal/personal.code-workspace".text = ''
+        "Source/Personal/personal.code-workspace".text = ''
           {
               "extensions": {
                   "recommendations": [

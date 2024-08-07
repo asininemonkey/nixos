@@ -238,13 +238,13 @@ in
           export OP_ACCOUNT="DB4GTH3CEZFDBFA4RXBBFXCJBY"
         '';
 
-        "Documents/Source/clone-repos.sh" = {
+        "Source/clone-repos.sh" = {
           executable = true;
 
           text = ''
             #!/usr/bin/env zsh
 
-            CLONE_ROOT="''${HOME}/Documents/Source/Work"
+            CLONE_ROOT="''${HOME}/Source/Work"
             CLONE_SOURCE="git@github.com:${company}"
 
             git -C "''${CLONE_ROOT}" clone "''${CLONE_SOURCE}/credit-building.git"
@@ -266,7 +266,7 @@ in
           '';
         };
 
-        "Documents/Source/Work/devbox.json".text = ''
+        "Source/Work/devbox.json".text = ''
           {
             "env": {
               "AWS_PAGER": "",
@@ -294,7 +294,7 @@ in
           }
         '';
 
-        "Documents/Source/Work/work.code-workspace".text = ''
+        "Source/Work/work.code-workspace".text = ''
           {
               "extensions": {
                   "recommendations": [

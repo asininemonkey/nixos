@@ -470,7 +470,18 @@ in
                   "properties": {
                     "folder_icon": "\uf115 ",
                     "folder_separator_icon": " \ue0b1 ",
-                    "home_icon": "\uf46d ",
+                    "home_icon": "\udb84\udcb6 ",
+                    "mapped_locations": {
+                      "/etc/nixos": "\uf313 ",
+                      "~/Documents": "\udb86\uddf7 ",
+                      "~/Downloads": "\udb84\udce9 ",
+                      "~/Music": "\udb84\udf5a ",
+                      "~/Pictures": "\udb85\udf8b ",
+                      "~/Public": "\udb84\udced ",
+                      "~/Source": "\udb83\udd0a ",
+                      "~/Templates": "\udb84\udee4 ",
+                      "~/Videos": "\udb86\uddfb "
+                    },
                     "style": "agnoster"
                   },
                   "style": "powerline",
@@ -1146,8 +1157,8 @@ in
 
       go = { # https://nix-community.github.io/home-manager/options.xhtml#opt-programs.go.enable
         enable = true;
-        goBin = "Documents/Source/Go/bin";
-        goPath = "Documents/Source/Go";
+        goBin = "Source/Go/bin";
+        goPath = "Source/Go";
       };
 
       mpv = { # https://nix-community.github.io/home-manager/options.xhtml#opt-programs.mpv.enable
