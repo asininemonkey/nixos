@@ -107,6 +107,7 @@ in
       gnomeExtensions.user-themes
       gnomeExtensions.window-list
       gnumake
+      go
       gpu-viewer
       hunspell
       hunspellDicts.en-gb-ise

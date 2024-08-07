@@ -811,9 +811,12 @@ in
         HISTSIZE="10000"
         SAVEHIST="10000"
 
+        export GOPATH="''${HOME}/Source/Go"
+
         export AWS_PAGER=""
         export AWS_SDK_LOAD_CONFIG="true"
         export EXA_ICON_SPACING="2"
+        export GOBIN="''${GOPATH}/bin"
         export PATH="''${PATH}''${PATH:+:}''${GOBIN}"
         export SSH_AUTH_SOCK="''${HOME}/.1password/agent.sock"
       '';
@@ -1153,12 +1156,6 @@ in
 
         userEmail = "65740649+asininemonkey@users.noreply.github.com";
         userName = "Jose Cardoso";
-      };
-
-      go = { # https://nix-community.github.io/home-manager/options.xhtml#opt-programs.go.enable
-        enable = true;
-        goBin = "Source/Go/bin";
-        goPath = "Source/Go";
       };
 
       mpv = { # https://nix-community.github.io/home-manager/options.xhtml#opt-programs.mpv.enable
