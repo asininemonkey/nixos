@@ -6,9 +6,22 @@
 }:
 
 let
-  # background-image = builtins.fetchurl "https://www.xxx/yyy.zzz";
-  background-image = "/run/current-system/sw/share/backgrounds/gnome/pixels-d.jpg";
+  background-image = "/run/current-system/sw/share/backgrounds/gnome/pixels-d.jpg"; # builtins.fetchurl "https://www.xxx/yyy.zzz";
   browser-homepage = "https://start.duckduckgo.com/?kad=en_GB&kak=-1&kaq=-1&kau=-1&kl=uk-en&kn=1";
+
+  colour-palette = { # https://colorkit.co/palette/ea3323-ff8b00-febb26-1eb253-017cf3-9c78fe/
+    background = {
+      one = "#ea3323";
+      two = "#ff8b00";
+      three = "#febb26";
+      four = "#1eb253";
+      five = "#017cf3";
+      six = "#9c78fe";
+    };
+
+    foreground = "#000000";
+  };
+
   font-family = "Iosevka Nerd Font";
   tailnet-name = "fable-blues.ts.net";
   tailnet-server = "intel-nuc";
@@ -302,68 +315,68 @@ in
             "modules": [
                 {
                     "key": "╭─ 󰌢 ",
-                    "keyColor": "green",
+                    "keyColor": "red",
                     "type": "host"
                 },
                 {
                     "key": "├─ 󰻠 ",
-                    "keyColor": "green",
+                    "keyColor": "red",
                     "type": "cpu"
                 },
                 {
                     "key": "├─ 󰍛 ",
-                    "keyColor": "green",
+                    "keyColor": "red",
                     "type": "gpu"
                 },
                 {
                     "key": "├─ 󰍹 ",
-                    "keyColor": "green",
+                    "keyColor": "red",
                     "type": "display"
                 },
                 {
                     "key": "├─  ",
-                    "keyColor": "green",
+                    "keyColor": "red",
                     "type": "disk"
                 },
                 {
                     "key": "╰─ 󰑭 ",
-                    "keyColor": "green",
+                    "keyColor": "red",
                     "type": "memory"
                 },
                 "break",
                 {
                     "key": "╭─  ",
-                    "keyColor": "yellow",
+                    "keyColor": "green",
                     "type": "shell"
                 },
                 {
                     "key": "├─  ",
-                    "keyColor": "yellow",
+                    "keyColor": "green",
                     "type": "terminal"
                 },
                 {
                     "key": "├─  ",
-                    "keyColor": "yellow",
+                    "keyColor": "green",
                     "type": "de"
                 },
                 {
                     "key": "├─  ",
-                    "keyColor": "yellow",
+                    "keyColor": "green",
                     "type": "wm"
                 },
                 {
                     "key": "├─ 󰧨 ",
-                    "keyColor": "yellow",
+                    "keyColor": "green",
                     "type": "lm"
                 },
                 {
                     "key": "├─ 󰉼 ",
-                    "keyColor": "yellow",
+                    "keyColor": "green",
                     "type": "theme"
                 },
                 {
                     "key": "╰─ 󰀻 ",
-                    "keyColor": "yellow",
+                    "keyColor": "green",
                     "type": "icons"
                 },
                 "break",
@@ -437,16 +450,16 @@ in
               "newline": true,
               "segments": [
                 {
-                  "background": "red",
-                  "foreground": "white",
+                  "background": "${colour-palette.background.one}",
+                  "foreground": "${colour-palette.foreground}",
                   "powerline_symbol": "\ue0b0",
                   "style": "powerline",
                   "template": " {{ if .Env.DEVBOX_SHELL_ENABLED }}\uf489  Devbox{{ end }} ",
                   "type": "text"
                 },
                 {
-                  "background": "magenta",
-                  "foreground": "black",
+                  "background": "${colour-palette.background.two}",
+                  "foreground": "${colour-palette.foreground}",
                   "powerline_symbol": "\ue0b0",
                   "properties": {
                     "time_format": "3:04:05 PM"
@@ -456,16 +469,16 @@ in
                   "type": "time"
                 },
                 {
-                  "background": "white",
-                  "foreground": "black",
+                  "background": "${colour-palette.background.three}",
+                  "foreground": "${colour-palette.foreground}",
                   "powerline_symbol": "\ue0b0",
                   "style": "powerline",
                   "template": " {{ if .SSHSession }}\ueba9  {{ else }}\uea7a  {{ end }}{{ .UserName }}@{{ .HostName }} ",
                   "type": "session"
                 },
                 {
-                  "background": "yellow",
-                  "foreground": "black",
+                  "background": "${colour-palette.background.four}",
+                  "foreground": "${colour-palette.foreground}",
                   "powerline_symbol": "\ue0b0",
                   "properties": {
                     "folder_icon": "\uf115 ",
@@ -489,8 +502,8 @@ in
                   "type": "path"
                 },
                 {
-                  "background": "green",
-                  "foreground": "black",
+                  "background": "${colour-palette.background.five}",
+                  "foreground": "${colour-palette.foreground}",
                   "properties": {
                     "fetch_status": true,
                     "fetch_upstream_icon": true
@@ -501,8 +514,8 @@ in
                   "type": "git"
                 },
                 {
-                  "background": "blue",
-                  "foreground": "white",
+                  "background": "${colour-palette.background.six}",
+                  "foreground": "${colour-palette.foreground}",
                   "powerline_symbol": "\ue0b0",
                   "properties": {
                     "context_aliases": {
