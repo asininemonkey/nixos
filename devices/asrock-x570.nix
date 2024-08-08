@@ -113,6 +113,7 @@
 
       allow hash "VlQdu2UoDZmeF2eKvWpLnf7IsRdYcFDaZT5dgBAX7+s="        # Creative Speaker
       allow hash "tePaOBipPkv0w+43m89QSxmpyxK4O+5c2TCkEzUT+2k="        # Corsair PSU
+      allow hash "VVbAZs/7huTs9wzYc9hAE3ybG+F3hAo7pa56Pr20qyc="        # Fingerprint Reader
       allow hash "OlAZ0WVYEJAB4aD4crBc2XT3YD9Y35l69FhAnUkd4+Y="        # Garmin Watch
       allow hash "Q26mMR4yTWM+GsoqXRtY81foWerxuan04933WMq7VSQ="        # Keychron Keyboard
       allow hash "yXobwMW1Gw0jxMPJdKyLWbxVAsqSFFtSaKn792aP87c="        # Logitech Camera

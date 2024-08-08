@@ -289,6 +289,25 @@ in
   };
 
   security = {
+    pam = {
+      services = {
+        login = {
+          fprintAuth = true;
+          u2fAuth = true;
+        };
+
+        sudo = {
+          fprintAuth = true;
+          u2fAuth = true;
+        };
+      };
+
+      u2f = {
+        cue = true;
+        enable = true;
+      };
+    };
+
     rtkit.enable = true;
     sudo.execWheelOnly = true;
 
@@ -321,6 +340,7 @@ in
       '';
     };
 
+    fprintd.enable = true;
     fwupd.enable = true;
     iperf3.enable = true;
     mullvad-vpn.enable = true;
@@ -431,7 +451,17 @@ in
     '';
   };
 
-  systemd.extraConfig = "DefaultLimitNOFILE=2048";
+  systemd = {
+    extraConfig = "DefaultLimitNOFILE=2048";
+
+    services.fprintd = {
+      serviceConfig.Type = "simple";
+
+      wantedBy = [
+        "multi-user.target"
+      ];
+    };
+  };
 
   time.timeZone = "Europe/London";
 

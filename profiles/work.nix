@@ -418,20 +418,6 @@ in
     "3.uk.pool.ntp.org"
   ];
 
-  security = {
-    pam = {
-      services = {
-        login.u2fAuth = true;
-        sudo.u2fAuth = true;
-      };
-
-      u2f = {
-        cue = true;
-        enable = true;
-      };
-    };
-  };
-
   services = {
     chrony.enableNTS = false;
     usbguard.enable = true;

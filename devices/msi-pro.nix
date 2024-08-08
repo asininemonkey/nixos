@@ -124,6 +124,7 @@
     usbguard.rules = ''
       # usbguard generate-policy
 
+      allow hash "VVbAZs/7huTs9wzYc9hAE3ybG+F3hAo7pa56Pr20qyc=" # Fingerprint Reader
       allow hash "M7TWJmUTUZr/fVMQQYY6QXU/FQ3pCBfSFnVupc2X0iA=" # Intel Bluetooth
       allow hash "P1PFVlVCFRHNkvxuC9Jh5Ae+wofyPgXtgyTPpej9YrY=" # Keychron Keyboard
       allow hash "EhX4Eu+u69SQBRB41ITnKdTEt2jQjpsTHNbRfU35+QM=" # Logitech Receiver
