@@ -156,6 +156,7 @@ in
       ungoogled-chromium
       unzip
       usbutils
+      ventoy
       virt-viewer
       vlc
       wakelan
