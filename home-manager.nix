@@ -523,7 +523,7 @@ in
                     }
                   },
                   "style": "powerline",
-                  "template": " \udb84\udcfe {{ .Context }}{{ if .Namespace }} :: {{ .Namespace }}{{ end }} ",
+                  "template": " \udb84\udcfe  {{ .Context }}{{ if .Namespace }} :: {{ .Namespace }}{{ end }} ",
                   "type": "kubectl"
                 }
               ],
