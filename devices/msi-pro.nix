@@ -129,6 +129,7 @@
       allow hash "P1PFVlVCFRHNkvxuC9Jh5Ae+wofyPgXtgyTPpej9YrY=" # Keychron Keyboard
       allow hash "EhX4Eu+u69SQBRB41ITnKdTEt2jQjpsTHNbRfU35+QM=" # Logitech Receiver
       allow hash "FrzXT/qv1CFLgGIGczUmfT818wGFhXJF6IUv3IT0/DM=" # Realtek Billboard
+      allow hash "U2ggp+1IbZXbviK5ZSbahLv8DZjdvkvzDWVkW2sx1JM=" # SanDisk Extreme Pro
       allow hash "3AWS7hVImBt+rc1P8uxiuF85l84jowWHyCJQAFUc4tM=" # Sennheiser Headphones
       allow hash "TUonI3xjdnKzqUJ6Yfo05B2ujl8v5tX5qiRWRXaiIyA=" # Sennheiser Headphones (Hub)
       allow hash "vTQDxYra1S117L9vQ5ccQRR6oQs4kBp2oXcZtvDcCSM=" # Yubico Yubikey
