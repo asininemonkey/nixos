@@ -33,6 +33,8 @@ in
     ];
 
     systemPackages = with pkgs; [
+      celluloid
+      dconf2nix
       gnome-firmware
       gnome.dconf-editor
       gnome.ghex
@@ -57,6 +59,10 @@ in
 
   home-manager.users.jcardoso = { config, lib, ... }: with lib.hm.gvariant; {
     dconf.settings = { # https://nix-community.github.io/home-manager/options.xhtml#opt-dconf.settings
+      "io/github/celluloid-player/celluloid" = {
+        mpv-options = "hwdec=vaapi";
+      };
+
       "org/gnome/calculator" = {
         button-mode = "advanced";
         refresh-interval = 86400;

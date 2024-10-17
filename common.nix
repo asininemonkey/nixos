@@ -62,9 +62,7 @@
       ascii-image-converter
       awscli2
       btop
-      celluloid
       clinfo
-      dconf2nix
       devbox
       distrobox
       dive

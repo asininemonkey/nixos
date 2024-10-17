@@ -30,14 +30,6 @@ in
 {
   home-manager.users.jcardoso = { config, lib, ... }: with lib.hm.gvariant; {
     dconf.settings = { # https://nix-community.github.io/home-manager/options.xhtml#opt-dconf.settings
-      "ca/desrt/dconf-editor" = {
-        show-warning = false;
-      };
-
-      "io/github/celluloid-player/celluloid" = {
-        mpv-options = "hwdec=vaapi";
-      };
-
       "org/virt-manager/virt-manager/connections" = {
         autoconnect = ["qemu:///system"];
         uris = ["qemu:///system"];

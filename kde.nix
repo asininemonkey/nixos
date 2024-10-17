@@ -21,6 +21,9 @@ in
       konsole
       plasma-browser-integration
     ];
+
+    systemPackages = with pkgs; [
+    ];
   };
 
   home-manager.users.jcardoso = { config, ... }: {
