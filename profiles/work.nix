@@ -30,13 +30,6 @@ in
         sleep-inactive-battery-timeout = 0;
         sleep-inactive-battery-type = "nothing";
       };
-
-      "org/gnome/shell" = {
-        favorite-apps = [
-          "slack.desktop"
-          "Zoom.desktop"
-        ];
-      };
     };
 
     home = {

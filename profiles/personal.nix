@@ -186,6 +186,5 @@ in
   ];
 
   programs.steam.enable = true;
-
   services.chrony.enableNTS = true;
 }
