@@ -14,19 +14,19 @@ in
 
 {
   environment = {
-    gnome.excludePackages = with pkgs.gnome; [
+    gnome.excludePackages = with pkgs; [
       cheese
       epiphany
       geary
       gnome-calendar
+      gnome-connections
+      gnome-console
       gnome-contacts
       gnome-music
+      gnome-photos
       gnome-shell-extensions
-      pkgs.gnome-connections
-      pkgs.gnome-console
-      pkgs.gnome-photos
-      pkgs.gnome-text-editor
-      pkgs.gnome-tour
+      gnome-text-editor
+      gnome-tour
       simple-scan
       totem
       yelp
@@ -34,11 +34,11 @@ in
 
     systemPackages = with pkgs; [
       celluloid
+      dconf-editor
       dconf2nix
+      ghex
       gnome-firmware
-      gnome.dconf-editor
-      gnome.ghex
-      gnome.gnome-tweaks
+      gnome-tweaks
       gnomeExtensions.alphabetical-app-grid
       gnomeExtensions.appindicator
       gnomeExtensions.astra-monitor
@@ -72,7 +72,7 @@ in
 
       "org/gnome/clocks" = {
         world-clocks = [
-          ([ 
+          ([
             (mkDictionaryEntry ["location" (mkVariant (mkTuple [
               (mkUint32 2)
               (mkVariant (mkTuple [
@@ -84,7 +84,7 @@ in
               ]))
             ]))])
           ])
-          ([ 
+          ([
             (mkDictionaryEntry ["location" (mkVariant (mkTuple [
               (mkUint32 2)
               (mkVariant (mkTuple [
@@ -270,7 +270,7 @@ in
 
       "org/gnome/shell/world-clocks" = {
         locations = [
-          ([ 
+          ([
             (mkDictionaryEntry ["location" (mkVariant (mkTuple [
               (mkUint32 2)
               (mkVariant (mkTuple [
@@ -282,7 +282,7 @@ in
               ]))
             ]))])
           ])
-          ([ 
+          ([
             (mkDictionaryEntry ["location" (mkVariant (mkTuple [
               (mkUint32 2)
               (mkVariant (mkTuple [
@@ -436,7 +436,7 @@ in
 
   services = {
     udev.packages = with pkgs; [
-      gnome.gnome-settings-daemon
+      gnome-settings-daemon
     ];
 
     xserver = {

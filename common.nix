@@ -78,6 +78,7 @@
       gnumake
       go
       gpu-viewer
+      helm-ls # Zed Editor
       hunspell
       hunspellDicts.en-gb-ise
       iftop
@@ -97,6 +98,7 @@
       lynis
       nano
       nfs-utils
+      nixd # Zed Editor
       nmap
       ntfs3g
       nvme-cli
@@ -165,7 +167,7 @@
   };
 
   hardware = {
-    opengl.enable = true;
+    graphics.enable = true;
     pulseaudio.enable = false;
   };
 
@@ -175,14 +177,14 @@
     firewall = {
       checkReversePath = "loose";
       enable = true;
-      
+
       trustedInterfaces = [
         "cni0"
         "docker0"
         "tailscale0"
       ];
     };
- 
+
     networkmanager.enable = true;
     nftables.enable = true;
   };
@@ -235,7 +237,7 @@
     pam = {
       services = {
         login = {
-          fprintAuth = true;
+          fprintAuth = lib.mkForce true;
           u2fAuth = true;
         };
 
@@ -246,8 +248,8 @@
       };
 
       u2f = {
-        cue = true;
         enable = true;
+        settings.cue = true;
       };
     };
 
@@ -327,7 +329,7 @@
           "curve25519-sha256@libssh.org"
           "curve25519-sha256"
         ];
-        
+
         LogLevel = "VERBOSE";
 
         Macs = [

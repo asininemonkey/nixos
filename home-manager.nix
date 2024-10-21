@@ -402,7 +402,7 @@ in
 
         source "''${ZINIT_HOME}/zinit.zsh"
 
-        ## Oh My Zsh Libraries 
+        ## Oh My Zsh Libraries
         zinit snippet OMZL::history.zsh
 
         ## Oh My Zsh Plugins
@@ -860,6 +860,49 @@ in
           "window.zoomLevel" = 1;
           "workbench.editor.empty.hint" = "hidden";
           "workbench.startupEditor" = "none";
+        };
+      };
+
+      zed-editor = {
+        enable = true;
+
+        extensions = [
+          "dockerfile"
+          "env"
+          "git-firefly"
+          "make"
+          "nix"
+          "sql"
+          "terraform"
+          "toml"
+        ];
+
+        userSettings = {
+          buffer_font_family = font-family;
+          buffer_font_size = 20;
+
+          file_types = {
+            Helm = [
+              "**/helmfile.d/**/*.yaml"
+              "**/helmfile.d/**/*.yml"
+              "**/templates/**/*.tpl"
+              "**/templates/**/*.yaml"
+              "**/templates/**/*.yml"
+            ];
+          };
+
+          telemetry = {
+            diagnostics = false;
+            metrics = false;
+          };
+
+          theme = {
+            dark = "Andromeda";
+            light = "Andromeda";
+            mode = "dark";
+          };
+
+          ui_font_size = 20;
         };
       };
     };

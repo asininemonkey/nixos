@@ -6,9 +6,10 @@
 }:
 
 let
-  home-manager = fetchTarball "https://github.com/nix-community/home-manager/archive/release-${state-version}.tar.gz";
+  # home-manager = fetchTarball "https://github.com/nix-community/home-manager/archive/release-${state-version}.tar.gz";
+  home-manager = fetchTarball "https://github.com/nix-community/home-manager/archive/master.tar.gz";
   nixos-unstable = fetchTarball "https://github.com/nixos/nixpkgs/archive/nixos-unstable.tar.gz";
-  state-version = "24.05";
+  state-version = "24.11";
 in
 
 {
