@@ -73,6 +73,7 @@
       fastfetch
       geekbench
       gh
+      gitkraken
       glow
       glxinfo
       gnumake
