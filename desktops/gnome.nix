@@ -212,7 +212,6 @@ in
           "kitty.desktop"
           "obsidian.desktop"
           "signal-desktop.desktop"
-          "codium.desktop"
         ];
       };
 

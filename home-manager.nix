@@ -332,16 +332,6 @@ in
         export OP_PLUGIN_ALIASES_SOURCED=1
       '';
 
-      ".config/VSCodium/product.json".text = ''
-        {
-            "extensionsGallery": {
-                "cacheUrl": "https://vscode.blob.core.windows.net/gallery/index",
-                "itemUrl": "https://marketplace.visualstudio.com/items",
-                "serviceUrl": "https://marketplace.visualstudio.com/_apis/public/gallery"
-            }
-        }
-      '';
-
       ".hidden".text = "Public";
 
       ".local/share/applications/btop.desktop".source = config.lib.file.mkOutOfStoreSymlink "/dev/null";
@@ -415,7 +405,6 @@ in
 
       ".zsh_aliases_common".text = ''
         alias 'clean'='sudo nix-collect-garbage --delete-old && nix-collect-garbage --delete-old'
-        alias 'code'='codium'
         alias 'dig'='drill'
         alias 'dsc'='docker stop $(docker ps --quiet)'
         alias 'dsp'='docker system prune --all --force --volumes'
@@ -755,15 +744,15 @@ in
 
         extraConfig = {
           commit.gpgsign = true;
-          core.editor = "codium --wait";
+          core.editor = "zeditor --wait";
           credential.helper = "libsecret";
-          diff.tool = "codium";
-          difftool."codium".cmd = "codium --diff \${LOCAL} \${REMOTE} --wait";
+          # diff.tool = "xxx";
+          # difftool."xxx".cmd = "xxx --diff \${LOCAL} \${REMOTE} --wait";
           gpg."ssh".program = "/run/current-system/sw/bin/op-ssh-sign";
           gpg.format = "ssh";
           init.defaultBranch = "main";
-          merge.tool = "codium";
-          mergetool."codium".cmd = "codium --wait \${MERGED}";
+          # merge.tool = "xxx";
+          # mergetool."xxx".cmd = "xxx --wait \${MERGED}";
           pull.rebase = true;
           url."https://github.com".insteadOf = "ssh://git@github.com";
         };
@@ -812,55 +801,6 @@ in
         };
 
         serverAliveInterval = 60;
-      };
-
-      vscode = { # https://nix-community.github.io/home-manager/options.xhtml#opt-programs.vscode.enable
-        enable = true;
-        package = pkgs.unstable.vscodium-fhs;
-
-        userSettings = {
-          "diffEditor.ignoreTrimWhitespace" = false;
-          "editor.bracketPairColorization.enabled" = true;
-          "editor.fontFamily" = font-family;
-          "editor.fontSize" = 18;
-          "editor.fontWeight" = "normal";
-          "editor.guides.bracketPairs" = "active";
-          "editor.renderControlCharacters" = true;
-          "editor.renderWhitespace" = "all";
-          "explorer.confirmDelete" = false;
-
-          "files.associations" = {
-            "*.hcl" = "terraform";
-            "*.tm.hcl" = "terramate";
-          };
-
-          "git.autofetch" = true;
-          "git.confirmSync" = false;
-          "git.ignoreRebaseWarning" = true;
-          "git.replaceTagsWhenPull" = true;
-
-          "git.showActionButton" = {
-              "commit" = false;
-              "publish" = false;
-              "sync" = false;
-          };
-
-          "gitlens.rebaseEditor.ordering" = "asc";
-          "prettier.endOfLine" = "auto";
-          "prettier.tabWidth" = 4;
-          "redhat.telemetry.enabled" = false;
-          "scm.defaultViewMode" = "tree";
-          "scm.repositories.visible" = 20;
-          "security.workspace.trust.untrustedFiles" = "open";
-          "telemetry.telemetryLevel" = "off";
-          "terminal.integrated.fontFamily" = font-family;
-          "terminal.integrated.fontSize" = 18;
-          "terminal.integrated.fontWeight" = "normal";
-          "update.mode" = "none";
-          "window.zoomLevel" = 1;
-          "workbench.editor.empty.hint" = "hidden";
-          "workbench.startupEditor" = "none";
-        };
       };
 
       zed-editor = {

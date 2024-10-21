@@ -37,7 +37,7 @@ in
     imports = [
       (plasma-manager + "/modules")
     ];
-    
+
     # https://nix-community.github.io/plasma-manager/options.xhtml
     programs.plasma = {
       configFile = {
@@ -86,7 +86,6 @@ in
                   "applications:firefox.desktop"
                   "applications:kitty.desktop"
                   "applications:signal-desktop.desktop"
-                  "applications:codium.desktop"
                 ];
               };
             }
