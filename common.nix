@@ -33,7 +33,7 @@
 
   console = {
     earlySetup = true;
-    font = "ter-v32n";
+    # font = "ter-v32n";
 
     packages = with pkgs; [
       terminus_font
@@ -121,7 +121,6 @@
       tmux
       tree
       trippy
-      ungoogled-chromium
       unzip
       usbutils
       ventoy

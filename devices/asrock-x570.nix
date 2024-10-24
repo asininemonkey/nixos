@@ -11,7 +11,7 @@
       "sg" # Required by MakeMKV
     ];
 
-    kernelPackages = pkgs.linuxPackages_zen;
+    kernelPackages = pkgs.linuxPackages_latest;
   };
 
   environment.systemPackages = (with pkgs; [
@@ -23,13 +23,8 @@
   hardware = {
     nvidia = {
       modesetting.enable = true;
-
-      package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
-        persistencedSha256 = lib.fakeSha256;
-        settingsSha256 = "sha256-fPfIPwpIijoUpNlAUt9C8EeXR5In633qnlelL+btGbU=";
-        sha256_64bit = "sha256-gBkoJ0dTzM52JwmOoHjMNwcN2uBN46oIRZHAX8cDVpc=";
-        version = "550.120"; # https://www.nvidia.com/en-us/drivers/unix/
-      };
+      open = true;
+      package = config.boot.kernelPackages.nvidiaPackages.beta;
     };
 
     printers = {

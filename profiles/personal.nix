@@ -13,10 +13,8 @@ in
   environment.systemPackages = with pkgs; [
     chiaki
     darktable
-    fsuae-launcher
     mangohud
     pupdate
-    unstable.ryujinx
   ];
 
   home-manager.users.jcardoso = { config, lib, ... }: {

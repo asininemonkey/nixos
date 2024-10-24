@@ -84,8 +84,10 @@ in
                   "applications:1password.desktop"
                   "applications:org.kde.dolphin.desktop"
                   "applications:firefox.desktop"
+                  "applications:GitKraken Desktop.desktop"
                   "applications:kitty.desktop"
                   "applications:signal-desktop.desktop"
+                  "applications:dev.zed.Zed.desktop"
                 ];
               };
             }
