@@ -20,6 +20,7 @@ in
     plasma6.excludePackages = with pkgs.kdePackages; [
       akonadi
       breeze-icons
+      elisa
       kate
       konsole
       plasma-browser-integration

@@ -334,11 +334,6 @@ in
 
       ".hidden".text = "Public";
 
-      ".local/share/applications/btop.desktop".source = config.lib.file.mkOutOfStoreSymlink "/dev/null";
-      ".local/share/applications/cups.desktop".source = config.lib.file.mkOutOfStoreSymlink "/dev/null";
-      ".local/share/applications/mpv.desktop".source = config.lib.file.mkOutOfStoreSymlink "/dev/null";
-      ".local/share/applications/umpv.desktop".source = config.lib.file.mkOutOfStoreSymlink "/dev/null";
-
       ".ssh/config" = { # https://github.com/nix-community/home-manager/issues/322
         onChange = ''
           cat .ssh/config_source > .ssh/config
