@@ -157,8 +157,6 @@ in
         }
       ];
 
-      powerdevil.AC.autoSuspend.action = "nothing";
-
       workspace = {
         iconTheme = "Papirus-Dark";
         lookAndFeel = "org.kde.breezedark.desktop";

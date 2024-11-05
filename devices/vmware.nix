@@ -29,6 +29,19 @@
         ]
       '';
     };
+
+    programs.plasma = {
+      configFile.kscreenlockerrc = {
+        Daemon.Autolock = false;
+      };
+
+      powerdevil.AC = {
+        autoSuspend.action = "nothing";
+        dimDisplay.enable = false;
+        powerButtonAction = "nothing";
+        turnOffDisplay.idleTimeout = "never";
+      };
+    };
   };
 
   imports = [
