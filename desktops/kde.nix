@@ -10,8 +10,8 @@ let
   plasma-manager = pkgs.fetchFromGitHub {
     owner = "nix-community";
     repo = "plasma-manager";
-    rev = "247a8e677b51f053ca89dcf67059e24f85e47391";
-    sha256 = "sha256-2sVt2hbL+G0FzEESm/EZBewPOmNtZ6MTnYhsvHJW6Rs=";
+    rev = "f33173b9d22e554a6f869626bc01808d35995257";
+    sha256 = "sha256-pGF8L5g9QpkQtJP9JmNIRNZfcyhJHf7uT+d8tqI1h6Y=";
   };
 in
 
