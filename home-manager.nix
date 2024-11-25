@@ -37,6 +37,8 @@ in
     };
 
     home.file = { # https://nix-community.github.io/home-manager/options.xhtml#opt-home.file
+      ".config/autostart/org.fkoehler.KTailctl.desktop".source = "${pkgs.unstable.ktailctl}/share/applications/org.fkoehler.KTailctl.desktop";
+
       ".config/fastfetch/config.jsonc".text = ''
         {
             "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
@@ -428,12 +430,12 @@ in
         alias 'top'='btop'
         alias 'tracepath'='trip'
         alias 'tree'='tree -aghpuCD'
-        alias 'tshome'='sudo tailscale up --accept-routes --exit-node intel-nuc --reset --ssh'
-        alias 'tsmch'='sudo tailscale up --accept-routes --exit-node ch-zrh-wg-001.mullvad.ts.net --reset --ssh'
-        alias 'tsmgb'='sudo tailscale up --accept-routes --exit-node gb-glw-wg-001.mullvad.ts.net --reset --ssh'
-        alias 'tsmie'='sudo tailscale up --accept-routes --exit-node ie-dub-wg-101.mullvad.ts.net --reset --ssh'
-        alias 'tsreset'='sudo tailscale up --accept-routes --advertise-exit-node --reset --ssh'
-        alias 'tswork'='sudo tailscale up --accept-routes --exit-node msi-pro-work --reset --ssh'
+        alias 'tshome'='sudo tailscale up --accept-routes --exit-node intel-nuc --operator jcardoso --reset --ssh'
+        alias 'tsmch'='sudo tailscale up --accept-routes --exit-node ch-zrh-wg-001.mullvad.ts.net --operator jcardoso --reset --ssh'
+        alias 'tsmgb'='sudo tailscale up --accept-routes --exit-node gb-glw-wg-001.mullvad.ts.net --operator jcardoso --reset --ssh'
+        alias 'tsmie'='sudo tailscale up --accept-routes --exit-node ie-dub-wg-101.mullvad.ts.net --operator jcardoso --reset --ssh'
+        alias 'tsreset'='sudo tailscale up --accept-routes --advertise-exit-node --operator jcardoso --reset --ssh'
+        alias 'tswork'='sudo tailscale up --accept-routes --exit-node msi-pro-work --operator jcardoso --reset --ssh'
       '';
 
       ".zsh_envs_common".text = ''

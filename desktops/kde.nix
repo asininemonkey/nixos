@@ -59,6 +59,11 @@ in
           value = 2;
         };
 
+        KTailctlrc.Interface.startMinimized = {
+          immutable = true;
+          value = true;
+        };
+
         plasmashellrc."Notification Messages".klipperClearHistoryAskAgain = {
           immutable = true;
           value = false;

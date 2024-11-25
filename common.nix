@@ -117,7 +117,7 @@
       qpdf
       speedtest-cli
       step-cli
-      # tailspin
+      tailspin
       terramate
       tmux
       tree
@@ -133,6 +133,8 @@
       wget
       wl-clipboard
       yt-dlp
+    ]) ++ (with pkgs.unstable; [
+      ktailctl
     ]);
 
     variables = {
