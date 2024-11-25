@@ -62,28 +62,6 @@ in
           export AWS_SECRET_ACCESS_KEY="op://Personal/awhb35qeiidqikaej6ub2ftphm/credential"
           export OP_ACCOUNT="JMEFUTV6DJDCBNLIUHRSTFIXOM"
         '';
-
-        "Source/clone-repos.sh" = {
-          executable = true;
-
-          text = ''
-            #!/usr/bin/env zsh
-
-            CLONE_ROOT="''${HOME}/Source/Personal"
-            CLONE_SOURCE="git@github.com:asininemonkey"
-
-            mkdir -p "''${CLONE_ROOT}/''${CLONE_DIRECTORY}"
-
-            git -C "''${CLONE_ROOT}" clone "''${CLONE_SOURCE}/cv.josecardoso.com.git"
-            git -C "''${CLONE_ROOT}" clone "''${CLONE_SOURCE}/josecardoso.cloud.git"
-            git -C "''${CLONE_ROOT}" clone "''${CLONE_SOURCE}/josecardoso.com.git"
-            git -C "''${CLONE_ROOT}" clone "''${CLONE_SOURCE}/josecardoso.net.git"
-            git -C "''${CLONE_ROOT}" clone "''${CLONE_SOURCE}/miscellaneous.git"
-            git -C "''${CLONE_ROOT}" clone "''${CLONE_SOURCE}/miscellaneous-private.git"
-            git -C "''${CLONE_ROOT}" clone "''${CLONE_SOURCE}/nixos.git"
-            git -C "''${CLONE_ROOT}" clone "''${CLONE_SOURCE}/nixpkgs.git"
-          '';
-        };
       };
     };
 

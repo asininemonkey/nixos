@@ -230,37 +230,6 @@ in
           export OP_ACCOUNT="DB4GTH3CEZFDBFA4RXBBFXCJBY"
         '';
 
-        "Source/clone-repos.sh" = {
-          executable = true;
-
-          text = ''
-            #!/usr/bin/env zsh
-
-            CLONE_ROOT="''${HOME}/Source/Work"
-            CLONE_SOURCE="https://github.com/${company}"
-
-            git -C "''${CLONE_ROOT}" clone "''${CLONE_SOURCE}/${company}.git"
-            git -C "''${CLONE_ROOT}" clone "''${CLONE_SOURCE}/actions-argocd.git"
-            git -C "''${CLONE_ROOT}" clone "''${CLONE_SOURCE}/consumer-app.git"
-            git -C "''${CLONE_ROOT}" clone "''${CLONE_SOURCE}/credit-building.git"
-            git -C "''${CLONE_ROOT}" clone "''${CLONE_SOURCE}/friday-batch.git"
-            git -C "''${CLONE_ROOT}" clone "''${CLONE_SOURCE}/friday-ecs.git"
-            git -C "''${CLONE_ROOT}" clone "''${CLONE_SOURCE}/friday-harness.git"
-            git -C "''${CLONE_ROOT}" clone "''${CLONE_SOURCE}/friday-infrastructure.git"
-            git -C "''${CLONE_ROOT}" clone "''${CLONE_SOURCE}/friday-runbooks.git"
-            git -C "''${CLONE_ROOT}" clone "''${CLONE_SOURCE}/fridaycardapp.git"
-            git -C "''${CLONE_ROOT}" clone "''${CLONE_SOURCE}/gitops.git"
-            git -C "''${CLONE_ROOT}" clone "''${CLONE_SOURCE}/infrastructure.git"
-            git -C "''${CLONE_ROOT}" clone "''${CLONE_SOURCE}/jcardoso.git"
-            git -C "''${CLONE_ROOT}" clone "''${CLONE_SOURCE}/joey-card.git"
-            git -C "''${CLONE_ROOT}" clone "''${CLONE_SOURCE}/joey-sdk.git"
-            git -C "''${CLONE_ROOT}" clone "''${CLONE_SOURCE}/merchant-rewards.git"
-            git -C "''${CLONE_ROOT}" clone "''${CLONE_SOURCE}/security-waf.git"
-            git -C "''${CLONE_ROOT}" clone "''${CLONE_SOURCE}/self-service-api.git"
-            git -C "''${CLONE_ROOT}" clone "''${CLONE_SOURCE}/self-service-web.git"
-          '';
-        };
-
         "Source/Work/devbox.json".text = ''
           {
             "env": {
