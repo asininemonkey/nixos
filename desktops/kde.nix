@@ -42,9 +42,26 @@ in
     # https://nix-community.github.io/plasma-manager/options.xhtml
     programs.plasma = {
       configFile = {
+        klipperrc.General = {
+          KeepClipboardContents = {
+            immutable = true;
+            value = false;
+          };
+
+          MaxClipItems = {
+            immutable = true;
+            value = 10;
+          };
+        };
+
         kwinrc.Desktops.Number = {
           immutable = true;
           value = 2;
+        };
+
+        plasmashellrc."Notification Messages".klipperClearHistoryAskAgain = {
+          immutable = true;
+          value = false;
         };
       };
 
