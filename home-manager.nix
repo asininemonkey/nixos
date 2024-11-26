@@ -430,6 +430,7 @@ in
         alias 'top'='btop'
         alias 'tracepath'='trip'
         alias 'tree'='tree -aghpuCD'
+        alias 'tsaws'='sudo tailscale up --accept-routes --exit-node aws-eu-west-1 --operator jcardoso --reset --ssh'
         alias 'tshome'='sudo tailscale up --accept-routes --exit-node intel-nuc --operator jcardoso --reset --ssh'
         alias 'tsmch'='sudo tailscale up --accept-routes --exit-node ch-zrh-wg-001.mullvad.ts.net --operator jcardoso --reset --ssh'
         alias 'tsmgb'='sudo tailscale up --accept-routes --exit-node gb-glw-wg-001.mullvad.ts.net --operator jcardoso --reset --ssh'
@@ -785,18 +786,13 @@ in
         '';
 
         matchBlocks = {
-          "home-assistant" = {
-            hostname = "home-assistant.${tailnet-name}";
-            user = "root";
-          };
-
-          "openmediavault" = {
-            hostname = "openmediavault.${tailnet-name}";
-            user = "jcardoso";
+          "aws-eu-west-1" = {
+            hostname = "%h.${tailnet-name}";
+            user = "ubuntu";
           };
 
           "${tailnet-server}" = {
-            hostname = "${tailnet-server}.${tailnet-name}";
+            hostname = "%h.${tailnet-name}";
             user = "jcardoso";
           };
         };
