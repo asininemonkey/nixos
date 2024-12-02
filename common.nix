@@ -71,6 +71,7 @@
       exfat
       eza
       fastfetch
+      freerdp3
       geekbench
       gh
       gitkraken
