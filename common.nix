@@ -74,7 +74,6 @@
       freerdp3
       geekbench
       gh
-      gitkraken
       glow
       glxinfo
       gnumake
@@ -135,6 +134,7 @@
       wl-clipboard
       yt-dlp
     ]) ++ (with pkgs.unstable; [
+      gitkraken
       ktailctl
     ]);
 
