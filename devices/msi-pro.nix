@@ -145,6 +145,11 @@
       '';
     };
 
+    programs.plasma.powerdevil.AC = {
+      autoSuspend.action = "nothing";
+      powerButtonAction = "nothing";
+    };
+
     programs.zed-editor.userSettings.assistant.default_model.model = "llama3.2:latest";
   };
 

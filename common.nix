@@ -233,7 +233,11 @@
       '')
     ];
 
-    virt-manager.enable = true;
+    virt-manager = {
+      enable = true;
+      package = pkgs.unstable.virt-manager;
+    };
+
     zsh.enable = true;
   };
 
