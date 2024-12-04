@@ -67,6 +67,7 @@
       distrobox
       dive
       docker-credential-helpers
+      dmidecode
       dufs
       exfat
       eza
@@ -186,6 +187,7 @@
         "cni0"
         "docker0"
         "tailscale0"
+        "virbr0"
       ];
     };
 
