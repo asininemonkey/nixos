@@ -51,7 +51,6 @@
     ]);
 
     systemPackages = (if pkgs.stdenv.hostPlatform.system == "x86_64-linux" then with pkgs; [
-      cider
       # cryptomator
       pcloud
       quickemu
@@ -117,6 +116,7 @@
       pwgen
       qpdf
       speedtest-cli
+      spotify
       step-cli
       tailspin
       terramate
