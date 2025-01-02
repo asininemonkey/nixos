@@ -135,6 +135,7 @@
       wl-clipboard
       yt-dlp
     ]) ++ (with pkgs.unstable; [
+      ghostty
       gitkraken
       ktailctl
     ]);
