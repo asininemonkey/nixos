@@ -50,6 +50,7 @@
     ]);
 
     systemPackages = (if pkgs.stdenv.hostPlatform.system == "x86_64-linux" then with pkgs; [
+      libreoffice-fresh
       pcloud
       quickemu
       signal-desktop
@@ -93,7 +94,6 @@
       kubelogin-oidc
       kubernetes-helm
       ldns
-      libreoffice-fresh
       lm_sensors
       localsend
       lynis
