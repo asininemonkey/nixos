@@ -26,7 +26,7 @@ do
             ;;
         v)
             DEVICE='vmware'
-            PARTITION=''
+            PARTITION='p'
             STORAGE='/dev/nvme0n1'
             ;;
         z)
