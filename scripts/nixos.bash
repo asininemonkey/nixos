@@ -6,18 +6,13 @@ while [[ -z "${DEVICE}" ]]
 do
     clear
 
-    read -n 1 -p $'Available Devices:\n\n(a) ASRock X570 PC\n(m) MacBook Pro\n(p) MSI Pro PC\n(q) QEMU VM\n(v) VMware VM\n(z) ASUS Zenbook Laptop\n\nWhich Device? ' -s
+    read -n 1 -p $'Available Devices:\n\n(a) ASRock X570 PC\n(p) MSI Pro PC\n(q) QEMU VM\n(v) VMware VM\n(z) ASUS Zenbook Laptop\n\nWhich Device? ' -s
 
     case "${REPLY}" in
         a)
             DEVICE='asrock-x570'
             PARTITION='-part'
             STORAGE='/dev/disk/by-id/nvme-eui.e8238fa6bf530001001b448b45aac797'
-            ;;
-        m)
-            DEVICE='macbook-pro'
-            PARTITION='-part'
-            STORAGE='/dev/disk/by-id/nvme-nvme.106b-43303231333933303148324e4648544144-4150504c4520535344204150303531324e-00000001'
             ;;
         p)
             DEVICE='msi-pro'
@@ -32,7 +27,7 @@ do
         v)
             DEVICE='vmware'
             PARTITION=''
-            STORAGE='/dev/sda'
+            STORAGE='/dev/nvme0n1'
             ;;
         z)
             DEVICE='asus-zenbook'
