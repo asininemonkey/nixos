@@ -53,6 +53,7 @@
       pcloud
       quickemu
       signal-desktop
+      unstable.gitkraken
     ] else []) ++ (with pkgs; [
       aha
       amazon-ecr-credential-helper
@@ -132,7 +133,6 @@
       yt-dlp
     ]) ++ (with pkgs.unstable; [
       ghostty
-      gitkraken
       ktailctl
       sqlitestudio
     ]);
