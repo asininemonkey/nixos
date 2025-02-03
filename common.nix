@@ -83,7 +83,6 @@
       hunspell
       hunspellDicts.en-gb-ise
       iftop
-      immich-cli
       iperf
       iw
       jq

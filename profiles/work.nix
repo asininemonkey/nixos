@@ -212,10 +212,10 @@ in
         '';
 
         # pamu2fcfg --verbose
-        # macbook-pro-work - 'D9HsHdTeRtAZXl7fNjGiqrXbsdMhbo+ao0jd4pjn0VsnfBUEiJvLd2lRlfYe+S884bkQCBuWwSbzPIuuif2MCg==,VMR3XOWY21cmYugQqnrmBnqHSpJ4UMdyAVCHh2rTGgGUbhLziCVgv8wRCHwe29Z5wTR05Bpcce598jb+V4Y3LQ==,es256,+presence'
-        # msi-pro-work     - 'kdNTnXtsc/TPAmGK0BTB3s2jovOYtch2ofKTJpY3AWzVgnpXdy7UsCdU1ME3BD2bNsDxEKkSdRXKWUhraKm6qA==,I5x/SC7ABLFG2+TWBuZwsMox3qqbAwPNsY4aaeOn47KWM7zv2uK7D9YCDPY7KW1AbdIOhc4RmBkYkA93zoxi6A==,es256,+presence'
+        # msi-pro-work - 'kdNTnXtsc/TPAmGK0BTB3s2jovOYtch2ofKTJpY3AWzVgnpXdy7UsCdU1ME3BD2bNsDxEKkSdRXKWUhraKm6qA==,I5x/SC7ABLFG2+TWBuZwsMox3qqbAwPNsY4aaeOn47KWM7zv2uK7D9YCDPY7KW1AbdIOhc4RmBkYkA93zoxi6A==,es256,+presence'
+        # vmware-work-macbook-pro - 'g/q+egDG7kLgmMxSovyn+M5sR1j7YYwsJ/F9bpYGGc+K3LhQEA/JWPVevFK5JaVw0G+2pPWI1vSiULF2fozmow==,HbTZs5JcPGqmfPUx5SHYhENJDi8qKkj1pyVdV1N8oi2WCkMlYP2hym04A9nnd9yLN0OH7XTRBJqtgA4Vab58Ig==,es256,+presence'
         ".config/Yubico/u2f_keys".text = ''
-          jcardoso::D9HsHdTeRtAZXl7fNjGiqrXbsdMhbo+ao0jd4pjn0VsnfBUEiJvLd2lRlfYe+S884bkQCBuWwSbzPIuuif2MCg==,VMR3XOWY21cmYugQqnrmBnqHSpJ4UMdyAVCHh2rTGgGUbhLziCVgv8wRCHwe29Z5wTR05Bpcce598jb+V4Y3LQ==,es256,+presence:kdNTnXtsc/TPAmGK0BTB3s2jovOYtch2ofKTJpY3AWzVgnpXdy7UsCdU1ME3BD2bNsDxEKkSdRXKWUhraKm6qA==,I5x/SC7ABLFG2+TWBuZwsMox3qqbAwPNsY4aaeOn47KWM7zv2uK7D9YCDPY7KW1AbdIOhc4RmBkYkA93zoxi6A==,es256,+presence
+          jcardoso::kdNTnXtsc/TPAmGK0BTB3s2jovOYtch2ofKTJpY3AWzVgnpXdy7UsCdU1ME3BD2bNsDxEKkSdRXKWUhraKm6qA==,I5x/SC7ABLFG2+TWBuZwsMox3qqbAwPNsY4aaeOn47KWM7zv2uK7D9YCDPY7KW1AbdIOhc4RmBkYkA93zoxi6A==,es256,+presence:g/q+egDG7kLgmMxSovyn+M5sR1j7YYwsJ/F9bpYGGc+K3LhQEA/JWPVevFK5JaVw0G+2pPWI1vSiULF2fozmow==,HbTZs5JcPGqmfPUx5SHYhENJDi8qKkj1pyVdV1N8oi2WCkMlYP2hym04A9nnd9yLN0OH7XTRBJqtgA4Vab58Ig==,es256,+presence
         '';
 
         ".zsh_aliases_work".text = ''
