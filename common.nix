@@ -114,6 +114,7 @@
       qpdf
       speedtest-cli
       step-cli
+      sublime-merge
       tailspin
       terramate
       tmux
