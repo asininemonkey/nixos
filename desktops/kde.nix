@@ -102,7 +102,7 @@ in
             }
             {
               iconTasks = {
-                launchers = [
+                launchers = if pkgs.stdenv.hostPlatform.system == "x86_64-linux" then [
                   "applications:1password.desktop"
                   "applications:org.kde.dolphin.desktop"
                   "applications:firefox.desktop"
@@ -110,6 +110,15 @@ in
                   "applications:GitKraken Desktop.desktop"
                   "applications:obsidian.desktop"
                   "applications:signal-desktop.desktop"
+                  "applications:sublime_merge.desktop"
+                  "applications:dev.zed.Zed.desktop"
+                ] else [
+                  "applications:1password.desktop"
+                  "applications:org.kde.dolphin.desktop"
+                  "applications:firefox.desktop"
+                  "applications:com.mitchellh.ghostty.desktop"
+                  "applications:obsidian.desktop"
+                  "applications:sublime_merge.desktop"
                   "applications:dev.zed.Zed.desktop"
                 ];
               };

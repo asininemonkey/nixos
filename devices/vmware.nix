@@ -6,6 +6,10 @@
 {
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
+  environment.variables = {
+    ZED_ALLOW_EMULATED_GPU = 1;
+  };
+
   home-manager.users.jcardoso = { config, ... }: {
     home.file = {
       ".config/wireplumber/wireplumber.conf.d/virtual-machine-audio-fix.conf".text = ''
