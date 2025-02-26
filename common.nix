@@ -100,6 +100,7 @@
       moonlight-qt
       nano
       nfs-utils
+      nil # Zed Editor
       nixd # Zed Editor
       nmap
       ntfs3g

@@ -808,6 +808,7 @@ in
 
         userSettings = {
           assistant.version = "2";
+          auto_update = false;
           buffer_font_family = font-family;
           buffer_font_size = 20;
 
