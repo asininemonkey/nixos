@@ -9,8 +9,8 @@ let
   plasma-manager = pkgs.fetchFromGitHub {
     owner = "nix-community";
     repo = "plasma-manager";
-    rev = "a53af7f1514ef4cce8620a9d6a50f238cdedec8b";
-    sha256 = "sha256-XzwkB62Tt5UYoL1jXiHzgk/qz2fUpGHExcSIbyGTtI0=";
+    rev = "1f3e1f38dedbbb8aad77e184fb54ec518e2d9522";
+    sha256 = "sha256-XikzLpPUDYiNyJ4w2SfRShdbSkIgE3btYdxCGInmtc4=";
   };
 in
 
@@ -107,7 +107,6 @@ in
                   "applications:org.kde.dolphin.desktop"
                   "applications:firefox.desktop"
                   "applications:com.mitchellh.ghostty.desktop"
-                  "applications:GitKraken Desktop.desktop"
                   "applications:obsidian.desktop"
                   "applications:signal-desktop.desktop"
                   "applications:sublime_merge.desktop"

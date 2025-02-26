@@ -54,7 +54,6 @@
       pcloud
       quickemu
       signal-desktop
-      unstable.gitkraken
     ] else []) ++ (with pkgs; [
       aha
       amazon-ecr-credential-helper
