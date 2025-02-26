@@ -79,6 +79,7 @@
       gnumake
       go
       gpu-viewer
+      heimer
       helm-ls # Zed Editor
       hunspell
       hunspellDicts.en-gb-ise

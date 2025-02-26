@@ -790,7 +790,7 @@ in
         serverAliveInterval = 60;
       };
 
-      zed-editor = {
+      zed-editor = { # https://nix-community.github.io/home-manager/options.xhtml#opt-programs.zed-editor.enable
         enable = true;
 
         extensions = [
@@ -803,6 +803,8 @@ in
           "terraform"
           "toml"
         ];
+
+        package = pkgs.unstable.zed-editor;
 
         userSettings = {
           assistant.version = "2";
