@@ -7,7 +7,7 @@
   services.flatpak.enable = true;
 
   system.activationScripts.flatpak = ''
-    if [[ ''${NIXOS_ACTION} = 'switch' ]] && ping -c 3 -W 3 1.1.1.1
+    if [[ ''${NIXOS_ACTION} = 'switch' ]] && /run/current-system/sw/bin/ping -c 3 -q -W 3 1.1.1.1 > /dev/ni
     then
       ${pkgs.flatpak}/bin/flatpak remote-add --if-not-exists --prio 1 'flathub' 'https://flathub.org/repo/flathub.flatpakrepo'
 
