@@ -86,7 +86,6 @@
       iperf
       iw
       jq
-      k9s
       kind
       krita
       kubectl
@@ -134,6 +133,7 @@
       yt-dlp
     ]) ++ (with pkgs.unstable; [
       ghostty
+      k9s
       ktailctl
       sqlitestudio
     ]);
