@@ -154,6 +154,7 @@ in
       ".config/ghostty/config".text = ''
         # https://ghostty.org/docs/config/reference
         # background-opacity = 0.85 # Disabled by shaders
+        app-notifications = no-clipboard-copy
         bold-is-bright = true
         clipboard-paste-protection = true
         copy-on-select = clipboard
