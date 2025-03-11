@@ -121,6 +121,7 @@
       parted
       pciutils
       pv
+      qalculate-qt
       qpdf
       speedtest-cli
       step-cli
