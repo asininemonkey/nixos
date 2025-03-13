@@ -59,6 +59,11 @@
       zsh
     ]);
 
+    sessionVariables = {
+      ELECTRON_OZONE_PLATFORM_HINT = "auto";
+      NIXOS_OZONE_WL = "1";
+    };
+
     systemPackages = (if pkgs.stdenv.hostPlatform.system == "x86_64-linux" then with pkgs; [
       libreoffice-fresh
       pcloud
