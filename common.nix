@@ -414,7 +414,10 @@
     };
   };
 
-  time.timeZone = "Europe/London";
+  time = {
+    hardwareClockInLocalTime = true;
+    timeZone = "Europe/London";
+  };
 
   users = {
     groups.jcardoso.gid = 1000;
