@@ -1,0 +1,40 @@
+{lib, ...}: {
+  nixpkgs.config.allowUnfreePredicate = pkg:
+    builtins.elem (lib.getName pkg) [
+      "1password"
+      "1password-cli"
+      "geekbench"
+      "makemkv"
+      "obsidian"
+      "pcloud"
+      "steam"
+      "steam-unwrapped"
+      "sublime-merge"
+
+      # NVIDIA
+      "cuda-merged"
+      "cuda_cccl"
+      "cuda_cudart"
+      "cuda_cuobjdump"
+      "cuda_cupti"
+      "cuda_cuxxfilt"
+      "cuda_gdb"
+      "cuda_nvcc"
+      "cuda_nvdisasm"
+      "cuda_nvml_dev"
+      "cuda_nvprune"
+      "cuda_nvrtc"
+      "cuda_nvtx"
+      "cuda_profiler_api"
+      "cuda_sanitizer_api"
+      "libcublas"
+      "libcufft"
+      "libcurand"
+      "libcusolver"
+      "libcusparse"
+      "libnpp"
+      "libnvjitlink"
+      "nvidia-settings"
+      "nvidia-x11"
+    ];
+}
