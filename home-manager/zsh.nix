@@ -198,6 +198,7 @@
         fla = "flatpak list --app";
         fr = "sudo flatpak repair";
         fuu = "flatpak uninstall --unused";
+        grit = "git rebase --interactive --root";
         grpo = "git remote prune origin";
         help = "run-help";
         htop = "btop";
