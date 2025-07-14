@@ -26,6 +26,11 @@
     fwupd.enable = true;
     iperf3.enable = true;
 
+    openiscsi = {
+      enable = true;
+      name = "iqn.2025-07.org.nixos:${custom.host.name}";
+    };
+
     openssh = {
       extraConfig = ''
         # https://cisofy.com/lynis/controls/SSH-7408/
