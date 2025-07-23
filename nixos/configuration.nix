@@ -70,6 +70,7 @@
         dive
         dmidecode
         docker-credential-helpers
+        dufs
         esptool
         exfat
         eza

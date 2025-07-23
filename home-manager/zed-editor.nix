@@ -21,6 +21,7 @@
       "helm"
       "make"
       "nix"
+      "scss"
       "sql"
       "terraform"
       "toml"
@@ -53,6 +54,19 @@
           "**/templates/**/*.yaml"
           "**/templates/**/*.yml"
         ];
+      };
+
+      languages = {
+        HTML = {
+          prettier = {
+            allowed = true;
+            parser = "go-template";
+
+            plugins = [
+              "prettier-plugin-go-template"
+            ];
+          };
+        };
       };
 
       lsp = {
