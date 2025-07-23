@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{pkgs-unstable, ...}: {
   home.file.".config/k9s/plugins.yaml".text = ''
     plugins:
       # https://github.com/derailed/k9s/blob/master/plugins/debug-container.yaml
@@ -68,7 +68,7 @@
     #   };
     # };
 
-    package = pkgs.k9s;
+    package = pkgs-unstable.k9s;
 
     settings = {
       # https://k9scli.io/topics/config/
