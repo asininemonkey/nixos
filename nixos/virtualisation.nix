@@ -128,6 +128,7 @@
       qemu.ovmf.enable = true;
     };
 
+    spiceUSBRedirection.enable = true;
     # waydroid.enable = true;
   };
 }
