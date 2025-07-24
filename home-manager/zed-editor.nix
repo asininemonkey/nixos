@@ -54,6 +54,10 @@
           "**/templates/**/*.yaml"
           "**/templates/**/*.yml"
         ];
+
+        JSONC = [
+          "*.hujson"
+        ];
       };
 
       languages = {
