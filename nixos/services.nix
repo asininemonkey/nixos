@@ -103,5 +103,13 @@
 
       package = pkgs-unstable.tailscale;
     };
+
+    zerotierone = {
+      enable = true;
+
+      joinNetworks = [
+        "0cccb752f74de851"
+      ];
+    };
   };
 }

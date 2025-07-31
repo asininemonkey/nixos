@@ -111,10 +111,7 @@
           ssh-agent = ".1password/agent.sock";
         };
 
-      tailnet = {
-        name = "fable-blues.ts.net";
-        server = "intel-nuc";
-      };
+      tailnet.name = "fable-blues.ts.net";
 
       webdav = {
         name = "intel-nuc";

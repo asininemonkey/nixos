@@ -10,6 +10,7 @@
       "steam"
       "steam-unwrapped"
       "sublime-merge"
+      "zerotierone"
 
       # NVIDIA
       "cuda-merged"

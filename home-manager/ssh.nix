@@ -11,12 +11,18 @@
     extraOptionOverrides.IdentityAgent = "~/${custom.password-manager.ssh-agent}";
 
     matchBlocks = {
+      "asus-rt-ax82u" = {
+        forwardAgent = true;
+        hostname = "%h.${custom.tailnet.name}";
+        user = "cardoso";
+      };
+
       "aws-eu-west-1" = {
         hostname = "%h.${custom.tailnet.name}";
         user = "ubuntu";
       };
 
-      "${custom.tailnet.server}" = {
+      "raspberry-pi-5-16gb-docker" = {
         forwardAgent = true;
         hostname = "%h.${custom.tailnet.name}";
         user = custom.user.name;
