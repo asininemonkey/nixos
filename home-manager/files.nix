@@ -10,6 +10,15 @@
       signature_error_highlighting = "no_signature";
       theme = "Merge Dark.sublime-theme";
       time_format = "12h";
+      update_check = false;
+    };
+
+    ".config/sublime-text/Packages/User/Preferences.sublime-settings".text = builtins.toJSON {
+      font_face = custom.font.mono.name;
+      font_size = custom.font.mono.size;
+      hardware_acceleration = "opengl";
+      theme = "Default Dark.sublime-theme";
+      update_check = false;
     };
 
     ".config/wireplumber/wireplumber.conf.d/disable-devices.conf".text = ''
