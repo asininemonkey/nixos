@@ -87,6 +87,7 @@
         ldns
         libreoffice-fresh
         makemkv
+        naps2
         nvme-cli
         obsidian # Move to Home Manager 25.11
         p7zip
@@ -164,6 +165,8 @@
         }
       ];
     };
+
+    sane.enable = true;
   };
 
   i18n.defaultLocale = "en_GB.UTF-8";
@@ -278,6 +281,7 @@
         "incus-admin"
         "libvirtd"
         "networkmanager"
+        "scanner"
         "wheel"
       ];
 
