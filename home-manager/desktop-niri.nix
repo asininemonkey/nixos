@@ -25,6 +25,7 @@ in {
     gtk3 = {
       bookmarks = [
         "davs://${custom.webdav.server}/ ${custom.webdav.name}"
+        "davs://100.100.100.100:8080/ tailscale"
       ];
 
       extraConfig = {

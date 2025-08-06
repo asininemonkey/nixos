@@ -114,7 +114,7 @@
       tailnet.name = "fable-blues.ts.net";
 
       webdav = {
-        name = "intel-nuc";
+        name = "josecardoso.net";
         server = "files.josecardoso.net";
       };
 
