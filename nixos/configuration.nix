@@ -3,7 +3,6 @@
   custom,
   lib,
   pkgs,
-  pkgs-unstable,
   ...
 }: {
   boot = {
@@ -42,87 +41,6 @@
   };
 
   documentation.nixos.enable = false;
-
-  environment = {
-    etc."1password/custom_allowed_browsers" = {
-      mode = "0444";
-
-      text = ''
-        chromium
-        ungoogled-chromium
-      '';
-    };
-
-    defaultPackages = lib.mkForce [];
-
-    sessionVariables = {
-      NIXOS_OZONE_WL = "1";
-    };
-
-    systemPackages =
-      (with pkgs; [
-        (hiPrio papirus-icon-theme)
-
-        amazon-ecr-credential-helper
-        chiaki
-        darktable
-        devbox
-        dive
-        dmidecode
-        docker-credential-helpers
-        dufs
-        esptool
-        exfat
-        eza
-        freerdp
-        geekbench
-        glow
-        gnumake
-        gpu-viewer
-        iperf
-        kind
-        kubectl
-        kubelogin-oidc
-        kubernetes-helm
-        ldns
-        libreoffice-fresh
-        makemkv
-        naps2
-        nvme-cli
-        obsidian # Move to Home Manager 25.11
-        p7zip
-        pamixer
-        pavucontrol
-        pciutils
-        pcloud
-        prusa-slicer
-        pupdate
-        pv
-        qalculate-qt
-        qpdf
-        speedtest-cli
-        sqlitestudio
-        sublime-merge
-        tailspin
-        tree
-        unzip
-        usbutils
-        vlc
-        wakelan
-        wayland-utils
-        wget
-        wl-clipboard-rs
-      ])
-      ++ (with pkgs-unstable; [
-        bitwarden-cli
-        bitwarden-desktop
-        signal-desktop
-      ]);
-
-    variables = {
-      GI_TYPELIB_PATH = "/run/current-system/sw/lib/girepository-1.0";
-    };
-  };
 
   fonts = {
     fontconfig = {
@@ -176,6 +94,7 @@
     ./disko.nix
     ./flatpak.nix
     ./llms.nix
+    ./networking.nix
     ./nvidia.nix
     ./programs.nix
     ./security.nix
@@ -183,43 +102,6 @@
     ./unfree.nix
     ./virtualisation.nix
   ];
-
-  networking = {
-    firewall = {
-      checkReversePath = "loose";
-      enable = true;
-
-      trustedInterfaces = [
-        "cni0"
-        "docker0"
-        "incusbr0"
-        "tailscale0"
-        "virbr0"
-      ];
-    };
-
-    hostName = custom.host.name;
-
-    networkmanager = {
-      dispatcherScripts = [
-        {
-          source = pkgs.writeText "tailscale-performance" ''
-            if [ "''${DEVICE_IFACE}" == "${custom.host.network.interface}" ] && [ "''${2}" == "up" ]
-            then
-              ${pkgs.ethtool.out}/bin/ethtool --features ''${DEVICE_IFACE} rx-gro-list off rx-udp-gro-forwarding on
-              logger "Tailscale performance features enabled for ''${DEVICE_IFACE}"
-            fi
-          '';
-
-          type = "basic";
-        }
-      ];
-
-      enable = true;
-    };
-
-    nftables.enable = true;
-  };
 
   nix.settings = {
     allowed-users = [
