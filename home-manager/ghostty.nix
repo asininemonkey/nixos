@@ -18,7 +18,12 @@
 
       font-family = custom.font.mono.name;
       font-size = custom.font.mono.size;
-      keybind = "ctrl+shift+k=clear_screen";
+
+      keybind = [
+        "ctrl+enter=unbind"
+        "ctrl+shift+k=clear_screen"
+      ];
+
       theme = "catppuccin-mocha";
       window-height = 35;
       window-width = 155;
