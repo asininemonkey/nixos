@@ -92,6 +92,7 @@
   imports = [
     ./desktop-${custom.desktop}.nix
     ./disko.nix
+    ./environment.nix
     ./flatpak.nix
     ./llms.nix
     ./networking.nix
