@@ -19,6 +19,10 @@
         appId = "me.amankhanna.opendeck";
         origin = "flathub";
       }
+      # {
+      #   appId = "us.zoom.Zoom";
+      #   origin = "flathub";
+      # }
     ];
 
     remotes = lib.mkOptionDefault [
