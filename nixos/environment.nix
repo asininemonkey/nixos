@@ -42,6 +42,7 @@
         gpu-viewer
         iperf
         kind
+        krew
         kubectl
         kubelogin-oidc
         kubernetes-helm
