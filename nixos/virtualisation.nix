@@ -16,7 +16,7 @@
         services:
           portainer:
             container_name: portainer
-            image: portainer/portainer-ee:2.31.3-alpine # https://hub.docker.com/r/portainer/portainer-ee/tags
+            image: portainer/portainer-ee:2.33.1-alpine # https://hub.docker.com/r/portainer/portainer-ee/tags
             networks:
               general:
                 ipv4_address: 172.20.0.10

@@ -14,7 +14,7 @@
 
     lix-module = {
       inputs.nixpkgs.follows = "nixpkgs";
-      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.93.2-1.tar.gz";
+      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.93.3-2.tar.gz";
     };
 
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
@@ -48,7 +48,7 @@
     ...
   }: let
     custom = {
-      desktop = "kde";
+      desktop = "niri";
 
       font = {
         mono = {
