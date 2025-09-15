@@ -16,6 +16,14 @@
         origin = "flathub";
       }
       {
+        appId = "io.github.kolunmi.Bazaar";
+        origin = "flathub";
+      }
+      {
+        appId = "io.kinvolk.Headlamp";
+        origin = "flathub";
+      }
+      {
         appId = "me.amankhanna.opendeck";
         origin = "flathub";
       }
