@@ -19,7 +19,7 @@
       "sg" # Required by MakeMKV
     ];
 
-    kernelPackages = pkgs.linuxPackages_6_14;
+    kernelPackages = pkgs.linuxPackages_6_16;
 
     loader = {
       efi.canTouchEfiVariables = true;
