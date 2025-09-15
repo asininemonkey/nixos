@@ -8,6 +8,10 @@
         origin = "flathub";
       }
       {
+        appId = "com.jeffser.Alpaca";
+        origin = "flathub";
+      }
+      {
         appId = "com.usebottles.bottles";
         origin = "flathub";
       }
@@ -27,10 +31,6 @@
         appId = "me.amankhanna.opendeck";
         origin = "flathub";
       }
-      # {
-      #   appId = "us.zoom.Zoom";
-      #   origin = "flathub";
-      # }
     ];
 
     remotes = lib.mkOptionDefault [
