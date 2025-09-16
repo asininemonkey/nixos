@@ -122,10 +122,6 @@ in {
           xcursor-theme "phinger-cursors-light"
         }
 
-        environment {
-          DISPLAY ":0"
-        }
-
         hotkey-overlay {
           // hide-not-bound
           skip-at-startup
@@ -185,7 +181,6 @@ in {
         spawn-at-startup "signal-desktop" "--start-in-tray"
         spawn-at-startup "swww" "img" "${custom.image.wall}"
         spawn-at-startup "waybar"
-        spawn-at-startup "xwayland-satellite"
 
         window-rule {
           clip-to-geometry true

@@ -95,7 +95,8 @@
         htop = "btop";
         ls = "eza --git --git-repos --group --group-directories-first --icons --time-style long-iso";
         nfa = "nix flake archive --refresh --verbose --verbose /etc/nixos";
-        nrs = "nix flake update --flake /etc/nixos && sudo nixos-rebuild switch --flake /etc/nixos#${custom.host.id}";
+        nfu = "nix flake update --flake /etc/nixos";
+        nrs = "sudo nixos-rebuild switch --flake /etc/nixos#${custom.host.id}";
         nso = "nix store optimise";
         nv = "niri validate";
         open = "xdg-open";
